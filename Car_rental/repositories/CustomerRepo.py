@@ -17,11 +17,10 @@ class CustomerRepo:
             dl_number = customer.get_dl_number()
             cc_number = customer.get_cc_number()
 
-            fieldnames = ["id_number", "name", "age", "country", "email", "phone", "dl_number", "cc_number"]
+            fieldnames = ["Customer ID", "Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
 
             csv_writer = csv.DictWriter(customers_file, fieldnames=fieldnames, lineterminator="\n")
 
             csv_writer.writeheader()
-            csv_writer.writerow({"id_number": id_number, "name": name, "age": age, "country": country, "email": email,
-            "phone": phone, "dl_number": dl_number, "cc_number": cc_number})
-
+            csv_writer.writerow({"Customer ID": id_number, "Name": name, "Age": age, "Country": country, "Email": email,
+            "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
