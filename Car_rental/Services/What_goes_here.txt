@@ -1,0 +1,2 @@
+Hér fara þeir klasar sem innihalda some logic. T.d. staðfestingar á input-i og
+útreikninga. 
