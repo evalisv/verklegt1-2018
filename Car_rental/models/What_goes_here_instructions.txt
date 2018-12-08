@@ -1,0 +1,5 @@
+Í þessari skrá eiga aðeins að vera Entities, þ.e. klasar sem geyma áðeins 
+upplýsingar um hluti.
+
+Sjá t.d. models/Video.py kóðann frá Björgvin.
+

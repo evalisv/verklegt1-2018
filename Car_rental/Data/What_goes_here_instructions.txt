@@ -1,0 +1,4 @@
+Í þessari skrá eiga aðeins að vera csv skrár.
+
+Þau forrit sem vinna með skrárnar, skrifa í eða eyða úr skrám, eiga að fara í
+repository möppuna.

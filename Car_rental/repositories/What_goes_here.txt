@@ -1,0 +1,5 @@
+Í þessari skrá fara þeir klasar sem sjá um gagnavinnslu, þá klasar sem sjá um
+að skrifa í skrár.
+
+
+Sjá kóðann í repositories  frá Bjögga
