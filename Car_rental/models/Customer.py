@@ -13,3 +13,6 @@ class Customer:
     def __str__(self):
         return "{},{},{},{},{},{},{},{},".format(self.__id_number, self.__name, self.__age, self.__country, self.__email, self.__phone,\
          self.__dl_number, self.__cc_number)
+
+         def get__id_number(self):
+             return self.__id_number 
