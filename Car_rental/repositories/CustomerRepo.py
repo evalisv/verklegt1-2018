@@ -23,5 +23,5 @@ class CustomerRepo:
 
             csv_writer.writeheader()
             csv_writer.writerow({"id_number": id_number, "name": name, "age": age, "country": country, "email": email,
-            "dl_number": dl_number, "cc_number": cc_number})
+            "phone": phone, "dl_number": dl_number, "cc_number": cc_number})
 
