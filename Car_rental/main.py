@@ -3,3 +3,6 @@ def main():
     pass
 
 main()
+    #tilraunastarfsemi í meira lagi
+
+main()
