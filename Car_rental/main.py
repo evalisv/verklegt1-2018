@@ -1,6 +1,9 @@
+from UI.CarUI import CarUi
+
 #Hér keyrum við main fallið til að ræsa forritið.
 def main():
-    pass
+    carui = CarUi()
+    carui.main_menu()
 
 main()
     #tilraunastarfsemi í meira lagi
