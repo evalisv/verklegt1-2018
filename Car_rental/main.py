@@ -4,5 +4,3 @@ def main():
 
 main()
     #tilraunastarfsemi í meira lagi
-
-main()

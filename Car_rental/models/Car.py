@@ -1,5 +1,5 @@
 class Car:
-    def __init__(self, category, LP_number, model, brand, year, km, colour):
+    def __init__(self, category, LP_number, model, brand, year, km, colour, status):
         self.__category = category
         self.__LP_number = LP_number
         self.__model =  model
@@ -7,14 +7,16 @@ class Car:
         self.__year = year
         self.__km = km
         self.__colour = colour
+        self.__status = status
 
     def __str__(self):
-        return "{},{},{},{},{},{},{},".format(self.__category, self.__LP_number, self.__model, self.__brand, self.__year, self.__colour, self.__km)
+        return "{},{},{},{},{},{},{},{}".format(
+            self.__category, self.__LP_number, self.__model, self.__brand, self.__year, self.__colour, self.__km, self.__status)
 
     def get_category(self):
         return self.__category
 
-    def get_LP_number(self):
+    def get_lp_number(self):
         return self.__LP_number
 
     def get_model(self):
@@ -31,3 +33,6 @@ class Car:
 
     def get_colour(self):
         return self.__colour
+    
+    def get_status(self):
+        return self.__status
