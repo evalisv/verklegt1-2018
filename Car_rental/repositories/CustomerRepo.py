@@ -21,6 +21,12 @@ class CustomerRepo:
 
             csv_writer = csv.DictWriter(customers_file, fieldnames=fieldnames, lineterminator="\n")
 
-            csv_writer.writeheader()
             csv_writer.writerow({"Customer ID": id_number, "Name": name, "Age": age, "Country": country, "Email": email,
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
+
+    def get_customers(self):
+        if self.__customer == []:
+            with open("./data/customer.csv", "a+") as customers_file:
+                cvs_reader = csv.DictReader(customers_file)
+
+                    

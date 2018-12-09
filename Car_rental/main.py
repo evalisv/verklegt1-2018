@@ -1,4 +1,4 @@
-from UI.CarUI import CarUi
+from ui.CarUI import CarUi
 
 #Hér keyrum við main fallið til að ræsa forritið.
 def main():
