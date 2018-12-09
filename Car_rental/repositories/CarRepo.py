@@ -25,3 +25,7 @@ class CarRepository:
             csv_writer.writeheader()
             csv_writer.writerow({'Licence plate' : lp_number, 'Category' : category, 'Model' : model, 'Brand' : brand,
              'Colour' : colour, 'Year' : year, 'kilometers' : kilometers, 'status' : status})
+
+    def get_car(self):
+        return self.__car
+

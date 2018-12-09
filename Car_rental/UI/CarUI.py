@@ -21,6 +21,10 @@ class CarUi():
 
             action = input("Choose an option: ").lower()
 
+            if action == "1":
+                cars = self.__car_service.get_cars()
+                print(cars)
+
             if action == "4":
                 lp_number = input("Licence plate: ")
                 category = input("Category: ")
@@ -33,7 +37,7 @@ class CarUi():
                 new_car = Car(category, lp_number, model, brand, year, km, colour, status)
                 self.__car_service.add_car(new_car)
 
-            elif action == "2":
-                videos = self.__video_service.get_videos()
-                print(videos)
+            # elif action == "1":
+            #     cars = self.__video_service.get_videos()
+            #     print(cars)
                     
