@@ -37,7 +37,7 @@ class OrderRepo():
                     update_list.append(row)
                     
         #Overwrites file with list. New list has every order minus the one canceled.
-        with open('order.csv', 'w',, encoding = "utf-8", lineterminator = "\n") as order_file:
+        with open('order.csv', 'w', encoding = "utf-8", lineterminator = "\n") as order_file:
             csv_writer = csv.writer(order_file)
             for item in update_list:
                 csv_writer.writerow(item)
@@ -63,11 +63,13 @@ class OrderRepo():
             for order in update_list:
                 csv_writer.writerow(order)
 
-    def get_class(self, order):
-        return self.order.get_class(order)
+            # Á eftir að bæta við virkni í skráningu á orders. Í framhaldi þarf svo að laga þessi föll
+
+    # def get_class(self, order):
+    #     return self.order.get_class(order)
     
-    def get_number_of_days(self,order):
-        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
-        end = datetime.strptime(self.order.get_return_date(order), date_format)
-        number_of_days = end - start
-        return number_of_days
+    # def get_number_of_days(self, order):
+    #     start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+    #     end = datetime.strptime(self.order.get_return_date(order), date_format)
+    #     number_of_days = end - start
+    #     return number_of_days
