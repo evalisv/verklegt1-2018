@@ -16,8 +16,8 @@ class OrderService():
 
     # Calculate the price - Fallið ekki klárt þar sem það á eftir að sækja upplýsingar um flokkinn og tímalengd leigunnar
     def calculate_price(self, order):
-        car_class = self.__order_repo.get_class()
-        number_of_days = self.__order_repo.get_number_of_days()
+        car_class = self.__order_repo.get_class(order)
+        number_of_days = self.__order_repo.get_number_of_days(order)
         if car_class == "A":
             class_price = price_class_a
         elif car_class == "B":
