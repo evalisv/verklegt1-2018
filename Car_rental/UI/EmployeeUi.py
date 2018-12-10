@@ -38,10 +38,51 @@ class EmployeeUi:
                     print("2 | See Unavailable cars")
                     print("3 | List of all cars")
                     print("4 | See Details of a car")
+                    print("5 | Register new car")
+                    print("m | Go to Main menu")
                     print("q | Quit")
                     print()
                     
                     action = input("Input number/letter: ").lower()
+                    
+                    if action == "1":
+                        # See available cars
+                        pass
+                    
+                    
+                    if action == "2":
+                        # See unavailable cars
+                        pass
+                    
+                    
+                    if action == "3":
+                        # List of all cars
+                        pass
+
+                    
+                    if action == "4":
+                        # See details of a car
+                        pass
+
+                    
+                    if action == "m":
+                        # Go to Main menu
+                        break
+            
+                    if action == "5":
+                        # Register new car
+                        lp_number = input("Licence plate number: ")
+                        category = input("Category: ")
+                        model = input("Model: ")
+                        brand = input("Brand: ")
+                        colour = input("Colour: ")
+                        year = input("Year: ")
+                        kilometers = input("Kilometers: ")
+                        status = input("Status: ")
+                        new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
+                        self.__car_service.add_car(new_car)
+                        
+                                        
 
             if action == "2":
                 # Goes to Orders menu
@@ -76,6 +117,23 @@ class EmployeeUi:
                         cc_number = input("Credit card number: ")
                         new_customer = Customer(id_number, name, age, country, email, phone, dl_number, cc_number)
                         self.__customer_service.add_customer(new_customer)
+                        break
+
+                    
+                    if action == "":
+                        pass
+
+                    
+                    if action == "":
+                        pass
+
+                    
+                    if action == "":
+                        pass
+
+                    
+                    if action == "m":
+                        # Go to Main menu
                         break
                         
 
