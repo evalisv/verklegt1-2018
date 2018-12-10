@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from repositories.CustomerRepo import CustomerRepository
 
 class CustomerService():
@@ -18,3 +19,12 @@ class CustomerService():
 
     def get_customers_by_status(self, status):
         pass
+=======
+from Car_rental.models.Customer import Customer
+
+class CustomerService:
+    def __init__(self):
+        self.__customer_repo = CustomerRepo()
+
+    def add_customer(self, )
+>>>>>>> 3c0ef7acb2f0b5bdd9b9d84279a178ceb34f470e

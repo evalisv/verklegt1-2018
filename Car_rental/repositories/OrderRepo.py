@@ -1,9 +1,11 @@
+import csv
+
 class OrderRepo():
-    def __init__:
+    def __init__(self):
         self.__order = []
 
     def add_order(self, order):
-        with open('order.csv', 'a+') as order_file:
+        with open('Car_rental/data/order.csv', 'a+') as order_file:
             number = order.get_order_number()
             customer_id = order.get_customer_id()
             lp_number = order.get_lp_number()
@@ -12,13 +14,13 @@ class OrderRepo():
             price = order.get_price()
             insurance = order.get_insurance()
 
-            fieldnames = ['number', 'customer_id', 'lp_number', 'pickup_date', 'return_date', 'price', 'insurance']
+            fieldnames = ['Number', 'Customer ID', 'License Plate Number', 'Pick-up Date', 'Return Date', 'Price', 'Insurance']
 
             csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames)
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             csv_writer.writeheader()
-            csv_writer.writerow({'number': number, 'customer_id': customer_id, 'lp_number': lp_number, 'pickup_date': pickup_date,
-                            'return_date': return_date, 'price': price, 'insurance': insurance})
+            csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number, 'Pick-up Date': pickup_date,
+                            'Return Date': return_date, 'Price': price, 'Insurance': insurance})
 
     def cancel_order(self, number):
 
