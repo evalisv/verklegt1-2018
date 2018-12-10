@@ -7,7 +7,7 @@ class CustomerService():
 
     def add_customer(self, customer):
         if self.is_valid_customer(customer):
-            self.__customer_repo.add_car(customer)
+            self.__customer_repo.add_customer(customer)
     
     def is_valid_customer(self, customer):
         #here should be some code to 
@@ -15,7 +15,7 @@ class CustomerService():
         return True
 
     def get_customers(self):
-        return self.__customer_repo.get_customer()
+        return self.__customer_repo.get_customers()
 
     def get_customers_by_status(self, status):
         pass
