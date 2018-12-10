@@ -7,7 +7,7 @@ class CustomerRepo:
         self.__customer = []
 
     def add_customer(self, customer):
-        with open("Car_rental/data/customer.csv", "a+") as customers_file:
+        with open("data/customers.csv", "a+", encoding="utf-8") as customers_file:
             id_number = customer.get_id_number()
             name = customer.get_name()
             age = customer.get_age()
@@ -25,8 +25,4 @@ class CustomerRepo:
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
 
     def get_customers(self):
-        if self.__customer == []:
-            with open("./data/customer.csv", "a+") as customers_file:
-                cvs_reader = csv.DictReader(customers_file)
-
-                    
+        pass
