@@ -1,4 +1,5 @@
 import csv
+import os
 from models.Customer import Customer
 from models.Car import Car
 from models.Order import Order
@@ -31,6 +32,7 @@ class EmployeeUi:
 
             if action == "1":
                 # Goes to Cars menu
+                os.system("cls")
                 action = ""
                 while(action != "q"):    
                     print("You can do the following:")
@@ -48,14 +50,15 @@ class EmployeeUi:
                     
                     if action == "1":
                         # See available cars
-                        with open ("Data\cars.csv", "r") as csv_file:
+                        with open ("Data/cars.csv", "r") as csv_file:
                             csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
 
                             for line in csv_reader:
                                 # Prentar aðeins út gildin sem eru tengd við þá lykla sem settir eru i hornklofana.
                                 # Dæmi: print(line["Name"], "\t", line["Email"], "\t", line["Phone"])
                                 # "\t" er fyrir tabs
-                                print(line['Licence Plate Number'], "\t", line['Category'], "\t", line['Model'], "\t", line['Kilometers'], "\t", line['Status'])   
+                                print(line['Licence Plate Number'], "\t", line['Category'], "\t", line['Model'], "\t", line['Kilometers'], "\t", line['Status'])
+                        print()   
                         break
                     
                     
@@ -80,6 +83,7 @@ class EmployeeUi:
             
                     if action == "5":
                         # Register new car
+                        os.system("cls")
                         lp_number = input("Licence plate number: ")
                         category = input("Category: ")
                         model = input("Model: ")
@@ -99,6 +103,7 @@ class EmployeeUi:
 
             if action == "3":
                 # Goes to Customers menu
+                os.system("cls")
                 action = ""
                 while(action != "q"):
                     print("You can do the following:")
@@ -116,6 +121,7 @@ class EmployeeUi:
                     
                     if action == "1":
                         # Register new customer
+                        os.system("cls")
                         id_number = input("Customer ID: ")
                         name = input("Name: ")
                         age = input("Age: ")
