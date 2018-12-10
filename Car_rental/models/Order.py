@@ -22,7 +22,7 @@ class Order:
     def get_lp_number(self):
         return self.__lp_number
 
-    def get_picup_date(self):
+    def get_pickup_date(self):
         return self.__pickup_date
 
     def get_return_date(self):
