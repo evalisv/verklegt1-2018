@@ -19,7 +19,7 @@ class CustomerRepo:
 
             fieldnames = ["Customer ID", "Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
 
-            csv_writer = csv.DictWriter(customers_file, fieldnames=fieldnames, lineterminator="\n")
+            csv_writer = csv.DictWriter(customers_file, fieldnames=fieldnames, newline="")
 
             csv_writer.writerow({"Customer ID": id_number, "Name": name, "Age": age, "Country": country, "Email": email,
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})

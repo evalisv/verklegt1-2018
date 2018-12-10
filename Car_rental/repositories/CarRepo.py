@@ -20,7 +20,7 @@ class CarRepository:
 
             fieldnames = ['Licence Plate Number', 'Category', 'Model', 'Brand', 'Colour', 'Year', 'Kilometers', 'Status']
 
-            csv_writer = csv.DictWriter(car_file, fieldnames=fieldnames, lineterminator = "\n")
+            csv_writer = csv.DictWriter(car_file, fieldnames=fieldnames, newline="")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             csv_writer.writeheader()
             csv_writer.writerow({'Licence Plate Number' : lp_number, 'Category' : category, 'Model' : model, 'Brand' : brand,

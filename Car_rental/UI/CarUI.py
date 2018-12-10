@@ -1,7 +1,7 @@
 from Services.CarService import CarService
 from models.Car import Car
 
-class CarUi():
+class CarUi:
 
     def __init__(self):
         self.__car_service = CarService()
