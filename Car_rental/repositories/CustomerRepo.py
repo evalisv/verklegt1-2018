@@ -9,7 +9,8 @@ class CustomerRepo:
     def add_customer(self, customer):
         with open("data/customers.csv", "a+", encoding="utf-8") as customers_file:
             id_number = customer.get_id_number()
-            name = customer.get_name()
+            first_name = customer.get_first_name()
+            last_name = customer.get_last_name()
             age = customer.get_age()
             country = customer.get_country()
             email = customer.get_email()
@@ -17,11 +18,11 @@ class CustomerRepo:
             dl_number = customer.get_dl_number()
             cc_number = customer.get_cc_number()
 
-            fieldnames = ["Customer ID", "Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
+            fieldnames = ["Customer ID", "First Name", "Last Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
 
             csv_writer = csv.DictWriter(customers_file, fieldnames=fieldnames, lineterminator="\n")
 
-            csv_writer.writerow({"Customer ID": id_number, "Name": name, "Age": age, "Country": country, "Email": email,
+            csv_writer.writerow({"Customer ID": id_number, "First Name": first_name, "Last Name": last_name, "Age": age, "Country": country, "Email": email,
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
 
     def get_customers(self):
