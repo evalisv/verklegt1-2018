@@ -7,7 +7,7 @@ class CarRepository:
         self.__car = []
 
     def add_car(self, car):
-        with open('Data/cars.csv', 'a+') as car_file:
+        with open('Data/cars.csv', 'a+', encoding = "utf-8") as car_file:
             lp_number = car.get_lp_number()
             category = car.get_category()
             model = car.get_model()

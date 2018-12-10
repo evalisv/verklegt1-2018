@@ -7,7 +7,7 @@ class CustomerRepo:
         self.__customer = []
 
     def add_customer(self, customer):
-        with open("data/customers.csv", "a+") as customers_file:
+        with open("data/customers.csv", "a+", encoding="utf-8") as customers_file:
             id_number = customer.get_id_number()
             name = customer.get_name()
             age = customer.get_age()

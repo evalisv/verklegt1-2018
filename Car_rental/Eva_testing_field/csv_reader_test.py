@@ -1,6 +1,6 @@
 import csv
 
-with open ("Eva_testing_field/customer.csv", "r") as csv_file:
+with open ("Eva_testing_field/customer.csv", "r", encoding = "utf-8") as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
     match1_value = 1

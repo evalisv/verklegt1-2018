@@ -9,7 +9,7 @@ class OrderRepo():
         self.__order = []
 
     def add_order(self, order):
-        with open('Car_rental/data/order.csv', 'a+') as order_file:
+        with open('Car_rental/data/order.csv', 'a+', encoding = "utf-8") as order_file:
             number = order.get_order_number()
             customer_id = order.get_customer_id()
             lp_number = order.get_lp_number()
@@ -30,14 +30,14 @@ class OrderRepo():
 
         #Puts every orders into a list, except the one you want to cancel
         update_list = []
-        with open('order.csv', 'r', newline='') as order_file:
+        with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
             csv_reader = csv.reader(order_file)
             for row in csv_reader:
                 if row[0] != number:
                     update_list.append(row)
                     
         #Overwrites file with list. New list has every order minus the one canceled.
-        with open('order.csv', 'w', newline='') as order_file:
+        with open('order.csv', 'w',, encoding = "utf-8", lineterminator = "\n") as order_file:
             csv_writer = csv.writer(order_file)
             for item in update_list:
                 csv_writer.writerow(item)
@@ -46,7 +46,7 @@ class OrderRepo():
         
         #Same as cancel order, except the order is modified and then added to the update_list.
         update_list = []
-        with open('order.csv', 'r', newline='') as order_file:
+        with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
             csv_reader = csv.reader(order_file)
             for row in csv_reader:
                 if row[0] == number:

@@ -5,7 +5,7 @@
 # Filtered útprentun eftir flokki, t.d til að prenta aðeins út nöfn viðskiptavina. eða nöfn og auðkenni. 
 import csv
 
-with open ("", "r") as csv_file:
+with open ("", "r", encoding = "utf-8") as csv_file:
     csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
 
     for line in csv_reader:
@@ -17,7 +17,7 @@ with open ("", "r") as csv_file:
 
 # Prenta út allt skjalið eins og það legur sig. 
 
-with open ("","r") as csv_file:
+with open ("", "r", encoding = "utf-8") as csv_file:
     # Það þarf ekki að nota DictReader nema maður sé að leita að einhverju
     csv_reader = csv.reader(csv_file) 
 
@@ -28,7 +28,7 @@ with open ("","r") as csv_file:
 
 # Að finna einn hlut eftir lykli
 # Dæmi:
-with open ("", "r") as csv_file:
+with open ("", "r", encoding = "utf-8") as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
     # Setjið inn það breytu nafn sem passar inn í staðinn fyrir customer_id_filter,
@@ -46,7 +46,7 @@ with open ("", "r") as csv_file:
             
 
 # Til að filtera eftir 2 eða fleiri gildum, þar sem aðeins eitt gildið þarf að vera satt. T.d. að finna pöntun eftir bókunarnúmeri eða Customer ID
-with open ("", "r") as csv_file:
+with open ("", "r", encoding = "utf-8") as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
     # match_value til þess að geta tilkynnt að eitthvað hafi ekki fundist
@@ -72,7 +72,7 @@ with open ("", "r") as csv_file:
         print(filter_2, "t.d: was not found")
     
 # Dæmi:
-#  with open ("", "r") as csv_file:
+#  with open ("", "r", encoding = "utf-8") as csv_file:
 #     csv_reader = csv.DictReader(csv_file)
 
 #     match1_value = 1
