@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 Customer ID,Name,Age,Country,Email,Phone,Drivers License Number,Credit Card Number
 0310952639,Eva,23,Iceland,evals18@ru.is,8445419,1234,0000 0000 0000 0001
 3009592379,Gudny,59,Iceland,gudny@live.com,5812345,3456,0000 0000 0000 0002
+=======
+Customer ID;Name;Age;Country;Email;Phone;Drivers License Number;Credit Card Number
+2611893059;Jökull Viðar Gunnarsson;;Iceland;jokullvidar@gmail.com;7756030;7897646547;4444111122223333
+1010802017;Harpa Sjöfn;;Iceland;meh@meh.is;5882211;56456765765;1111222244443333
+A781929;Kamal Babu;;India;kamalbabu@friendsofindia.is;+24873215478;4564564321;7777888899994444
+S78787878;Jack Black;;USA;jackblack@jackblack.com;+1 45654687;23564564687;2222111133334444
+L8989898;Donald Trump;;USA;donaldtrump@endoftheworld.com;+1 1;54654678687;4444111122223333
+>>>>>>> 23fbffe7b9c66b9912367271312425edb53e4b06

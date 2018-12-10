@@ -1,4 +1,8 @@
 import csv
+from models.Order import Order
+from datetime import datetime
+
+date_format = "%m/%d/%Y"
 
 class OrderRepo():
     def __init__(self):
@@ -58,7 +62,12 @@ class OrderRepo():
             csv_writer = csv.writer(order_file)
             for order in update_list:
                 csv_writer.writerow(order)
-        
-            
-            
+
+    def get_class(self, order):
+        return self.order.get_class(order)
     
+    def get_number_of_days(self,order):
+        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+        end = datetime.strptime(self.order.get_return_date(order), date_format)
+        number_of_days = end - start
+        return number_of_days
