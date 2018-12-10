@@ -1,3 +1,4 @@
+import csv
 from models.Customer import Customer
 from models.Car import Car
 from models.Order import Order
@@ -47,7 +48,15 @@ class EmployeeUi:
                     
                     if action == "1":
                         # See available cars
-                        pass
+                        with open ("Data\cars.csv", "r") as csv_file:
+                            csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
+
+                            for line in csv_reader:
+                                # Prentar aðeins út gildin sem eru tengd við þá lykla sem settir eru i hornklofana.
+                                # Dæmi: print(line["Name"], "\t", line["Email"], "\t", line["Phone"])
+                                # "\t" er fyrir tabs
+                                print(line['Licence Plate Number'], "\t", line['Category'], "\t", line['Model'], "\t", line['Kilometers'], "\t", line['Status'])   
+                        break
                     
                     
                     if action == "2":
