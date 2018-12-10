@@ -1,9 +1,9 @@
 
-from repositories.CustomerRepo import CustomerRepository
+from repositories.CustomerRepo import CustomerRepo
 
 class CustomerService():
     def __init__(self):
-        self.__customer_repo = CustomerRepository()
+        self.__customer_repo = CustomerRepo()
 
     def add_customer(self, customer):
         if self.is_valid_customer(customer):
