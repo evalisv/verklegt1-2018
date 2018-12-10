@@ -12,8 +12,8 @@ with open ("", "r") as csv_file:
         # Prentar aðeins út gildin sem eru tengd við þá lykla sem settir eru i hornklofana.
         # Dæmi: print(line["Name"], "\t", line["Email"], "\t", line["Phone"])
         # "\t" er fyrir tabs
-
-        print(line[], "\t", line[])   
+        # Format nauðsynlegt, kemur fljótlega.
+        print(line[], line[])   
 
 # Prenta út allt skjalið eins og það legur sig. 
 
