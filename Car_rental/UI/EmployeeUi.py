@@ -20,7 +20,7 @@ class EmployeeUi:
         while(action != "q"):
             os.system("cls")
             print("You can do the following:")
-            print()
+            print(25 *"-")
             print("1 | Cars")
             print("2 | Orders")
             print("3 | Customers")
@@ -35,7 +35,7 @@ class EmployeeUi:
                 action = ""
                 while(action != "q"):    
                     print("You can do the following:")
-                    print()
+                    print(30 *"-")
                     print("1 | See Available cars")
                     print("2 | See Unavailable cars")
                     print("3 | List of all cars")
@@ -113,9 +113,81 @@ class EmployeeUi:
                                         
 
             if action == "2":
-
                 # Goes to Orders menu
-                pass
+                os.system("cls")
+                action = ""
+                while(action != "q"):    
+                    print("You can do the following:")
+                    print(30 *"-")
+                    print("1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
+                    print("2 | Calculate Cost of rent")
+                    print("3 | Return cars")
+                    print("4 | Change Reservation")
+                    print("5 | Cancel Reservation")
+                    print("6 | Go Back")
+                    print("m | Go to Main menu")
+                    print("q | Quit")
+                    print()
+
+                    action = input("Input number/letter: ").lower()           
+
+                    if action == "1":
+                        #Rent cars and ther under 
+                        os.system("cls")
+                        action = ""
+                        while(action != "q"):    
+                            print("You can do the following:")
+                            print()
+                            print("1 | Register new customers")  
+                            print("2 | Choose customers")
+                            print("m | Go to Main menu")
+                            print()
+
+                            action = input("Input number/letter: ").lower()
+                        
+                            if action == "1":
+                                #Register new customers
+                                pass
+
+                            if action == "2":
+                                #Choos customers
+                                pass
+
+                            if action == "m":
+                                #Go to Main Menu
+                                break
+
+
+
+                    if action == "2":
+                        #Calculate Cost of rent
+                        pass
+
+                    if action == "3":
+                        #Return Cars
+                        pass
+
+                    if action == "4":
+                        #Change Reservation
+                        pass
+
+                    if action == "5":
+                        #Cancel Reservation
+                        pass 
+
+                    if action == "6":
+                        #Go Back
+                        pass
+
+                    if action == "m":
+                        #Go to Main Menu
+                        break
+                    
+                    if action == "q":
+                        #Quit
+                        pass
+
+
 
             if action == "3":
                 # Goes to Customers menu
@@ -123,7 +195,7 @@ class EmployeeUi:
                 action = ""
                 while(action != "q"):
                     print("You can do the following:")
-                    print()
+                    print(30 *"-")
                     print("1 | Register new customer")
                     print("2 | List all customers")
                     print("3 | Change customer information")
