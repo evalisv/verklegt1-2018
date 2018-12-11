@@ -36,6 +36,7 @@ class CarRepository:
             if cars_list == []:
                 for line in csv_reader:
                     cars_list.append(line)
+
         return cars_list
 
     def available_cars(self, category):
