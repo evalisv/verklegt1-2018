@@ -41,6 +41,7 @@ class EmployeeUi:
                     print("3 | List of all cars")
                     print("4 | See Details of a car")
                     print("5 | Register new car")
+                    print("6 | See price list")
                     print("m | Go to Main menu")
                     print("q | Quit")
                     print()
@@ -97,6 +98,7 @@ class EmployeeUi:
                                         
 
             if action == "2":
+
                 # Goes to Orders menu
                 pass
 
@@ -135,8 +137,9 @@ class EmployeeUi:
                         break
 
                     
-                    if action == "":
-                        pass
+                    if action == "2":
+                        get_customer_list = self.__customer_service.get_customers()
+                        break
 
                     
                     if action == "":
