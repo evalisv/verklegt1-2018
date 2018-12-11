@@ -20,7 +20,7 @@ class EmployeeUi:
         while(action != "q"):
             os.system("cls")
             print("You can do the following:")
-            print()
+            print(25 *"-")
             print("1 | Cars")
             print("2 | Orders")
             print("3 | Customers")
@@ -35,7 +35,7 @@ class EmployeeUi:
                 action = ""
                 while(action != "q"):    
                     print("You can do the following:")
-                    print()
+                    print(30 *"-")
                     print("1 | See Available cars")
                     print("2 | See Unavailable cars")
                     print("3 | List of all cars")
@@ -118,7 +118,7 @@ class EmployeeUi:
                 action = ""
                 while(action != "q"):    
                     print("You can do the following:")
-                    print()
+                    print(30 *"-")
                     print("1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
                     print("2 | Calculate Cost of rent")
                     print("3 | Return cars")
@@ -195,7 +195,7 @@ class EmployeeUi:
                 action = ""
                 while(action != "q"):
                     print("You can do the following:")
-                    print()
+                    print(30 *"-")
                     print("1 | Register new customer")
                     print("2 | List all customers")
                     print("3 | Change customer information")
