@@ -27,6 +27,10 @@ class CarService():
         print("{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         for line in self.__car_repo.available_cars():
             print("{:<15} {:<15} {:<15} {:<15}".format(line["License Plate Number"], line["Model"], line["Kilometers"], line["Status"]))
+        if self.__car_repo.available_cars() == []:
+            print("")
+            print("")
+            print("There are no available cars")
         return
 
     def unavailable_cars(self):
@@ -36,5 +40,5 @@ class CarService():
         if self.__car_repo.unavailable_cars() == []:
             print("")
             print("")
-            print("There are no available cars")
+            print("There are no unavailable cars")
         return

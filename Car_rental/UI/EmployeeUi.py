@@ -149,7 +149,7 @@ class EmployeeUi:
                         cc_number = input("Credit card number: ")
                         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
                         self.__customer_service.add_customer(new_customer)
-                        os.system("cls")
+                        
                         break
 
                     
