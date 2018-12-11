@@ -28,8 +28,9 @@ class CustomerRepo:
     def get_customers(self):
         with open ("data/customers.csv", "r", encoding = "utf-8") as customer_file:
             csv_list = []
-            csv_reader = csv.DictReader(customer_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
+            csv_reader = csv.reader(customer_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
             for line in csv_reader:
-                csv_list.append(line)
+                if line not in csv_list:
+                    csv_list.append(line)
                 
             return csv_list
