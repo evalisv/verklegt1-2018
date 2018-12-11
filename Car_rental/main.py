@@ -1,4 +1,4 @@
-from ui.EmployeeUi import EmployeeUi
+from UI.EmployeeUi import EmployeeUi
 
 
 def main():
