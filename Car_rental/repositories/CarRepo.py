@@ -28,3 +28,27 @@ class CarRepository:
     def get_car(self):
         return self.__car
 
+    def change_status(self, car):
+        
+        update_list = []
+    
+        with open('cars.csv', 'r', encoding = "utf-8", lineterminator = "\n") as cars_file:
+            csv_reader = csv.reader(cars_file)
+            
+            for row in csv_reader:
+                if row[0] == car.get_liscence():
+                    change_row = row
+                    if change_row[7] == 'Taken':
+                        change_row[7] = 'Available'               
+                    else:
+                        change_row[7] = 'Taken'
+                    update_list.append(change_row)
+            
+                else:
+                    update_list.append(row)
+        
+        with open('cars.csv', 'w', newline='') as cars_file:
+            csv_writer = csv.writer(cars_file)
+            for car in update_list:
+                csv_writer.writerow(car)
+
