@@ -39,14 +39,23 @@ class CarRepository:
 
         return cars_list
 
-    def available_cars(self, category):
+    def available_cars(self):
         available_cars_list = []
-        with open('cars.csv', 'r', encoding = "utf-8", lineterminator = "\n") as cars_file:          
-            csv_reader = csv.reader(cars_file)
+        with open("Data/cars.csv", "r") as cars_file:          
+            csv_reader = csv.DictReader(cars_file)
             for car in csv_reader:
-                if car[7] == 'Available':
+                if car["Status"] == "Available":
                     available_cars_list.append(car)
         return available_cars_list
+
+    def unavailable_cars(self):
+        unavailable_cars_list = []
+        with open("Data/cars.csv", "r") as cars_file:          
+            csv_reader = csv.DictReader(cars_file)
+            for car in csv_reader:
+                if car["Status"] == "Unvailable":
+                    unavailable_cars_list.append(car)
+        return unavailable_cars_list
 
     def change_status(self, car):
         

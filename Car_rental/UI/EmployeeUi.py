@@ -50,12 +50,28 @@ class EmployeeUi:
                     
                     if action == "1":
                         # See available cars
-                        pass
+                        os.system("cls")
+                        action = ""
+                        self.__car_service.available_cars()
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+
+                        if action == "m".lower():
+                            break
                     
                     
                     if action == "2":
                         # See unavailable cars
-                        pass
+                        os.system("cls")
+                        action = ""
+                        self.__car_service.unavailable_cars()
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+
+                        if action == "m".lower():
+                            break
                     
                     
                     if action == "3":
