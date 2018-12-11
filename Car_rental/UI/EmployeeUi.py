@@ -131,6 +131,64 @@ class EmployeeUi:
 
                     action = input("Input number/letter: ").lower()           
 
+                    if action == "1":
+                        #Rent cars and ther under 
+                        os.system("cls")
+                        action = ""
+                        while(action != "q"):    
+                            print("You can do the following:")
+                            print()
+                            print("1 | Register new customers")  
+                            print("2 | Choose customers")
+                            print("m | Go to Main menu")
+                            print()
+
+                            action = input("Input number/letter: ").lower()
+                        
+                            if action == "1":
+                                #Register new customers
+                                pass
+
+                            if action == "2":
+                                #Choos customers
+                                pass
+
+                            if action == "m":
+                                #Go to Main Menu
+                                break
+
+
+
+                    if action == "2":
+                        #Calculate Cost of rent
+                        pass
+
+                    if action == "3":
+                        #Return Cars
+                        pass
+
+                    if action == "4":
+                        #Change Reservation
+                        pass
+
+                    if action == "5":
+                        #Cancel Reservation
+                        pass 
+
+                    if action == "6":
+                        #Go Back
+                        pass
+
+                    if action == "m":
+                        #Go to Main Menu
+                        break
+                    
+                    if action == "q":
+                        #Quit
+                        pass
+
+
+
             if action == "3":
                 # Goes to Customers menu
                 os.system("cls")
