@@ -27,6 +27,26 @@ class OrderService():
         price = (class_price * number_of_days) + (insurance_fee * number_of_days)
         return price
 
+    def cancel_order(self, number):
+        self.__order_repo.cancel_order(number)
 
+    def change_order(self, number, old_value, new_value):
+        self.__order_repo.change_order(number, old_value, new_value)
+
+    def register_new_customer(self, customer):
+        self.__customer_repo.add_customer(customer)
+
+    def return_car(self, order):
+        old_value = order.get_return_date()
+        new_value = datetime.today()
+        number = order.get_number()
+        
+        self.__order_repo.change_order(number, old_value, new_value)
+            
+        self.__car_repo.change_status(car)
+
+        
+
+    def rent_car(self, order):
 
     

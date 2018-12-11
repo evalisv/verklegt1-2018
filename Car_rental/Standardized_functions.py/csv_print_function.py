@@ -1,6 +1,9 @@
 # Ennþá í vinnslu
 # Þetta mun vera einhver syntax errors en það er því það þarf að fylla út það sem vantar.
 
+# Format skipanir fyrir hvert og eitt stak
+
+
 
 # Filtered útprentun eftir flokki, t.d til að prenta aðeins út nöfn viðskiptavina. eða nöfn og auðkenni. 
 import csv

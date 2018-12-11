@@ -1,12 +1,12 @@
 import csv
 import os
+import sys
 from models.Customer import Customer
 from models.Car import Car
 from models.Order import Order
 from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 # from Services.OrderService import OrderService
-
 
 class EmployeeUi:
 
@@ -16,9 +16,9 @@ class EmployeeUi:
         #self.__order_service = OrderService()
 
     def main_menu(self):
-
         action = ""
         while(action != "q"):
+            os.system("cls")
             print("You can do the following:")
             print()
             print("1 | Cars")
@@ -41,6 +41,7 @@ class EmployeeUi:
                     print("3 | List of all cars")
                     print("4 | See Details of a car")
                     print("5 | Register new car")
+                    print("6 | See price list")
                     print("m | Go to Main menu")
                     print("q | Quit")
                     print()
@@ -49,26 +50,41 @@ class EmployeeUi:
                     
                     if action == "1":
                         # See available cars
-                        with open ("Data/cars.csv", "r") as csv_file:
-                            csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
+                        os.system("cls")
+                        action = ""
+                        self.__car_service.available_cars()
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
 
-                            for line in csv_reader:
-                                # Prentar aðeins út gildin sem eru tengd við þá lykla sem settir eru i hornklofana.
-                                # Dæmi: print(line["Name"], "\t", line["Email"], "\t", line["Phone"])
-                                # "\t" er fyrir tabs
-                                print(line['Licence Plate Number'], "\t", line['Category'], "\t", line['Model'], "\t", line['Kilometers'], "\t", line['Status'])
-                        print()   
-                        break
+                        if action == "m".lower():
+                            break
                     
                     
                     if action == "2":
                         # See unavailable cars
-                        pass
+                        os.system("cls")
+                        action = ""
+                        self.__car_service.unavailable_cars()
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+
+                        if action == "m".lower():
+                            break
                     
                     
                     if action == "3":
                         # List of all cars
-                        pass
+                        os.system("cls")
+                        action = ""
+                        self.__car_service.get_cars_list()
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+
+                        if action == "m".lower():
+                            break 
 
                     
                     if action == "4":
@@ -97,6 +113,7 @@ class EmployeeUi:
                                         
 
             if action == "2":
+
                 # Goes to Orders menu
                 pass
 
@@ -122,23 +139,32 @@ class EmployeeUi:
                         # Register new customer
                         os.system("cls")
                         id_number = input("Customer ID: ")
-                        name = input("Name: ")
+                        first_name = input("First name: ")
+                        last_name = input("Last name: ")
                         age = input("Age: ")
                         country = input("Country: ")
                         email = input("E-mail: ")
                         phone = input("Phone number: ")
                         dl_number = input("Drivers license number: ")
                         cc_number = input("Credit card number: ")
-                        new_customer = Customer(id_number, name, age, country, email, phone, dl_number, cc_number)
+                        new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
                         self.__customer_service.add_customer(new_customer)
                         os.system("cls")
                         break
 
                     
-                    if action == "":
-                        pass
-
-                    
+                    if action == "2":
+                        # List all customers
+                        os.system("cls")
+                        action = ""
+                        self.__customer_service.get_customers()
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+                        if action == "m".lower():
+                            break 
+                        
+                     
                     if action == "":
                         pass
 
