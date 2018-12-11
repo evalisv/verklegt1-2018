@@ -43,6 +43,7 @@ class EmployeeUi:
                     print("3 | List of all cars")
                     print("4 | See Details of a car")
                     print("5 | Register new car")
+                    print("6 | See price list")
                     print("m | Go to Main menu")
                     print("q | Quit")
                     print()
@@ -98,6 +99,7 @@ class EmployeeUi:
                                         
 
             if action == "2":
+
                 # Goes to Orders menu
                 pass
 
@@ -146,6 +148,13 @@ class EmployeeUi:
                         action = input("Input letter: ")
                         if action == "m".lower():
                             break 
+<<<<<<< HEAD
+=======
+                        
+                        
+>>>>>>> dd6fda43c689047d14c468905704b8dc9e9ede59
+                        break
+>>>>>>> 2bcc0370c4e13ba56547c2e8a244be3c7cc93e47
 
                     
                     if action == "":
