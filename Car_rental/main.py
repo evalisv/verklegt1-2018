@@ -34,7 +34,10 @@ def login():
     
 
 def main():
-    
+
+    # get_login = login()
+    # access = get_login
+    # print(access)
     ui = EmployeeUi()
     ui.main_menu()
 
