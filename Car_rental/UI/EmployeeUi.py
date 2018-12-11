@@ -113,9 +113,23 @@ class EmployeeUi:
                                         
 
             if action == "2":
-
                 # Goes to Orders menu
-                pass
+                os.system("cls")
+                action = ""
+                while(action != "q"):    
+                    print("You can do the following:")
+                    print()
+                    print("1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
+                    print("2 | Calculate Cost of rent")
+                    print("3 | Return cars")
+                    print("4 | Change Reservation")
+                    print("5 | Cancel Reservation")
+                    print("6 | Go Back")
+                    print("m | Go to Main menu")
+                    print("q | Quit")
+                    print()
+
+                    action = input("Input number/letter: ").lower()           
 
             if action == "3":
                 # Goes to Customers menu
