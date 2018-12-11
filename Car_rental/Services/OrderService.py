@@ -37,6 +37,15 @@ class OrderService():
         self.__customer_repo.add_customer(customer)
 
     def return_car(self, order):
+        old_value = order.get_return_date()
+        new_value = datetime.today()
+        number = order.get_number()
+        
+        self.__order_repo.change_order(number, old_value, new_value)
+            
+        self.__car_repo.change_status(car)
+
+        
 
     def rent_car(self, order):
 
