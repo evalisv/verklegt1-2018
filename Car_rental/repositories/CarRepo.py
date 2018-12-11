@@ -4,7 +4,7 @@ from models.Car import Car
 class CarRepository:
 
     def __init__(self):
-        self.__cars = []
+        self.__car = []
 
     def add_car(self, car):
         with open('Data/cars.csv', 'a+', encoding = "utf-8") as car_file:
@@ -30,12 +30,13 @@ class CarRepository:
 
 
     def get_cars_list(self):
+        cars_list = []
         with open ("Data/cars.csv", "r") as csv_file:
             csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
-
-            for line in csv_reader:
-                self.__cars.append(line)
-        return self.__cars
+            if cars_list == []:
+                for line in csv_reader:
+                    cars_list.append(line)
+        return cars_list
 
     def available_cars(self, category):
         available_cars_list = []

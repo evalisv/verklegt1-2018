@@ -1,5 +1,6 @@
 import csv
 import os
+import sys
 from models.Customer import Customer
 from models.Car import Car
 from models.Order import Order
@@ -62,9 +63,7 @@ class EmployeeUi:
                         # List of all cars
                         os.system("cls")
                         action = ""
-                        csv_reader = self.__car_service.get_cars_list()
-                        for line in csv_reader:
-                            print("{} {} {} {}".format(line["License Plate Number"], line["Model"], line["Kilometers"], line["Status"]))
+                        self.__car_service.get_cars_list()
                         print()
                         print("m | Go to Main Menu")
                         action = input("Input letter: ")
@@ -142,19 +141,11 @@ class EmployeeUi:
                         # List all customers
                         os.system("cls")
                         action = ""
-                        csv_reader = self.__customer_service.get_customers()
-                        for line in csv_reader:
-                            full_name = ("{} {}".format(line["First Name"], line["Last Name"]))
-                            print("{} {} {} {} {}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
                         print()
                         print("m | Go to Main Menu")
                         action = input("Input letter: ")
-
                         if action == "m".lower():
                             break 
-                        
-                        
-                        break
 
                     
                     if action == "":
