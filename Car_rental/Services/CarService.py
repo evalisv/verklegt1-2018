@@ -14,6 +14,7 @@ class CarService():
         return True
 
     def get_cars_list(self):
+        print("{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         for line in self.__car_repo.get_cars_list():
             print("{:<15} {:<15} {:<15} {:<15}".format(line["License Plate Number"], line["Model"], line["Kilometers"], line["Status"]))
         return
