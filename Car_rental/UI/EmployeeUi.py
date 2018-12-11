@@ -16,9 +16,10 @@ class EmployeeUi:
         #self.__order_service = OrderService()
 
     def main_menu(self):
-
+        
         action = ""
         while(action != "q"):
+            os.system("cls")
             print("You can do the following:")
             print()
             print("1 | Cars")
@@ -122,21 +123,37 @@ class EmployeeUi:
                         # Register new customer
                         os.system("cls")
                         id_number = input("Customer ID: ")
-                        name = input("Name: ")
+                        first_name = input("First name: ")
+                        last_name = input("Last name: ")
                         age = input("Age: ")
                         country = input("Country: ")
                         email = input("E-mail: ")
                         phone = input("Phone number: ")
                         dl_number = input("Drivers license number: ")
                         cc_number = input("Credit card number: ")
-                        new_customer = Customer(id_number, name, age, country, email, phone, dl_number, cc_number)
+                        new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
                         self.__customer_service.add_customer(new_customer)
                         os.system("cls")
                         break
 
                     
-                    if action == "":
-                        pass
+                    if action == "2":
+                        # List all customers
+                        os.system("cls")
+                        action = ""
+                        csv_reader = self.__customer_service.get_customers()
+                        for line in csv_reader:
+                            full_name = ("{} {}".format(line["First Name"], line["Last Name"]))
+                            print("{} {} {} {} {}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+
+                        if action == "m".lower():
+                            break 
+                        
+                        
+                        break
 
                     
                     if action == "":

@@ -1,8 +1,9 @@
 class Customer:
 
-    def __init__(self, id_number, name, age, country, email, phone, dl_number, cc_number):
+    def __init__(self, id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number):
         self.__id_number = id_number
-        self.__name = name
+        self.__first_name = first_name
+        self.__last_name = last_name
         self.__age = age
         self.__country = country
         self.__email = email
@@ -11,14 +12,17 @@ class Customer:
         self.__cc_number = cc_number
 
     def __str__(self):
-        return "{},{},{},{},{},{},{},{},".format(
-            self.__id_number, self.__name, self.__age, self.__country, self.__email, self.__phone, self.__dl_number, self.__cc_number)
+        return "{},{},{},{},{},{},{},{},{}".format(
+            self.__id_number, self.__first_name, self.__last_name, self.__age, self.__country, self.__email, self.__phone, self.__dl_number, self.__cc_number)
         
     def get_id_number(self):
         return self.__id_number
 
-    def get_name(self):
-        return self.__name
+    def get_first_name(self):
+        return self.__first_name
+    
+    def get_last_name(self):
+        return self.__last_name
     
     def get_age(self):
         return self.__age
