@@ -141,6 +141,7 @@ class EmployeeUi:
                         # List all customers
                         os.system("cls")
                         action = ""
+                        self.__customer_service.get_customers()
                         print()
                         print("m | Go to Main Menu")
                         action = input("Input letter: ")

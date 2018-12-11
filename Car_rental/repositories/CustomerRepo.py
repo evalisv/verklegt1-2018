@@ -25,12 +25,13 @@ class CustomerRepo:
             csv_writer.writerow({"Customer ID": id_number, "First Name": first_name, "Last Name": last_name, "Age": age, "Country": country, "Email": email,
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
 
-    def get_customers(self):
-        with open ("data/customers.csv", "r", encoding = "utf-8") as customer_file:
-            csv_list = []
-            csv_reader = csv.reader(customer_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
-            for line in csv_reader:
-                if line not in csv_list:
-                    csv_list.append(line)
+    def get_customer_list(self):
+        customer_list = []
+        with open ("Data/customers.csv", "r", encoding = "utf-8") as csv_file:
+            csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
+            if customer_list == []:
+                for line in csv_reader:
+                    customer_list.append(line)
+
+        return customer_list
                 
-            return csv_list
