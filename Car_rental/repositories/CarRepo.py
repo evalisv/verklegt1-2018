@@ -28,6 +28,15 @@ class CarRepository:
     def get_car(self):
         return self.__car
 
+    def available_cars():
+        with open('cars.csv', 'r', encoding = "utf-8", lineterminator = "\n") as cars_file:
+            available_cars_list = []
+            csv_reader = csv.reader(cars_file)
+            for car in cars_file:
+                if car[7] == 'Available':
+                    available_cars_list.append(car)
+        return available_cars_list
+
     def change_status(self, car):
         
         update_list = []
