@@ -8,7 +8,6 @@ from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 # from Services.OrderService import OrderService
 
-
 class EmployeeUi:
 
     def __init__(self):
@@ -17,7 +16,6 @@ class EmployeeUi:
         #self.__order_service = OrderService()
 
     def main_menu(self):
-        
         action = ""
         while(action != "q"):
             os.system("cls")
