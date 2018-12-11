@@ -1,4 +1,3 @@
-
 from repositories.CustomerRepo import CustomerRepo
 
 class CustomerService():
@@ -15,10 +14,10 @@ class CustomerService():
         return True
 
     def get_customers(self):
-        csv_reader = self.__customer_repo.get_customers()
-        for line in csv_reader:
-            full_name = ("{} {}".format(line["First Name"], line["Last Name"]))
+        for line in self.__customer_repo.get_customer_list():
+            full_name = "{} {}".format(line["First Name"], line["Last Name"])
             print("{} {} {} {} {}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
+        return
 
     def get_customers_by_status(self, status):
         pass
