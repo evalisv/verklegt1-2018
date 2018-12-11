@@ -148,15 +148,8 @@ class EmployeeUi:
                         action = input("Input letter: ")
                         if action == "m".lower():
                             break 
-<<<<<<< HEAD
-=======
                         
-                        
->>>>>>> dd6fda43c689047d14c468905704b8dc9e9ede59
-                        break
->>>>>>> 2bcc0370c4e13ba56547c2e8a244be3c7cc93e47
-
-                    
+                     
                     if action == "":
                         pass
 
