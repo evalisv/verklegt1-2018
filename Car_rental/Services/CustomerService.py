@@ -21,3 +21,6 @@ class CustomerService():
 
     def get_customers_by_status(self, status):
         pass
+
+    def remove_customer(self):
+        pass

@@ -34,4 +34,30 @@ class CustomerRepo:
                     customer_list.append(line)
 
         return customer_list
+
+    
+    def remove_customer(self):
+        pass
+    
+    
+    def change_customer(self):
+        # update_list = []
+        # with open("data/customers", "r", encoding = "utf-8", lineterminator = "\n") as customer_file:
+        #     csv_reader = csv.DictReader(customer_file)
+        #     for line in csv_reader:
+        #         if line["Customer ID"] == id_number_filter:
+                    
+        #             change_row = row
+        #             index = row.index(old_value)
+        #             change_row[index] = new_value
+        #             update_list.append(change_row)
+        #         else:
+        #             update_list.append(row)
+        pass
+
+        #Overwrites file with list. New file includes changed order.
+        with open('order.csv', 'w', newline='') as order_file:
+            csv_writer = csv.writer(order_file)
+            for order in update_list:
+                csv_writer.writerow(order)
                 
