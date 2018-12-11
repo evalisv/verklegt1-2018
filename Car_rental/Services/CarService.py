@@ -13,8 +13,8 @@ class CarService():
         #validate the car
         return True
 
-    def get_cars(self):
-        return self.__car_repo.get_car()
+    def get_cars_list(self):
+        return self.__car_repo.get_cars_list()
 
     def get_cars_by_status(self, status):
         pass
