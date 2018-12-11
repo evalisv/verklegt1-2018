@@ -4,7 +4,7 @@ from models.Customer import Customer
 class CustomerRepo:
 
     def __init__(self):
-        self.__customer = []
+        self.__customers = []
 
     def add_customer(self, customer):
         with open("data/customers.csv", "a+", encoding="utf-8") as customers_file:
@@ -26,4 +26,10 @@ class CustomerRepo:
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
 
     def get_customers(self):
-        pass
+        with open ("data/customers.csv", "r", encoding = "utf-8") as customer_file:
+            csv_list = []
+            csv_reader = csv.DictReader(customer_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
+            for line in csv_reader:
+                csv_list.append(line)
+                
+            return csv_list

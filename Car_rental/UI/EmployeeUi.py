@@ -16,9 +16,10 @@ class EmployeeUi:
         #self.__order_service = OrderService()
 
     def main_menu(self):
-
+        
         action = ""
         while(action != "q"):
+            os.system("cls")
             print("You can do the following:")
             print()
             print("1 | Cars")
@@ -50,16 +51,7 @@ class EmployeeUi:
                     
                     if action == "1":
                         # See available cars
-                        with open ("Data/cars.csv", "r") as csv_file:
-                            csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
-
-                            for line in csv_reader:
-                                # Prentar aðeins út gildin sem eru tengd við þá lykla sem settir eru i hornklofana.
-                                # Dæmi: print(line["Name"], "\t", line["Email"], "\t", line["Phone"])
-                                # "\t" er fyrir tabs
-                                print(line['Licence Plate Number'], "\t", line['Category'], "\t", line['Model'], "\t", line['Kilometers'], "\t", line['Status'])
-                        print()   
-                        break
+                        pass
                     
                     
                     if action == "2":
@@ -69,7 +61,17 @@ class EmployeeUi:
                     
                     if action == "3":
                         # List of all cars
-                        pass
+                        os.system("cls")
+                        action = ""
+                        csv_reader = self.__car_service.get_cars_list()
+                        for line in csv_reader:
+                            print("{} {} {} {}".format(line["License Plate Number"], line["Model"], line["Kilometers"], line["Status"]))
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+
+                        if action == "m".lower():
+                            break 
 
                     
                     if action == "4":
@@ -124,21 +126,40 @@ class EmployeeUi:
                         # Register new customer
                         os.system("cls")
                         id_number = input("Customer ID: ")
-                        name = input("Name: ")
+                        first_name = input("First name: ")
+                        last_name = input("Last name: ")
                         age = input("Age: ")
                         country = input("Country: ")
                         email = input("E-mail: ")
                         phone = input("Phone number: ")
                         dl_number = input("Drivers license number: ")
                         cc_number = input("Credit card number: ")
-                        new_customer = Customer(id_number, name, age, country, email, phone, dl_number, cc_number)
+                        new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
                         self.__customer_service.add_customer(new_customer)
                         os.system("cls")
                         break
 
                     
                     if action == "2":
+<<<<<<< HEAD
                         get_customer_list = self.__customer_service.get_customers()
+=======
+                        # List all customers
+                        os.system("cls")
+                        action = ""
+                        csv_reader = self.__customer_service.get_customers()
+                        for line in csv_reader:
+                            full_name = ("{} {}".format(line["First Name"], line["Last Name"]))
+                            print("{} {} {} {} {}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
+
+                        if action == "m".lower():
+                            break 
+                        
+                        
+>>>>>>> dd6fda43c689047d14c468905704b8dc9e9ede59
                         break
 
                     
