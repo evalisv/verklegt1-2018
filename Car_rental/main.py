@@ -34,12 +34,18 @@ def login():
     
 
 def main():
-
-    get_login = login()
-    access = get_login
-    print(access)
+    
     ui = EmployeeUi()
     ui.main_menu()
+
+    # get_login = login()
+    # if get_login == "user":
+    #     ui = EmployeeUi()
+    #     ui.main_menu()
+    # elif get_login =="admin":
+    #     #Hér á að breyta því að admin fái aðgang að admin ui sem verður með fleiri breytum.
+    #     ui = EmployeeUi()
+    #     ui.main_menu()
 
 main()
     
