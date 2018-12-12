@@ -235,7 +235,6 @@ class EmployeeUi:
                     if action == "2":
                         # List all customers
                         os.system("cls")
-                        action = ""
                         self.__customer_service.get_customers()
                         print()
                         print("m | Go to Main Menu")
@@ -262,7 +261,7 @@ class EmployeeUi:
                                 os.system("cls")
                                 customer_filter = input("Customer ID: ")
                                 key_filter = "Customer ID"
-                                action = ""
+                                
                                 print("Change:")
                                 print("1 | Customer ID") 
                                 print("2 | First name")
@@ -314,7 +313,6 @@ class EmployeeUi:
                     if action == "4":
                         #Remove Customer from system
                         os.system("cls")
-                        action = ""
                         
                         print("You are about to remove a customer from the system.")
                         print(30 *"-")
@@ -326,8 +324,8 @@ class EmployeeUi:
                             self.__customer_service.remove_customer(key_filter, customer_filter)
                         print()
                         print("m | Go to Main menu")
-                        print("q | Quit")
-                        action = ""
+                        #print("q | Quit")
+                        
                         action = input("Input letter: ").lower
                         if action == "m":
                             break

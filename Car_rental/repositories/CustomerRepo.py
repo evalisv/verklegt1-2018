@@ -27,7 +27,7 @@ class CustomerRepo:
 
     def get_customer_list(self):
         with open ("Data/customers.csv", "r", encoding = "utf-8") as csv_file:
-            csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
+            csv_reader = csv.DictReader(csv_file)
             if self.__customers == []:
                 for line in csv_reader:
                     self.__customers.append(line)
@@ -56,24 +56,3 @@ class CustomerRepo:
                 csv_writer.writerow(line)
                 
         
-
-        # update_list = []
-        # with open("data/customers", "r", encoding = "utf-8", lineterminator = "\n") as customer_file:
-        #     csv_reader = csv.DictReader(customer_file)
-        #     for line in csv_reader:
-        #         if line["Customer ID"] == id_number_filter:
-                    
-        #             change_row = row
-        #             index = row.index(old_value)
-        #             change_row[index] = new_value
-        #             update_list.append(change_row)
-        #         else:
-        #             update_list.append(row)
-        # pass
-
-        # Overwrites file with list. New file includes changed order.
-        # with open('order.csv', 'w', newline='') as order_file:
-        #     csv_writer = csv.writer(order_file)
-        #     for order in update_list:
-        #         csv_writer.writerow(order)
-        pass

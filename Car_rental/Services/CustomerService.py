@@ -61,11 +61,14 @@ class CustomerService():
                 action = input("Y/N: ").lower()
                 if action == "y":
                     customer_list.remove(line)
+                else:
+                    print("Customer removal canceled")
+                    pass
         if match_value == 1:
             # Notify that something wasn't found
             print("No customer with given ID found.")
 
-        if match_value != 1:
+        if match_value != 1 and action =="y":
                 self.__customer_repo.remove_customer(customer_list)
                 print("Success! Customer has been removed from the system")
 
