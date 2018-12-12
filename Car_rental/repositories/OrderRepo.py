@@ -69,9 +69,11 @@ class OrderRepo():
 
         #Overwrites file with list. New file includes changed order.
         with open('order.csv', 'w', newline='') as order_file:
-            csv_writer = csv.writer(order_file)
-            for order in update_list:
-                csv_writer.writerow(order)
+            fieldnames = ['License Plate Number', 'Category', 'Model', 'Brand', 'Colour', 'Year', 'Kilometers', 'Status']
+            csv_writer = csv.DictWriter(order_file, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in update_list:        
+                csv_writer.writerow(line)
 
     #Fer í gegnum pantanir og setur bilana í dictionary.
     #dictionary key = bílnúmer, key = leigutimabil pantanna.
