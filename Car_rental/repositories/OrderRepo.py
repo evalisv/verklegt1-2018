@@ -42,14 +42,14 @@ class OrderRepo():
             for item in update_list:
                 csv_writer.writerow(item)
 
-    def change_order(self, number, old_value, new_value):
+    def change_order(self, order, old_value, new_value):
         
         #Same as cancel order, except the order is modified and then added to the update_list.
         update_list = []
         with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
             csv_reader = csv.reader(order_file)
             for row in csv_reader:
-                if row[0] == number:
+                if row[0] == order.get_lp_number():
                     change_row = row
                     index = row.index(old_value)
                     change_row[index] = new_value
