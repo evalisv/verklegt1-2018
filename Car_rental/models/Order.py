@@ -4,6 +4,7 @@ class Order:
         self.__number = number
         self.__customer_id = customer_id
         self.__lp_number = lp_number
+        self.__category = category
         self.__pickup_date = pickup_date
         self.__return_date = return_date
         self.__price = price
@@ -21,6 +22,9 @@ class Order:
     
     def get_lp_number(self):
         return self.__lp_number
+
+    def get_category(self):
+        return self.__category
 
     def get_pickup_date(self):
         return self.__pickup_date
