@@ -9,7 +9,7 @@ from Services.CustomerService import CustomerService
 from Services.PriceService import PriceService
 # from Services.OrderService import OrderService
 
-indent = (""*20)
+indent = (" "*3)
 
 class EmployeeUi:
 
