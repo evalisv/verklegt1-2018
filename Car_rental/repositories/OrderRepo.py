@@ -77,7 +77,7 @@ class OrderRepo():
 
     #Fer í gegnum pantanir og setur bilana í dictionary.
     #dictionary key = bílnúmer, key = leigutimabil pantanna.
-    def cars_in_orders(self, order):
+    def cars_in_orders(self, category):
         period_taken_dict = {}
         with open('orders.csv', 'r', encoding = "utf-8") as order_file:
             csv_reader = csv.DictReader(order_file)
