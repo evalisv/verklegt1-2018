@@ -137,7 +137,7 @@ class EmployeeUi:
                         action = ""
                         while(action != "q"):    
                             print("You can do the following:")
-                            print()
+                            print(30*"-")
                             print("1 | Register new customers")  
                             print("2 | Choose customers")
                             print("m | Go to Main menu")
@@ -146,8 +146,23 @@ class EmployeeUi:
                             action = input("Input number/letter: ").lower()
                         
                             if action == "1":
-                                #Register new customers
-                                pass
+                                # Register new customer
+                                os.system("cls")
+                                id_number = input("Customer ID: ")
+                                first_name = input("First name: ")
+                                last_name = input("Last name: ")
+                                age = input("Age: ")
+                                country = input("Country: ")
+                                email = input("E-mail: ")
+                                phone = input("Phone number: ")
+                                dl_number = input("Drivers license number: ")
+                                cc_number = input("Credit card number: ")
+                                new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
+                                #new_customer = customer(id_number, first_name)
+                                self.__customer_service.add_customer(new_customer)
+                                
+                               #print(new_customer)
+                            
 
                             if action == "2":
                                 #Choos customers
