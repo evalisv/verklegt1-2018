@@ -26,12 +26,33 @@ class CustomerRepo:
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
 
     def get_customer_list(self):
-        customer_list = []
         with open ("Data/customers.csv", "r", encoding = "utf-8") as csv_file:
-            csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
-            if customer_list == []:
+            csv_reader = csv.DictReader(csv_file)
+            if self.__customers == []:
                 for line in csv_reader:
-                    customer_list.append(line)
+                    self.__customers.append(line)
 
-        return customer_list
+        return self.__customers
+
+    
+    def remove_customer(self, new_value):
+        self.__new_value = new_value
+        with open ("data/customers.csv", "w", encoding = "utf-8") as changed_csv:
+            fieldnames = ["Customer ID", "First Name", "Last Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
+            csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in new_value:
+                csv_writer.writerow(line)
+        pass
+
+    
+    def change_customer(self, new_value):
+        self.__new_value = new_value
+        with open ("data/customers.csv", "w", encoding = "utf-8") as changed_csv:
+            fieldnames = ["Customer ID", "First Name", "Last Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
+            csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in new_value:
+                csv_writer.writerow(line)
                 
+        
