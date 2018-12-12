@@ -12,6 +12,7 @@ class OrderRepo():
         with open('Car_rental/data/order.csv', 'a+', encoding = "utf-8") as order_file:
             number = order.get_order_number()
             customer_id = order.get_customer_id()
+            category = order.get_category()
             lp_number = order.get_lp_number()
             pickup_date = order.get_pickup_date()
             return_date = order.get_return_date()
@@ -78,6 +79,14 @@ class OrderRepo():
                     else:
                         period_taken_dict[car_lp] = [period_taken]
         return period_taken_dict
+
+
+    def get_number_of_days(self, order):
+        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+        end = datetime.strptime(self.order.get_return_date(order), date_format)
+        number_of_days = end - start
+        return number_of_days
         
 
             # Á eftir að bæta við virkni í skráningu á orders. Í framhaldi þarf svo að laga þessi föll
