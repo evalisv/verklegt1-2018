@@ -12,6 +12,7 @@ class OrderRepo():
         with open('Car_rental/data/order.csv', 'a+', encoding = "utf-8") as order_file:
             number = order.get_order_number()
             customer_id = order.get_customer_id()
+            category = order.get_category()
             lp_number = order.get_lp_number()
             pickup_date = order.get_pickup_date()
             return_date = order.get_return_date()
@@ -42,18 +43,16 @@ class OrderRepo():
             for item in update_list:
                 csv_writer.writerow(item)
 
-    def change_order(self, number, old_value, new_value):
+    def change_order(self, order, header, new_value):
         
         #Same as cancel order, except the order is modified and then added to the update_list.
         update_list = []
         with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
-            csv_reader = csv.reader(order_file)
+            csv_reader = csv.DictReader(order_file)
             for row in csv_reader:
-                if row[0] == number:
-                    change_row = row
-                    index = row.index(old_value)
-                    change_row[index] = new_value
-                    update_list.append(change_row)
+                if row['Number'] == order.get_number():
+                    row[header] = new_value
+                    update_list.append(row)
                 else:
                     update_list.append(row)
 
@@ -63,6 +62,33 @@ class OrderRepo():
             for order in update_list:
                 csv_writer.writerow(order)
 
+    #Fer í gegnum pantanir og setur bilana í dictionary.
+    #dictionary key = bílnúmer, key = leigutimabil pantanna.
+    def cars_in_orders(self, order):
+        period_taken_dict = {}
+        with open('orders.csv', 'r', encoding = "utf-8") as order_file:
+            csv_reader = csv.DictReader(order_file)
+            for order in csv_reader:
+                period_taken = [order['Pick-up Date'], order['Return Date']]
+                car_lp = order['License Plate Number']
+                if order['Category'] == category:
+                    if car_lp in period_taken_dict:
+                        period_taken_dict[car_lp].append(period_taken)
+                    else:
+                        period_taken_dict[car_lp] = [period_taken]
+        return period_taken_dict
+
+
+    def get_number_of_days(self, order):
+        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+        end = datetime.strptime(self.order.get_return_date(order), date_format)
+        number_of_days = end - start
+        return number_of_days
+        
+
+
+        
             # Á eftir að bæta við virkni í skráningu á orders. Í framhaldi þarf svo að laga þessi föll
 
     # def get_class(self, order):
