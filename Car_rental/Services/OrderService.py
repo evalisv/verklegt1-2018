@@ -53,7 +53,7 @@ class OrderService():
 
         
         #Fall til að bera laus timabil við timabil sem er óskað í pöntun.
-        def find_available_period(period_list):
+        def find_available_period(period_list, period_wanted_start, period_wanted_end):
             car_lp_list = []
             for period in period_list:         
                 start_period = period[0]
@@ -118,7 +118,7 @@ class OrderService():
                     first_period = [datetime.now(), period_taken_list_datetime[0][0]]
                     last_period = [period_taken_list_datetime[0][1], (period_taken_list_datetime[0][1] + timedelta(days=365))]        
                     period_available = [first_period, last_period]
-                    car_list = find_available_period(period_available)
+                    car_list = find_available_period(period_available, period_wanted_start, period_wanted_end)
                     cars_available.append(car_list)
         
                 #Ef bill er skraður í fleiri en einni pöntun.
@@ -143,7 +143,7 @@ class OrderService():
 
                     period_available.append(last_period)
 
-                    car_list = find_available_period(period_available)
+                    car_list = find_available_period(period_available, period_wanted_start, period_wanted_end)
 
                     cars_available.append(car_list)
 
