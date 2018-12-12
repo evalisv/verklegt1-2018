@@ -1,6 +1,5 @@
 import csv
 import os
-import sys
 from models.Customer import Customer
 from models.Car import Car
 from models.Order import Order
@@ -68,7 +67,7 @@ class EmployeeUi:
                         self.__car_service.unavailable_cars()
                         print()
                         print("m | Go to Main Menu")
-                        action = input("Input letter: ")
+                        action = input("Input letter: ").lower()
 
                         if action == "m".lower():
                             break
@@ -81,7 +80,7 @@ class EmployeeUi:
                         self.__car_service.get_cars_list()
                         print()
                         print("m | Go to Main Menu")
-                        action = input("Input letter: ")
+                        action = input("Input letter: ").lower()
 
                         if action == "m".lower():
                             break 
@@ -221,8 +220,16 @@ class EmployeeUi:
                         cc_number = input("Credit card number: ")
                         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
                         self.__customer_service.add_customer(new_customer)
+                        print("Success! Customer has been added to the system.")
+                        action = ""
+                        while(action != "q"):
+                            print()
+                            print("m | Go main menu")
+                            print("q | Quit")
+                            action = input("Input letter: ").lower()
+                            if action == "m":
+                                break
                         
-                        break
 
                     
                     if action == "2":
@@ -232,7 +239,7 @@ class EmployeeUi:
                         self.__customer_service.get_customers()
                         print()
                         print("m | Go to Main Menu")
-                        action = input("Input letter: ")
+                        action = input("Input letter: ").lower()
                         if action == "m".lower():
                             break 
                         
@@ -249,7 +256,7 @@ class EmployeeUi:
                             print("m | Go to Main menu")
                             print("q | quit")
 
-                            action = input("Input letter/number: ")
+                            action = input("Input letter/number: ").lower()
 
                             if action == "1":
                                 os.system("cls")
@@ -268,7 +275,7 @@ class EmployeeUi:
                                 print("9 | Credit card number")
                                 print("m | Go to Main Menu")
                                 print("q | quit")
-                                action = input("Input number/letter: ")
+                                action = input("Input number/letter: ").lower()
 
                                 if action == "1":
                                     key = "Customer ID"
@@ -288,7 +295,7 @@ class EmployeeUi:
                                     key = "Drivers License Number"
                                 elif action == "9":
                                     key = "Credit Card Number"
-                                elif action == "m":
+                                elif action == "m".lower():
                                     break
 
                                 self.__customer_service.change_customer_info(key, key_filter, customer_filter)
@@ -306,7 +313,26 @@ class EmployeeUi:
                     
                     if action == "4":
                         #Remove Customer from system
-                        pass
+                        os.system("cls")
+                        action = ""
+                        
+                        print("You are about to remove a customer from the system.")
+                        print(30 *"-")
+                        
+                        customer_filter = input("Enter customers ID:  ")
+
+                        if customer_filter != []:
+                            key_filter = "Customer ID"
+                            self.__customer_service.remove_customer(key_filter, customer_filter)
+                        print()
+                        print("m | Go to Main menu")
+                        print("q | Quit")
+                        action = ""
+                        action = input("Input letter: ").lower
+                        if action == "m":
+                            break
+                        break
+                                
 
                     
                     if action == "m":

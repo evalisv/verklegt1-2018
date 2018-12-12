@@ -35,8 +35,14 @@ class CustomerRepo:
         return self.__customers
 
     
-    def remove_customer(self):
-        #for line in self.__customers:
+    def remove_customer(self, new_value):
+        self.__new_value = new_value
+        with open ("data/customers.csv", "w", encoding = "utf-8") as changed_csv:
+            fieldnames = ["Customer ID", "First Name", "Last Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
+            csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in new_value:
+                csv_writer.writerow(line)
         pass
 
     
