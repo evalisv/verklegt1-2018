@@ -26,21 +26,31 @@ class CustomerRepo:
             "Phone": phone, "Drivers License Number": dl_number, "Credit Card Number": cc_number})
 
     def get_customer_list(self):
-        customer_list = []
         with open ("Data/customers.csv", "r", encoding = "utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
-            if customer_list == []:
+            if self.__customers == []:
                 for line in csv_reader:
-                    customer_list.append(line)
+                    self.__customers.append(line)
 
-        return customer_list
+        return self.__customers
 
     
     def remove_customer(self):
+        #for line in self.__customers:
         pass
+
     
-    
-    def change_customer(self):
+    def change_customer(self, new_value):
+        self.__new_value = new_value
+        with open ("data/customers.csv", "w", encoding = "utf-8") as changed_csv:
+            fieldnames = ["Customer ID", "First Name", "Last Name", "Age", "Country", "Email", "Phone", "Drivers License Number", "Credit Card Number"]
+            csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in new_value:
+                csv_writer.writerow(line)
+                
+        
+
         # update_list = []
         # with open("data/customers", "r", encoding = "utf-8", lineterminator = "\n") as customer_file:
         #     csv_reader = csv.DictReader(customer_file)
@@ -53,11 +63,11 @@ class CustomerRepo:
         #             update_list.append(change_row)
         #         else:
         #             update_list.append(row)
-        pass
+        # pass
 
-        #Overwrites file with list. New file includes changed order.
-        with open('order.csv', 'w', newline='') as order_file:
-            csv_writer = csv.writer(order_file)
-            for order in update_list:
-                csv_writer.writerow(order)
-                
+        # Overwrites file with list. New file includes changed order.
+        # with open('order.csv', 'w', newline='') as order_file:
+        #     csv_writer = csv.writer(order_file)
+        #     for order in update_list:
+        #         csv_writer.writerow(order)
+        pass

@@ -237,11 +237,75 @@ class EmployeeUi:
                             break 
                         
                      
-                    if action == "":
-                        pass
+                    if action == "3":
+                        # Change customer information
+                        os.system("cls")
+                        action = ""
+                        while(action != "q"):    
+                            print("Filter based on:")
+                            print(30 *"-")
+                            print("1 | Customer ID") 
+                            print("2 | Drivers License Number")
+                            print("m | Go to Main menu")
+                            print("q | quit")
+
+                            action = input("Input letter/number: ")
+
+                            if action == "1":
+                                os.system("cls")
+                                customer_filter = input("Customer ID: ")
+                                key_filter = "Customer ID"
+                                action = ""
+                                print("Change:")
+                                print("1 | Customer ID") 
+                                print("2 | First name")
+                                print("3 | Last name")
+                                print("4 | Date of birth")
+                                print("5 | Country")
+                                print("6 | E-mail address")
+                                print("7 | Phone number")
+                                print("8 | Drivers License number")
+                                print("9 | Credit card number")
+                                print("m | Go to Main Menu")
+                                print("q | quit")
+                                action = input("Input number/letter: ")
+
+                                if action == "1":
+                                    key = "Customer ID"
+                                elif action == "2":
+                                    key = "First Name"
+                                elif action == "3":
+                                    key = "Last Name"
+                                elif action == "4":
+                                    key = "Age"
+                                elif action == "5":
+                                    key = "Country"
+                                elif action == "6":
+                                    key = "Email"
+                                elif action == "7":
+                                    key = "Phone"
+                                elif action == "8":
+                                    key = "Drivers License Number"
+                                elif action == "9":
+                                    key = "Credit Card Number"
+                                elif action == "m":
+                                    break
+
+                                self.__customer_service.change_customer_info(key, key_filter, customer_filter)
+                        
+                            elif action == "2":
+                                os.system("cls")
+                                key_filter = "Drivers License Number"
+                                customer_filter = input("Drivers License Number: ")
+                                self.__customer_service.change_customer_info(key, key_filter, customer_filter)
+
+                            elif action == "m":
+                                break
+
 
                     
-                    if action == "":
+                    if action == "4":
+                        #Remove Customer from system
                         pass
 
                     
