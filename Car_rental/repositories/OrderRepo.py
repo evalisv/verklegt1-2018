@@ -27,6 +27,14 @@ class OrderRepo():
             csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number, 'Pick-up Date': pickup_date,
                             'Return Date': return_date, 'Price': price, 'Insurance': insurance})
 
+    def find_order(self, number):
+        with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
+            csv_reader = csv.DictReader(order_file)
+            for row in csv_reader:
+                if row['Number'] == number:
+                    return row
+
+    
     def cancel_order(self, number):
 
         #Puts every orders into a list, except the one you want to cancel
@@ -45,6 +53,7 @@ class OrderRepo():
 
     def change_order(self, order, header, new_value):
         
+        
         #Same as cancel order, except the order is modified and then added to the update_list.
         update_list = []
         with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
@@ -55,6 +64,8 @@ class OrderRepo():
                     update_list.append(row)
                 else:
                     update_list.append(row)
+
+        #Er með lista sem dictreader, finn ekki leið til að write file.
 
         #Overwrites file with list. New file includes changed order.
         with open('order.csv', 'w', newline='') as order_file:

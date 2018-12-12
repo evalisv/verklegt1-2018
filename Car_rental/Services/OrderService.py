@@ -33,6 +33,9 @@ class OrderService():
     def change_order(self, number, old_value, new_value):
         self.__order_repo.change_order(number, old_value, new_value)
 
+    def find_order(self, number):
+        self.__order_repo.find_order(number)
+
     def register_new_customer(self, customer):
         self.__customer_repo.add_customer(customer)
 
