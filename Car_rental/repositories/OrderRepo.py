@@ -65,7 +65,7 @@ class OrderRepo():
                 else:
                     update_list.append(row)
 
-        #Er með lista sem dictreader, finn ekki leið til að write file.
+       
 
         #Overwrites file with list. New file includes changed order.
         with open('order.csv', 'w', newline='') as order_file:
