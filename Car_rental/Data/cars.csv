@@ -12,3 +12,6 @@ ROK77,C,Land Cruiser,Toyota,Silver,2018,12000,Available
 TRI32,C,Tucson,Hyundai,Red,2017,23000,Available
 FDS67,C,Qashqai,Nissan,Blue,2018,8000,Available
 exit(),& python c:/Users/hjalt/Desktop/verklegt01/verklegt1B/verklegt1-2018/Car_rental/main.py,1,1,1,1,1,1
+KN031,C,Opel,Astra,300000,White,2001,Unavailable
+UA523,B,Toyota,Avensis,165000,Silver,2007,Available
+JN578,A,2006,Toyota,200.000,Grey,2006,Available
