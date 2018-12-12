@@ -63,6 +63,23 @@ class OrderRepo():
             for order in update_list:
                 csv_writer.writerow(order)
 
+    #Fer í gegnum pantanir og setur bilana í dictionary.
+    #dictionary key = bílnúmer, key = leigutimabil pantanna.
+    def cars_in_orders(self, order):
+        period_taken_dict = {}
+        with open('orders.csv', 'r', encoding = "utf-8") as order_file:
+            csv_reader = csv.DictReader(order_file)
+            for order in csv_reader:
+                period_taken = [order['Pick-up Date'], order['Return Date']]
+                car_lp = order['License Plate Number']
+                if order['Category'] == category:
+                    if car_lp in period_taken_dict:
+                        period_taken_dict[car_lp].append(period_taken)
+                    else:
+                        period_taken_dict[car_lp] = [period_taken]
+        return period_taken_dict
+        
+
             # Á eftir að bæta við virkni í skráningu á orders. Í framhaldi þarf svo að laga þessi föll
 
     # def get_class(self, order):
