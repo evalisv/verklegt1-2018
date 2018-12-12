@@ -53,7 +53,7 @@ class CarRepository:
         with open("Data/cars.csv", "r") as cars_file:          
             csv_reader = csv.DictReader(cars_file)
             for car in csv_reader:
-                if car["Status"] == "Unvailable":
+                if car["Status"] == "Unavailable":
                     unavailable_cars_list.append(car)
         return unavailable_cars_list
 
