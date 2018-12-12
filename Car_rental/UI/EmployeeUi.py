@@ -143,6 +143,10 @@ class EmployeeUi:
                             print()
 
                             action = input("Input number/letter: ").lower()
+
+                            if action == "m":
+                                # Go to Main menu
+                                break
                         
                             if action == "1":
                                 # Register new customer
@@ -160,9 +164,28 @@ class EmployeeUi:
                                 #new_customer = customer(id_number, first_name)
                                 self.__customer_service.add_customer(new_customer)
                                 
-                               #print(new_customer)
-                            
+                                #######print(new_customer)
+                                """
+                                if action == "1":
+                                    #Rent cars 
+                                    os.system("cls")
+                                    action = ""
+                                    while(action != "q"):    
+                                        print("You can do the following:")
+                                        print(30*"-")
+                                        print("1 | Rent Cars")  
+                                        print("m | Go to Main menu")
+                                        print("q | Quit")
+                                        print()
 
+                                        action = input("Input number/letter: ").lower()
+
+
+
+                                        if action == "m":
+                                            #Go to Main Menu
+                                            break 
+                                        """
                             if action == "2":
                                 #Choos customers
                                 pass
