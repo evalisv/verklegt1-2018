@@ -14,11 +14,11 @@ class CustomerService():
         return True
 
     def get_customers(self):
-        print("{:<15} {:<40} {:<40} {:<15} {:<15}".format("Customer ID", "Full name", "Email", "Phone", "Country"))
-        print("-"*125)
+        print("","{:<20} {:<40} {:<40} {:<20} {:<20}".format("Customer ID", "Full name", "Email", "Phone", "Country"))
+        print("-"*140)
         for line in self.__customer_repo.get_customer_list():
             full_name = "{} {}".format(line["First Name"], line["Last Name"])
-            print("{:<15} {:40} {:40} {:<15} {:<15}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
+            print("","{:<20} {:40} {:40} {:<20} {:<20}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
         return
 
     def change_customer_info(self, key, key_filter,customer_filter):
