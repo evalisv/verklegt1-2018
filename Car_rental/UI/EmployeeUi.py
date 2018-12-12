@@ -149,6 +149,20 @@ class EmployeeUi:
                         os.system("cls")
                         action = ""
                         while(action != "q"):    
+<<<<<<< HEAD
+                            print("You can do the following:")
+                            print(30*"-")
+                            print("1 | Register new customers")  
+                            print("2 | Choose customers")
+                            print("m | Go to Main menu")
+                            print()
+
+                            action = input("Input number/letter: ").lower()
+
+                            if action == "m":
+                                # Go to Main menu
+                                break
+=======
                             print(" You can do the following:")
                             print(30 *"-")
                             print(indent,"1 | Register new customers")  
@@ -157,11 +171,46 @@ class EmployeeUi:
                             print()
 
                             action = input(" Input number/letter: ").lower()
+>>>>>>> b7f3ff37f272b563603a1fabc786996cb49a4e6f
                         
                             if action == "1":
-                                #Register new customers
-                                pass
+                                # Register new customer
+                                os.system("cls")
+                                id_number = input("Customer ID: ")
+                                first_name = input("First name: ")
+                                last_name = input("Last name: ")
+                                age = input("Age: ")
+                                country = input("Country: ")
+                                email = input("E-mail: ")
+                                phone = input("Phone number: ")
+                                dl_number = input("Drivers license number: ")
+                                cc_number = input("Credit card number: ")
+                                new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
+                                #new_customer = customer(id_number, first_name)
+                                self.__customer_service.add_customer(new_customer)
+                                
+                                #######print(new_customer)
+                                """
+                                if action == "1":
+                                    #Rent cars 
+                                    os.system("cls")
+                                    action = ""
+                                    while(action != "q"):    
+                                        print("You can do the following:")
+                                        print(30*"-")
+                                        print("1 | Rent Cars")  
+                                        print("m | Go to Main menu")
+                                        print("q | Quit")
+                                        print()
 
+                                        action = input("Input number/letter: ").lower()
+
+
+
+                                        if action == "m":
+                                            #Go to Main Menu
+                                            break 
+                                        """
                             if action == "2":
                                 #Choos customers
                                 pass
