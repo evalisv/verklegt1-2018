@@ -3,8 +3,10 @@ import os
 from models.Customer import Customer
 from models.Car import Car
 from models.Order import Order
+from models.Price import Price
 from Services.CarService import CarService
 from Services.CustomerService import CustomerService
+from Services.PriceService import PriceService
 # from Services.OrderService import OrderService
 
 class EmployeeUi:
@@ -12,6 +14,7 @@ class EmployeeUi:
     def __init__(self):
         self.__car_service = CarService()
         self.__customer_service = CustomerService()
+        self.__price_service = PriceService()
         #self.__order_service = OrderService()
 
     def main_menu(self):
@@ -108,6 +111,15 @@ class EmployeeUi:
                         status = input("Status: ")
                         new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
                         self.__car_service.add_car(new_car)
+
+                    if action == "6":
+                        # See price list
+                        #os.sytem("cls")
+                        action = ""
+                        self.__price_service.get_price_list()
+                        print()
+                        print("m | Go to Main Menu")
+                        action = input("Input letter: ")
                         
                                         
 
