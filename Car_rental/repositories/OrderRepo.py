@@ -79,7 +79,7 @@ class OrderRepo():
     #dictionary key = bílnúmer, key = leigutimabil pantanna.
     def cars_in_orders(self, category):
         period_taken_dict = {}
-        with open('orders.csv', 'r', encoding = "utf-8") as order_file:
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             csv_reader = csv.DictReader(order_file)
             for order in csv_reader:
                 period_taken = [order['Pick-up Date'], order['Return Date']]
