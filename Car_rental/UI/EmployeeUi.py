@@ -47,9 +47,9 @@ class EmployeeUi:
                     print(30 *"-")
                     print(indent,"1 | See Available cars")
                     print(indent,"2 | See Unavailable cars")
-                    print(indent,"3 | List of all cars")
+                    print(indent,"3 | See List of all cars")
                     print(indent,"4 | See Details of a car")
-                    print(indent,"5 | Prices")
+                    print(indent,"5 | See Prices")
                     if access == "admin":
                         print(indent,"6 | Register new car")
                         print(indent,"7 | Change price list")
@@ -143,13 +143,20 @@ class EmployeeUi:
                                 print(indent,"m | Go to Main menu")
                                 print(indent,"q | Quit")
                                 print()
+
                                 
                                 class_filter = input(" Input letter:  ")
                                 days = input(" Input number of days: ")
                                 days_int = int(days)
                                 self.__price_service.calculate_price(class_filter, days_int)
+                                os.system("cls")
                                 print()
-                                print(indent,"m | Go to Main Menu")
+                                print(indent,"b | Go back")
+                                print(indent, "q | Quit")
+                                action = input(" Input letter: ")
+
+                                if action == "b".lower():
+                                    break
                                 
                     elif action == "6" and access == "admin":
                         # Register new car
@@ -331,7 +338,7 @@ class EmployeeUi:
                     print(indent,"3 | List all customers")
                     print(indent,"4 | Change customer information")
                     if access == "admin":
-                        print(indent,"4 | Remove customer from system")
+                        print(indent,"5 | Remove customer from system")
                     print(indent,"b | Go back")
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
@@ -438,7 +445,7 @@ class EmployeeUi:
                                 break
                             
        
-                    elif action == "4" and access == "admin":
+                    elif action == "5" and access == "admin":
                         #Remove Customer from system
                         action = ""
                         while(action != "q"):
