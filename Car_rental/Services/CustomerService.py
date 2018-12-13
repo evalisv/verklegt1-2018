@@ -20,8 +20,8 @@ class CustomerService():
                 print("Customer registration canceled.")
                 pass
     def is_valid_customer(self, customer):
-        #here should be some code to 
-        #validate the customer
+        self.__customer = customer
+
         return True
 
     def get_customers(self):
@@ -54,6 +54,25 @@ class CustomerService():
         if match_value != 1:
             self.__customer_repo.change_customer(customer_list)
             print(" Success! Customer information has been changed changed from", old_info, "to", new_value)
+
+    def find_customer(self, customer_id):
+        self.__customer_id = customer_id
+        match_value = 1
+        customer_list = self.__customer_repo.get_customer_list()
+        for line in customer_list:
+            
+            if line["Customer ID"] == customer_id:
+                full_name = "{} {}".format(line["First Name"], line["Last Name"])
+                
+                match_value += 1
+                break
+                
+        if match_value == 1:
+            # Notify that something wasn't found
+            print(" No customer found")
+        
+        if match_value != 1:
+            print(" ","{:<20} {:40} {:40} {:<20} {:<20}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
 
         
  

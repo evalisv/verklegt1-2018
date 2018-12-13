@@ -305,7 +305,7 @@ class EmployeeUi:
 
                     elif action == "m":
                         #Go to Main Menu
-                        pass
+                        break
                     
                     elif action == "q":
                         #Quit
@@ -322,8 +322,9 @@ class EmployeeUi:
                     print(" You can do the following:")
                     print(30 *"-")
                     print(indent, "1 | Register new customer")
-                    print(indent,"2 | List all customers")
-                    print(indent,"3 | Change customer information")
+                    print(indent, "2 | Find customer")
+                    print(indent,"3 | List all customers")
+                    print(indent,"4 | Change customer information")
                     if access == "admin":
                         print(indent,"4 | Remove customer from system")
                     print(indent,"b | Go back")
@@ -361,9 +362,19 @@ class EmployeeUi:
                             if action == "m":
                                 break
                         
-
-                    
                     elif action == "2":
+                        # Find customer
+                        action = ""
+                        while action != "q":
+                            customer_id = input("Customer ID: ")
+                            self.__customer_service.find_customer(customer_id)
+                            print()
+                            action = input("Input letter: ")
+
+                            if action == "m":
+                                break
+                        
+                    elif action == "3":
                         # List all customers
                         os.system("cls")
                         self.__customer_service.get_customers()
@@ -376,7 +387,7 @@ class EmployeeUi:
                             break 
                         
                      
-                    elif action == "3":
+                    elif action == "4":
                         # Change customer information
                         
                         action = ""
@@ -397,9 +408,8 @@ class EmployeeUi:
                             print(indent,"6 | Phone number")
                             print(indent,"7 | Drivers License number")
                             print(indent,"8 | Credit card number")
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main Menu")
-                            print(indent,"q | quit")
+                            print(indent,"c | Cancel")
+                            print(indent,"q | Quit")
                             action = input(" Input number/letter: ").lower()
 
                             
@@ -419,10 +429,9 @@ class EmployeeUi:
                                 key = "Drivers License Number"
                             elif action == "8":
                                 key = "Credit Card Number"
-                            elif action == "b":
+                            elif action == "c":
                                 break
-                            elif action == "b":
-                                continue                 
+                            
        
                     elif action == "4" and access == "admin":
                         #Remove Customer from system
