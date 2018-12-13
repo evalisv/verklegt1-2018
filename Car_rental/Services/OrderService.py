@@ -12,6 +12,10 @@ class OrderService():
         self.__car_repo = CarRepo()
         self.__price_service = PriceService()
 
+    def add_order(self, order):
+        self.__order_repo.add_order(order)
+    
+
 
     def cancel_order(self, number):
         self.__order_repo.cancel_order(number)
