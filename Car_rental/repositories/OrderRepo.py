@@ -19,12 +19,12 @@ class OrderRepo():
             price = order.get_price()
             insurance = order.get_insurance()
 
-            fieldnames = ['Number', 'Customer', 'License Plate Number', 'Pick-up Date', 'Return Date', 'Price', 'Insurance']
+            fieldnames = ['Number', 'Customer', 'License Plate Number', 'Category', 'Pick-up Date', 'Return Date', 'Price', 'Insurance']
 
             csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames, lineterminator="\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             
-            csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number, 'Pick-up Date': pickup_date,
+            csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number, 'Category': category 'Pick-up Date': pickup_date,
                             'Return Date': return_date, 'Price': price, 'Insurance': insurance})
 
     def find_order(self, number):
