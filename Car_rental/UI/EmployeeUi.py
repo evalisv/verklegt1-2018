@@ -40,7 +40,7 @@ class EmployeeUi:
         while(action != "q"):
             action = ""
             os.system("cls")
-            print(7 *"-", " MainMenu ", 7 *"-")
+            print(7 *"-", " Main Menu ", 7 *"-")
             print(" You can do the following:\n")
             
             print(indent,"1 | Cars")
@@ -56,6 +56,7 @@ class EmployeeUi:
                 
                 while(action != "q"):   
                     os.system("cls") 
+                    print(7 *"-", " Cars Menu ", 7 *"-")
                     print(" You can do the following:")
                     print(30 *"-")
                     print(indent,"1 | See Available cars")
@@ -183,20 +184,17 @@ class EmployeeUi:
                     elif action == "8" and self.access == "admin":
                     #Change car registration
                         pass
-
                                         
+                    if action == "b":
+                        self.main_menu()
                     self.additional_options(action)
-                self.additional_options(action)
 
             elif action == "2":
             # Goes to Orders menu
                 
-                if action != "m":
-                    action = ""
-                else:
-                    break
                 while(action != "q"): 
                     os.system("cls")   
+                    print(7 *"-", " Orders Menu ", 7 *"-")
                     print(" You can do the following:")
                     print(30 *"-")
                     print(indent,"1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
@@ -329,19 +327,18 @@ class EmployeeUi:
                         order_number = input('Enter Order Number: ')
                         self.__order_service.cancel_order(order_number)
 
+                    if action == "b":
+                        self.main_menu()
                     self.additional_options(action)
 
 
 
             elif action == "3":
             # Goes to Customers menu
-                
-                if action != "m":
-                    action = ""
-                else:
-                    break
+
                 while(action != "q"):
                     os.system("cls")
+                    print(7 *"-", " Customers Menu ", 7 *"-")
                     print(" You can do the following:")
                     print(40 *"-")
                     print(indent, "1 | Register new customer")
@@ -382,7 +379,11 @@ class EmployeeUi:
                             customer_id = input("Customer ID: ")
                             self.__customer_service.find_customer(customer_id)
                             print()
-                            action = input("Input letter: ")
+                            print(indent, "b | Go back")
+                            print(indent, "m | Go to Main Menu")
+                            print(indent, "q | Quit")
+                            action = input(" Input letter: ").lower()
+                            self.additional_options(action)
                         
                     elif action == "3":
                     # List all customers
@@ -393,6 +394,7 @@ class EmployeeUi:
                         print(indent, "m | Go to Main Menu")
                         print(indent, "q | Quit")
                         action = input(" Input letter: ").lower()
+                        self.additional_options(action)
 
                         
                      
@@ -440,6 +442,7 @@ class EmployeeUi:
                                 key = "Credit Card Number"
                             elif action == "c":
                                 break
+                            self.additional_options(action)
 
                             if (action != "") and ((action != "m") or (action != "c")):
                                 self.__customer_service.change_customer_info(key, key_filter, customer_filter)
@@ -480,9 +483,7 @@ class EmployeeUi:
                             print(indent,"q | Quit")
                             action = input(" Input letter: ").lower
                             self.additional_options(action)
-      
-                        
-            self.additional_options(action)
-
                     
-            
+                    if action == "b":
+                        self.main_menu()
+                    self.additional_options(action)
