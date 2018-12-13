@@ -47,9 +47,9 @@ class EmployeeUi:
                     print(30 *"-")
                     print(indent,"1 | See Available cars")
                     print(indent,"2 | See Unavailable cars")
-                    print(indent,"3 | List of all cars")
+                    print(indent,"3 | See List of all cars")
                     print(indent,"4 | See Details of a car")
-                    print(indent,"5 | Prices")
+                    print(indent,"5 | See Prices")
                     if access == "admin":
                         print(indent,"6 | Register new car")
                         print(indent,"7 | Change price list")
