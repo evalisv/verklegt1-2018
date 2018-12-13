@@ -91,7 +91,7 @@ class OrderService():
         all_cars_list = []
         for cars in car_list:
             if cars['Category'] == category:
-                car_list.append(cars['Licence Plate Number'])
+                car_list.append(cars['License Plate Number'])
 
         cars_in_orders = self.__order_repo.cars_in_orders(category)
 
