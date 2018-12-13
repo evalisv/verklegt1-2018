@@ -284,6 +284,7 @@ class EmployeeUi:
                                 price = self.__price_service.calculate_price(category, nr_days)
 
                                 order.price = price
+                                self.__order_service.add_order(order)
                                 
                                 # Register new customer
                                 os.system("cls")
