@@ -278,6 +278,7 @@ class EmployeeUi:
                                 order.return_date = return_date
                                 order.customer_id = customer_id
                                 order.insurance = insurance
+                                order.number = number
 
                                 available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
                                 order.lp_number = available_car_lp
