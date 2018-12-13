@@ -25,8 +25,9 @@ class EmployeeUi:
         action = ""
         while(action != "q"):
             os.system("cls")
-            print(" You can do the following:")
-            print(30 *"-")
+            print(7 *"-", " MainMenu ", 7 *"-")
+            print(" You can do the following:\n")
+            
             print(indent,"1 | Cars")
             print(indent,"2 | Orders")
             print(indent,"3 | Customers")
