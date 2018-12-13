@@ -98,7 +98,19 @@ class OrderRepo():
         end = datetime.strptime(self.order.get_return_date(order), date_format)
         number_of_days = end - start
         return number_of_days
-        
+
+    
+    def find_next_order_number():
+        with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
+            number_list = []
+            csv_reader = csv.DictReader(order_file)
+            for line in csv_reader:
+                number = line['Number']
+                number_list.append(number)
+            highest_number = max(number_list)
+            next_order_number = (highest_number + 1)
+            
+        return next_order_number
 
 
         
