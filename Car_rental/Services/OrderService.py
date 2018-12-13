@@ -165,6 +165,6 @@ class OrderService():
 
                     cars_available.append(car_list)
 
-        return cars_available
+        return cars_available[0]
 
     
