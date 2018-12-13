@@ -10,6 +10,8 @@ from Services.PriceService import PriceService
 from Services.OrderService import OrderService
 from ui.login import login
 
+
+
 indent = (" "*3)
 class EmployeeUi:
 
@@ -18,10 +20,22 @@ class EmployeeUi:
         self.__customer_service = CustomerService()
         self.__price_service = PriceService()
         self.__order_service = OrderService()
+        self.access = ""
+
+    def additional_options(self,action):
+        if action == "m":
+            return self.main_menu()
+        elif action == "q":
+            return SystemExit
+        elif action == "b":
+            None
+        else:
+            return print("Invalid input. Please enter a valid input. \n(press enter to continue)"),input()
 
 
     def main_menu(self):
-        access = login()
+        if self.access != "user" and self.access != "admin":
+            self.access = login()
         action = ""
         while(action != "q"):
             os.system("cls")
@@ -39,10 +53,6 @@ class EmployeeUi:
             if action == "1":
             # Goes to Cars menu
                 
-                if action != "m":
-                    action = ""
-                else:
-                    break
                 while(action != "q"):   
                     os.system("cls") 
                     print(" You can do the following:")
@@ -52,7 +62,7 @@ class EmployeeUi:
                     print(indent,"3 | See List of all cars")
                     print(indent,"4 | See Details of a car")
                     print(indent,"5 | See Prices")
-                    if access == "admin":
+                    if self.access == "admin":
                         print(indent,"6 | Register new car")
                         print(indent,"7 | Change price list")
                         print(indent,"8 | Change car registration")
@@ -71,18 +81,9 @@ class EmployeeUi:
                         print(indent,"b | Go back")
                         print(indent,"m | Go to Main Menu")
                         action = input(" Input letter: ")
-
-                        if action == "m".lower():
-                            break
-                        
-                        elif action == "b".lower():
-                            continue
-
-                        else:
-                            print("Invalid input. Please enter a valid input. \n(press enter to continue)")
-                            input()
-                            continue
                     
+                        self.additional_options(action)
+
                     
                     elif action == "2":
                     # See unavailable cars
@@ -95,12 +96,7 @@ class EmployeeUi:
                         
                         action = input(" Input letter: ").lower()
 
-                        if action == "m".lower():
-                            break
-                        else:
-                            print("Invalid input. Please enter a valid input. \n(press enter to continue)")
-                            input()
-                            continue                        
+                        self.additional_options(action)                       
                     
                     
                     elif action == "3":
@@ -113,12 +109,7 @@ class EmployeeUi:
                         print(indent,"m | Go to Main Menu")
                         action = input(" Input letter: ").lower()
 
-                        if action == "m".lower():
-                            break 
-                        else:
-                            print("Invalid input. Please enter a valid input. \n(press enter to continue)")
-                            input()
-                            continue
+                        self.additional_options(action)
                     
                     elif action == "4":
                     # See details of a car
@@ -145,7 +136,7 @@ class EmployeeUi:
                                 print()
                                 print(indent,"m | Go to Main Menu")
                                 action = input(" Input number/letter: ")
-
+                                self.additional_options(action)
                             if action == "2":
                                 print( "Choose class: ")
                                 print(30 *"-")
@@ -164,17 +155,13 @@ class EmployeeUi:
                                 os.system("cls")
                                 print()
                                 print(indent,"b | Go back")
+                                print(indent,"m | Go to Main menu")
                                 print(indent, "q | Quit")
                                 action = input(" Input letter: ")
+                                self.additional_options(action)
 
-                                if action == "b".lower():
-                                    break
-                                else:
-                                    print("Invalid input. Please enter a valid input. \n (press enter to continue)")
-                                    input()
-                                    continue
                                 
-                    elif action == "6" and access == "admin":
+                    elif action == "6" and self.access == "admin":
                     # Register new car
                         os.system("cls")
                         lp_number = input(" Licence plate number: ")
@@ -188,22 +175,16 @@ class EmployeeUi:
                         new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
                         self.__car_service.add_car(new_car)
 
-                    elif action == "7" and access == "admin":
+                    elif action == "7" and self.access == "admin":
                     #Change price list 
                         pass
 
-                    elif action == "8" and access == "admin":
+                    elif action == "8" and self.access == "admin":
                     #Change car registration
                         pass
 
                                         
-                    elif action == "m":
-                    # Go to Main menu
-                        break
-                    else:
-                        print("Invalid input. Please enter a valid input. \n (press enter to continue)")
-                        input()
-                        continue
+                    self.additional_options(action)
 
             elif action == "2":
             # Goes to Orders menu
@@ -246,9 +227,7 @@ class EmployeeUi:
 
                             action = input("Input number/letter: ").lower()
 
-                            if action == "m":
-                                # Go to Main menu
-                                break
+
 
                             print(" You can do the following:")
                             print(30 *"-")
@@ -308,17 +287,10 @@ class EmployeeUi:
                             if action == "2":
                                 #Choos customers
                                 pass
+                            
+                            self.additional_options(action)
 
-                            elif action == "b":
-                                continue
 
-                            elif action == "m":
-                                #Go to Main Menu
-                                break
-                            else:
-                                print("Invalid input. Please enter a valid input. \n(press enter to continue)")
-                                input()
-                                continue
                             
                             # #Rent a car
                             # self.__order_service.rent_car()
@@ -355,18 +327,7 @@ class EmployeeUi:
                         order_number = input('Enter Order Number: ')
                         self.__order_service.cancel_order(order_number)
 
-                    elif action == "b":
-                    #Go Back
-                        pass
-
-                    elif action == "m":
-                    #Go to Main Menu
-                        break
-                    
-                    else:
-                        print("Invalid input. Please enter a valid input. \n(press enter to continue)")
-                        input()
-                        continue
+                    self.additional_options(action)
 
 
 
@@ -385,7 +346,7 @@ class EmployeeUi:
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
                     print(indent,"4 | Change customer information")
-                    if access == "admin":
+                    if self.access == "admin":
                         print(indent,"5 | Remove customer from system")
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
@@ -420,9 +381,6 @@ class EmployeeUi:
                             self.__customer_service.find_customer(customer_id)
                             print()
                             action = input("Input letter: ")
-
-                            if action == "m":
-                                break
                         
                     elif action == "3":
                     # List all customers
@@ -433,8 +391,8 @@ class EmployeeUi:
                         print(indent, "m | Go to Main Menu")
                         print(indent, "q | Quit")
                         action = input(" Input letter: ").lower()
-                        if action == "m".lower():
-                            break 
+                        self.additional_options(action)
+
                         
                      
                     elif action == "4":
@@ -489,16 +447,12 @@ class EmployeeUi:
                             print(indent, "q | Quit")
 
                             action = input("Input letter:")
-                            if action == "m":
-                                self.main_menu()
-                            elif action == "q":
-                                break
-                            elif action == "b":
-                                continue
+                            self.additional_options(action)
+
                             
                             
        
-                    elif action == "5" and access == "admin":
+                    elif action == "5" and self.access == "admin":
                     #Remove Customer from system
                         action = ""
                         while(action != "q"):
@@ -524,23 +478,10 @@ class EmployeeUi:
                             print(indent,"m | Go to Main menu")
                             print(indent,"q | Quit")
                             action = input(" Input letter: ").lower
-                            if action == "m":
-                                break
-                            break
-
-                    elif action == "m":
-                    # Go to Main menu
-                        break
-
-                    else:
-                        print("Invalid input. Please enter a valid input. \n(press enter to continue)")
-                        input()
-                        continue            
+                            self.additional_options(action)
+      
                         
-            else:
-                print("Invalid input. Please enter a valid input. \n(press enter to continue)")
-                input()
-                continue
+            self.additional_options(action)
 
                     
             
