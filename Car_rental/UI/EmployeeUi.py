@@ -8,7 +8,6 @@ from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 from Services.PriceService import PriceService
 from Services.OrderService import OrderService
-# from Services.OrderService import OrderService
 from ui.login import login
 
 indent = (" "*3)
@@ -47,9 +46,9 @@ class EmployeeUi:
                     print(30 *"-")
                     print(indent,"1 | See Available cars")
                     print(indent,"2 | See Unavailable cars")
-                    print(indent,"3 | List of all cars")
+                    print(indent,"3 | See List of all cars")
                     print(indent,"4 | See Details of a car")
-                    print(indent,"5 | Prices")
+                    print(indent,"5 | See Prices")
                     if access == "admin":
                         print(indent,"6 | Register new car")
                         print(indent,"7 | Change price list")
@@ -143,13 +142,20 @@ class EmployeeUi:
                                 print(indent,"m | Go to Main menu")
                                 print(indent,"q | Quit")
                                 print()
+
                                 
                                 class_filter = input(" Input letter:  ")
                                 days = input(" Input number of days: ")
                                 days_int = int(days)
                                 self.__price_service.calculate_price(class_filter, days_int)
+                                os.system("cls")
                                 print()
-                                print(indent,"m | Go to Main Menu")
+                                print(indent,"b | Go back")
+                                print(indent, "q | Quit")
+                                action = input(" Input letter: ")
+
+                                if action == "b".lower():
+                                    break
                                 
                     elif action == "6" and access == "admin":
                         # Register new car
@@ -181,7 +187,7 @@ class EmployeeUi:
                     
                     elif action == "q":
                         #Quit
-                        pass
+                        raise SystemExit
 
             elif action == "2":
                 # Goes to Orders menu
@@ -264,28 +270,8 @@ class EmployeeUi:
 
                         
                         #Rent a car
-                        number = input('Choose order number')
-                        category = input('Choose Category: ')
-                        pick_up_date = input('Choose pick-up date(Y:M:D)')
-                        return_date = input('Choose return date(Y:M:D)')
-                        insurance = input('Do you want to buy insurance? (Yes/No)')
+                        self.__order_service.rent_car()
 
-                        customer_id = self.customer.get_id_number()
-
-                        order = Order()
-                        order.__category = category
-                        order.__pickup_date = pick_up_date
-                        order.__return_date = return_date
-                        order.__customer_id = customer_id
-                        order.__insurance = insurance
-
-                        available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
-                        order.__lp_number = available_car_lp
-                        price = self.__order_service.calculate_price(order)
-
-                        order.__price = price
-
-                        self.__order_service.add_order(order)
 
 
 
@@ -345,7 +331,7 @@ class EmployeeUi:
                 while(action != "q" or action == "b"):
                     os.system("cls")
                     print(" You can do the following:")
-                    print(30 *"-")
+                    print(40 *"-")
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -423,7 +409,7 @@ class EmployeeUi:
                             
                             key_filter = "Customer ID"
                             
-                            print(" Change:")
+                            print(" You can change the following: ")
                             print(30 *"-")
                             print(indent,"1 | First name")
                             print(indent,"2 | Last name")

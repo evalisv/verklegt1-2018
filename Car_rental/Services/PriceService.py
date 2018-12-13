@@ -23,13 +23,14 @@ class PriceService():
             if line["Category"] == class_filter:
                 price = line["Price"]
                 price_int = int(price)
-                total_price = price_int * days_int
-                total_price_with_vat = (total_price * vat)
-                total_price_with_insurance = (total_price_with_vat + insurance)
+                total_price = (price_int * days_int)
+                total_price_with_vat = int(total_price * vat)
+                total_price_with_insurance = int(total_price_with_vat + insurance)
+
         print()
-        print(" Price without VAT: ", total_price, "ISK")
-        print(" Price with VAT: ", total_price_with_vat, "ISK")
-        print(" Total price with insurance: ", total_price_with_insurance, "ISK")
+        print(" Price without VAT: ", "{:,}".format(total_price), "ISK")
+        print(" Price with VAT: ", "{:,}".format(total_price_with_vat), "ISK")
+        print(" Total price with insurance: ", "{:,}".format(total_price_with_insurance), "ISK")
         return
         
 

@@ -15,8 +15,10 @@ class CustomerService():
             if action == "y":
                 
                 self.__customer_repo.add_customer(new_customer)
+                print()
                 print("Customer successfully registered!")
             else:
+                print()
                 print("Customer registration canceled.")
                 pass
     def is_valid_customer(self, customer):
@@ -25,6 +27,9 @@ class CustomerService():
         return True
 
     def get_customers(self):
+        print()
+        print("List of all customers")
+        print()
         print(" ","{:<20} {:<40} {:<40} {:<20} {:<20}".format("Customer ID", "Full name", "Email", "Phone", "Country"))
         print("-"*140)
         for line in self.__customer_repo.get_customer_list():
@@ -41,6 +46,7 @@ class CustomerService():
         for line in customer_list:
             
             if line[key_filter] == customer_filter:
+                print()
                 print(" Information to be changed:", line[key])
                 new_value = input(" Correct information: ")
                 old_info = line[key]
@@ -49,10 +55,12 @@ class CustomerService():
                 
         if match_value == 1:
             # Notify that something wasn't found
+            print()
             print(" No customer found")
 
         if match_value != 1:
             self.__customer_repo.change_customer(customer_list)
+            print()
             print(" Success! Customer information has been changed changed from", old_info, "to", new_value)
 
     def find_customer(self, customer_id):
@@ -69,9 +77,15 @@ class CustomerService():
                 
         if match_value == 1:
             # Notify that something wasn't found
+            print()
             print(" No customer found")
         
         if match_value != 1:
+            print()
+            print("You found this customer:")
+            print()
+            print(" ","{:<20} {:<40} {:<40} {:<20} {:<20}".format("Customer ID", "Full name", "Email", "Phone", "Country"))
+            print("-"*140)
             print(" ","{:<20} {:40} {:40} {:<20} {:<20}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
 
         
