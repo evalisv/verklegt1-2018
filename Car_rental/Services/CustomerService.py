@@ -72,7 +72,6 @@ class CustomerService():
             print(" No customer found")
         
         if match_value != 1:
-            print(" ","{:<20} {:<40} {:<40} {:<20} {:<20}".format("Customer ID", "Full name", "Email", "Phone", "Country"))
             print(" ","{:<20} {:40} {:40} {:<20} {:<20}".format(line["Customer ID"], full_name, line["Email"], line["Phone"], line["Country"]))
 
         
