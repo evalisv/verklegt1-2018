@@ -329,71 +329,65 @@ class EmployeeUi:
                      
                     elif action == "3":
                         # Change customer information
-                        os.system("cls")
-                        action = ""
-                        while(action != "q"):    
-                            print(" Filter based on:")
-                            print(30 *"-")
-                            print(indent,"1 | Customer ID") 
-                            print(indent,"2 | Drivers License Number")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | quit")
-
-                            action = input(" Input letter/number: ").lower()
-
-                            if action == "1":
-                                os.system("cls")
-                                customer_filter = input("Customer ID: ")
-                                key_filter = "Customer ID"
-                                
-                                print(" Change:")
-                                print(30 *"-")
-                                print(indent,"1 | Customer ID") 
-                                print(indent,"2 | First name")
-                                print(indent,"3 | Last name")
-                                print(indent,"4 | Date of birth")
-                                print(indent,"5 | Country")
-                                print(indent,"6 | E-mail address")
-                                print(indent,"7 | Phone number")
-                                print(indent,"8 | Drivers License number")
-                                print(indent,"9 | Credit card number")
-                                print(indent,"m | Go to Main Menu")
-                                print(indent,"q | quit")
-                                action = input(" Input number/letter: ").lower()
-
-                                if action == "1":
-                                    key = "Customer ID"
-                                elif action == "2":
-                                    key = "First Name"
-                                elif action == "3":
-                                    key = "Last Name"
-                                elif action == "4":
-                                    key = "Age"
-                                elif action == "5":
-                                    key = "Country"
-                                elif action == "6":
-                                    key = "Email"
-                                elif action == "7":
-                                    key = "Phone"
-                                elif action == "8":
-                                    key = "Drivers License Number"
-                                elif action == "9":
-                                    key = "Credit Card Number"
-                                elif action == "m".lower():
-                                    break
-
-                                self.__customer_service.change_customer_info(key, key_filter, customer_filter)
                         
-                            elif action == "2":
-                                os.system("cls")
-                                key_filter = "Drivers License Number"
-                                customer_filter = input("Drivers License Number: ")
-                                self.__customer_service.change_customer_info(key, key_filter, customer_filter)
+                        action = ""
+                        while(action != "q"): 
+                            os.system("cls")   
+                            customer_filter = input("Customer ID: ")
+                            action = ""
+                            
+                            key_filter = "Customer ID"
+                            
+                            print(" Change:")
+                            print(30 *"-")
+                            print(indent,"1 | First name")
+                            print(indent,"2 | Last name")
+                            print(indent,"3 | Date of birth")
+                            print(indent,"4 | Country")
+                            print(indent,"5 | E-mail address")
+                            print(indent,"6 | Phone number")
+                            print(indent,"7 | Drivers License number")
+                            print(indent,"8 | Credit card number")
+                            print(indent,"b | Go back")
+                            print(indent,"m | Go to Main Menu")
+                            print(indent,"q | quit")
+                            action = input(" Input number/letter: ").lower()
 
+                            
+                            if action == "1":
+                                key = "First Name"
+                            elif action == "2":
+                                key = "Last Name"
+                            elif action == "3":
+                                key = "Age"
+                            elif action == "4":
+                                key = "Country"
+                            elif action == "5":
+                                key = "Email"
+                            elif action == "6":
+                                key = "Phone"
+                            elif action == "7":
+                                key = "Drivers License Number"
+                            elif action == "8":
+                                key = "Credit Card Number"
+                            elif action == "b":
+                                break
                             elif action == "m":
+                                self.main_menu()
+
+                            if (action != "") and ((action != "m") or (action != "q") or (action != "b")):
+                                self.__customer_service.change_customer_info(key, key_filter, customer_filter)
+                            print(indent,"m | Go to Main Menu")
+                            print(indent,"b | Go back")
+                            print(indent,"q | Quit")
+
+                            action = input("Input letter: ")
+                            if action == "m":
+                                break 
+                            elif action == "q":
                                 break
                             elif action == "b":
-                                continue                 
+                                continue
        
                     elif action == "4" and access == "admin":
                         #Remove Customer from system
