@@ -147,7 +147,7 @@ class EmployeeUi:
                                 
                                 class_filter = input(" Input letter:  ")
                                 days = int(input(" Input number of days: ")
-                                self.__price_service.calculate_price(class_filter,days)
+                                self.__price_service.calculate_price(class_filter, days)
                                 print()
                                 print(indent,"m | Go to Main Menu")
                                 

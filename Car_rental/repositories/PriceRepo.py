@@ -15,3 +15,14 @@ class PriceRepository():
                     self.__price.append(line)
 
         return self.__price
+
+    def change_price(self, new_value):
+        self.__new_value = new value
+        with open ("data/prices.csv", "w", encoding = "utf-8") as changed_csv:
+            fieldnames = ["Class", "Price", "Insurance"]
+            csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in new_value:
+                csv_writer.writerow(line)
+
+        pass
