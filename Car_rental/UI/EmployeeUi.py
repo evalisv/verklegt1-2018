@@ -455,6 +455,21 @@ class EmployeeUi:
                                 key = "Credit Card Number"
                             elif action == "c":
                                 break
+
+                            if (action != "") and ((action != "m") or (action != "c")):
+                                self.__customer_service.change_customer_info(key, key_filter, customer_filter)
+                            print(indent, "m | Go to Main Menu")
+                            print(indent, "b | Go back")
+                            print(indent, "q | Quit")
+
+                            action = input("Input letter:")
+                            if action == "m":
+                                self.main_menu()
+                            elif action == "q":
+                                break
+                            elif action == "b":
+                                continue
+                            
                             
        
                     elif action == "5" and access == "admin":
