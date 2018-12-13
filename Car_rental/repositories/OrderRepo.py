@@ -65,17 +65,19 @@ class OrderRepo():
                 else:
                     update_list.append(row)
 
-        #Er með lista sem dictreader, finn ekki leið til að write file.
+       
 
         #Overwrites file with list. New file includes changed order.
         with open('order.csv', 'w', newline='') as order_file:
-            csv_writer = csv.writer(order_file)
-            for order in update_list:
-                csv_writer.writerow(order)
+            fieldnames = ['License Plate Number', 'Category', 'Model', 'Brand', 'Colour', 'Year', 'Kilometers', 'Status']
+            csv_writer = csv.DictWriter(order_file, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in update_list:        
+                csv_writer.writerow(line)
 
     #Fer í gegnum pantanir og setur bilana í dictionary.
     #dictionary key = bílnúmer, key = leigutimabil pantanna.
-    def cars_in_orders(self, order):
+    def cars_in_orders(self, category):
         period_taken_dict = {}
         with open('orders.csv', 'r', encoding = "utf-8") as order_file:
             csv_reader = csv.DictReader(order_file)

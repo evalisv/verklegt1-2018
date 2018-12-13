@@ -52,6 +52,8 @@ class OrderService():
 
     def rent_car(self, order):
 
+        
+
     def find_available_car(self, order):
 
         
@@ -64,7 +66,7 @@ class OrderService():
                 if period_wanted_start > start_period:
                     if period_wanted_end < end_period:
                         car_lp_list.append(car_lp)
-        return car_lp_list
+            return car_lp_list
 
 
         #Breytir pick-up date og return date í datetime.
