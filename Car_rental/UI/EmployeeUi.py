@@ -7,7 +7,7 @@ from models.Price import Price
 from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 from Services.PriceService import PriceService
-# from Services.OrderService import OrderService
+from Services.OrderService import OrderService
 from ui.login import login
 
 indent = (" "*3)
@@ -18,7 +18,7 @@ class EmployeeUi:
         self.__car_service = CarService()
         self.__customer_service = CustomerService()
         self.__price_service = PriceService()
-        # self.__order_service = OrderService()
+        self.__order_service = OrderService()
 
     def main_menu(self):
         access = login()
