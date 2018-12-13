@@ -262,6 +262,29 @@ class EmployeeUi:
 
                         
                             if action == "1":
+                                #Rent a car. henti þessu randomly hérna inn til að komast í það af menu :P
+                                number = input('Choose order number')
+                                category = input('Choose Category: ')
+                                pick_up_date = input('Choose pick-up date(Y:M:D)')
+                                return_date = input('Choose return date(Y:M:D)')
+                                insurance = input('Do you want to buy insurance? (Yes/No)')
+
+                                customer_id = 12345678
+
+                                order = Order()
+                                order.category = category
+                                order.pickup_date = pick_up_date
+                                order.return_date = return_date
+                                order.customer_id = customer_id
+                                order.insurance = insurance
+
+                                available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
+                                order.lp_number = available_car_lp
+                                nr_days = 10
+                                price = self.__price_service.calculate_price(category, nr_days)
+
+                                order.price = price
+                                
                                 # Register new customer
                                 os.system("cls")
                                 id_number = input("Customer ID: ")
