@@ -351,7 +351,7 @@ class EmployeeUi:
                     print(indent,"3 | List all customers")
                     print(indent,"4 | Change customer information")
                     if access == "admin":
-                        print(indent,"4 | Remove customer from system")
+                        print(indent,"5 | Remove customer from system")
                     print(indent,"b | Go back")
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
