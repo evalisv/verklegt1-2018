@@ -4,10 +4,21 @@ class CustomerService():
     def __init__(self):
         self.__customer_repo = CustomerRepo()
 
-    def add_customer(self, customer):
-        if self.is_valid_customer(customer):
-            self.__customer_repo.add_customer(customer)
-    
+    def add_customer(self, new_customer):
+        self.__new_customer = new_customer
+        #new_customer_list = self.__new_customer.split(",")
+        if self.is_valid_customer(new_customer):
+            print()
+            action = ""
+            print("Confirm registration?")
+            action = input("Y/N: ").lower()
+            if action == "y":
+                
+                self.__customer_repo.add_customer(new_customer)
+                print("Customer successfully registered!")
+            else:
+                print("Customer registration canceled.")
+                pass
     def is_valid_customer(self, customer):
         #here should be some code to 
         #validate the customer
@@ -32,6 +43,7 @@ class CustomerService():
             if line[key_filter] == customer_filter:
                 print(" Information to be changed:", line[key])
                 new_value = input(" Correct information: ")
+                old_info = line[key]
                 line[key] = new_value
                 match_value += 1
                 
@@ -41,12 +53,10 @@ class CustomerService():
 
         if match_value != 1:
             self.__customer_repo.change_customer(customer_list)
-            print(" Success! Customer information changed")
+            print(" Success! Customer information has been changed changed from", old_info, "to", new_value)
 
-        return
-                
-                
-
+        
+ 
     def remove_customer(self, key_filter, customer_filter):
         self.__customer_filter = customer_filter
         self.__key_filter = key_filter
