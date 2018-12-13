@@ -1,26 +1,17 @@
-from repositories.CarRepo import CarRepository
+from repositories.CarRepo import CarRepo
 from repositories.CustomerRepo import CustomerRepo
 from repositories.OrderRepo import OrderRepo
+from PriceService import PriceService
 from datetime import datetime
 
-date_format = "%m/%d/%Y"
 
 class OrderService():
     def __init__(self):
         self.__order_repo = OrderRepo()
+        self.__customer_repo = CustomerRepo()
+        self.__car_repo = CarRepo()
+        self.__price_service = PriceService()
 
-    # Calculate the price - Fallið ekki klárt þar sem það á eftir að sækja upplýsingar um flokkinn og tímalengd leigunnar
-    # def calculate_price(self, order):
-    #     car_class = self.__order_repo.get_class(order)
-    #     number_of_days = self.__order_repo.get_number_of_days(order)
-    #     if car_class == "A":
-    #         class_price = price_class_a
-    #     elif car_class == "B":
-    #         class_price = price_class_b
-    #     elif car_class == "C":
-    #         class_price = price_class_c
-    #     price = (class_price * number_of_days) + (insurance_fee * number_of_days)
-    #     return price
 
     def cancel_order(self, number):
         self.__order_repo.cancel_order(number)
@@ -49,6 +40,26 @@ class OrderService():
         
 
     def rent_car(self, order):
+        number = input('Choose order number')
+        category = input('Choose Category: ')
+        pick_up_date = input('Choose pick-up date(Y:M:D)')
+        return_date = input('Choose return date(Y:M:D)')
+        insurance = input('Do you want to buy insurance? (Yes/No)')
+
+        customer_id = self.__customer_repo.get_customer_id()
+
+        self.__order_repo.__category = category
+        self.__order_repo.__pickup_date = pick_up_date
+        self.__order_repo.__return_date = return_date
+        self.__order_repo.__customer_id = customer_id
+        self.__order_repo.__insurance = insurance
+
+        self.find_available_car(category, pick_up_date, return_date)
+        self.__price_service.calculate_price(order)
+
+        order.__price = price
+
+        self.__order_repo.add_order(order)
         pass
         
 

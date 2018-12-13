@@ -1,7 +1,7 @@
 import csv
 from models.Car import Car
 
-class CarRepository:
+class CarRepo:
 
     def __init__(self):
         self.__car = []

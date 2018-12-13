@@ -2,8 +2,6 @@ import csv
 from models.Order import Order
 from datetime import datetime
 
-date_format = "%m/%d/%Y"
-
 class OrderRepo():
     def __init__(self):
         self.__order = []
