@@ -7,11 +7,8 @@ from models.Price import Price
 from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 from Services.PriceService import PriceService
-<<<<<<< HEAD
 from Services.OrderService import OrderService
-=======
 # from Services.OrderService import OrderService
->>>>>>> parent of 7843c91... Employee ui update, calculate price
 from ui.login import login
 
 indent = (" "*3)
@@ -52,16 +49,11 @@ class EmployeeUi:
                     print(indent,"2 | See Unavailable cars")
                     print(indent,"3 | List of all cars")
                     print(indent,"4 | See Details of a car")
-<<<<<<< HEAD
                     print(indent,"5 | See price list")
                     if access == "admin":
                         print(indent,"6 | Register new car")
                         print(indent,"7 | Change price list")
                         print(indent,"8 | Change car registration")
-=======
-                    print(indent,"5 | Register new car")
-                    print(indent,"6 | See price list")
->>>>>>> parent of 7843c91... Employee ui update, calculate price
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
                     print()
@@ -119,32 +111,12 @@ class EmployeeUi:
                     elif action == "m":
                         # Go to Main menu
                         break
-<<<<<<< HEAD
                                     
                     
                     elif action == "5":
-=======
-            
-                    elif action == "5":
-                        # Register new car
-                        os.system("cls")
-                        lp_number = input(" Licence plate number: ")
-                        category = input(" Category: ")
-                        model = input(" Model: ")
-                        brand = input(" Brand: ")
-                        colour = input(" Colour: ")
-                        year = input(" Year: ")
-                        kilometers = input(" Kilometers: ")
-                        status = input(" Status: ")
-                        new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
-                        self.__car_service.add_car(new_car)
-
-                    elif action == "6":
->>>>>>> parent of 7843c91... Employee ui update, calculate price
                         # See price list
                         #os.sytem("cls")
                         action = ""
-<<<<<<< HEAD
                         while(action != "q"):    
                             print(" You can do the following:")
                             print(30 *"-")
@@ -201,14 +173,6 @@ class EmployeeUi:
                         #Change car registration
                         pass
 
-=======
-                        self.__price_service.get_price_list()
-                        print()
-                        print(indent,"b | Go back")
-                        print(indent,"m | Go to Main Menu")
-                        action = input(" Input letter: ").lower()
-                        
->>>>>>> parent of 7843c91... Employee ui update, calculate price
                                         
                     elif action == "m":
                         # Go to Main menu
@@ -218,10 +182,6 @@ class EmployeeUi:
                         #Quit
                         pass
 
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 7843c91... Employee ui update, calculate price
             elif action == "2":
                 # Goes to Orders menu
                 
@@ -334,10 +294,7 @@ class EmployeeUi:
                         pass
 
                     elif action == "4":
-<<<<<<< HEAD
                         
-=======
->>>>>>> parent of 7843c91... Employee ui update, calculate price
                         #Change Reservation
                         print('You can change:')
                         print('- Number')
@@ -385,12 +342,8 @@ class EmployeeUi:
                     print(indent, "1 | Register new customer")
                     print(indent,"2 | List all customers")
                     print(indent,"3 | Change customer information")
-<<<<<<< HEAD
                     if access == "admin":
                         print(indent,"4 | Remove customer from system")
-=======
-                    print(indent,"4 | Remove customer from system")
->>>>>>> parent of 7843c91... Employee ui update, calculate price
                     print(indent,"b | Go back")
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
@@ -486,31 +439,10 @@ class EmployeeUi:
                                 key = "Credit Card Number"
                             elif action == "b":
                                 break
-<<<<<<< HEAD
                             elif action == "b":
                                 continue                 
        
                     elif action == "4" and access == "admin":
-=======
-                            elif action == "m":
-                                self.main_menu()
-
-                            if (action != "") and ((action != "m") or (action != "q") or (action != "b")):
-                                self.__customer_service.change_customer_info(key, key_filter, customer_filter)
-                            print(indent,"m | Go to Main Menu")
-                            print(indent,"b | Go back")
-                            print(indent,"q | Quit")
-
-                            action = input("Input letter: ")
-                            if action == "m":
-                                break 
-                            elif action == "q":
-                                break
-                            elif action == "b":
-                                continue                 
-       
-                    elif action == "4":
->>>>>>> parent of 7843c91... Employee ui update, calculate price
                         #Remove Customer from system
                         action = ""
                         while(action != "q"):
