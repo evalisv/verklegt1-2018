@@ -28,7 +28,7 @@ class EmployeeUi:
         elif action == "q":
             return SystemExit
         elif action == "b":
-            None
+            return None
         else:
             return print("Invalid input. Please enter a valid input. \n(press enter to continue)"),input()
 
@@ -38,6 +38,7 @@ class EmployeeUi:
             self.access = login()
         action = ""
         while(action != "q"):
+            action = ""
             os.system("cls")
             print(7 *"-", " MainMenu ", 7 *"-")
             print(" You can do the following:\n")
@@ -185,6 +186,7 @@ class EmployeeUi:
 
                                         
                     self.additional_options(action)
+                self.additional_options(action)
 
             elif action == "2":
             # Goes to Orders menu
@@ -338,7 +340,7 @@ class EmployeeUi:
                     action = ""
                 else:
                     break
-                while(action != "q" or action == "b"):
+                while(action != "q"):
                     os.system("cls")
                     print(" You can do the following:")
                     print(40 *"-")
@@ -391,7 +393,6 @@ class EmployeeUi:
                         print(indent, "m | Go to Main Menu")
                         print(indent, "q | Quit")
                         action = input(" Input letter: ").lower()
-                        self.additional_options(action)
 
                         
                      
