@@ -19,7 +19,7 @@ class OrderRepo():
             price = order.get_price()
             insurance = order.get_insurance()
 
-            fieldnames = ['Number', 'Customer ID', 'License Plate Number', 'Pick-up Date', 'Return Date', 'Price', 'Insurance']
+            fieldnames = ['Number', 'Customer', 'License Plate Number', 'Pick-up Date', 'Return Date', 'Price', 'Insurance']
 
             csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames, lineterminator="\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
