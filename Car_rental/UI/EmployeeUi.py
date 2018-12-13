@@ -18,7 +18,7 @@ class EmployeeUi:
         self.__car_service = CarService()
         self.__customer_service = CustomerService()
         self.__price_service = PriceService()
-        #self.__order_service = OrderService()
+        # self.__order_service = OrderService()
 
     def main_menu(self):
         access = login()
@@ -106,10 +106,7 @@ class EmployeeUi:
                         # See details of a car
                         pass
 
-                    
-                    elif action == "m":
-                        # Go to Main menu
-                        break
+
 
                     elif action == "5":
                         # See price list
@@ -136,12 +133,20 @@ class EmployeeUi:
                         self.__car_service.add_car(new_car)
 
                     elif action == "7" and access == "admin":
+                        #Change price list 
                         pass
 
                     elif action == "8" and access == "admin":
+                        #Change car registration
                         pass
 
-                                        
+                    elif action == "m":
+                        # Go to Main menu
+                        break
+                    
+                    elif action == "q":
+                        #Quit
+                        pass
 
             elif action == "2":
                 # Goes to Orders menu

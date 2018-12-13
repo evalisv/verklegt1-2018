@@ -2,12 +2,6 @@ from repositories.CarRepo import CarRepository
 from repositories.CustomerRepo import CustomerRepo
 from repositories.OrderRepo import OrderRepo
 
-#price per day 
-price_class_a = int(14900)
-price_class_b = int(19900)
-price_class_c = int(23900)
-insurance_fee = int(1200)
-
 date_format = "%m/%d/%Y"
 
 class OrderService():
@@ -51,7 +45,7 @@ class OrderService():
         
 
     def rent_car(self, order):
-
+        pass
         
 
     def find_available_car(self, order):
