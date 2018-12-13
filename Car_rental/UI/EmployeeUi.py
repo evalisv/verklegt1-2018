@@ -458,7 +458,7 @@ class EmployeeUi:
                                 break
                             
        
-                    elif action == "4" and access == "admin":
+                    elif action == "5" and access == "admin":
                         #Remove Customer from system
                         action = ""
                         while(action != "q"):
