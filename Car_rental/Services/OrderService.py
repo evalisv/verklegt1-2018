@@ -49,7 +49,7 @@ class OrderService():
         pass
         
 
-    def find_available_car(self, order):
+    def find_available_car(self, category, pick_up_date, return_date):
 
         
         #Fall til að bera laus timabil við timabil sem er óskað í pöntun.
@@ -61,11 +61,11 @@ class OrderService():
                 if period_wanted_start > start_period:
                     if period_wanted_end < end_period:
                         car_lp_list.append(car_lp)
-            return car_lp_list
+            return car_lp_list[0]
 
 
         #Breytir pick-up date og return date í datetime.
-        period_wanted = [order.get_pickup_date(), order.get_return_date()]
+        period_wanted = [pick_up_date(), return_date()]
         year, month, day = period_wanted[0].split(':')
         period_wanted_start = datetime(int(year), int(month), int(day))
         year, month, day = period_wanted[1].split(':')
@@ -76,10 +76,10 @@ class OrderService():
         car_list = self.__car_repo.get_cars_list()
         all_cars_list = []
         for cars in car_list:
-            if cars['Category'] == order.get_category():
+            if cars['Category'] == category:
                 car_list.append(cars['Licence Plate Number'])
 
-        cars_in_orders = self.__order_repo.cars_in_orders(order)
+        cars_in_orders = self.__order_repo.cars_in_orders(category)
 
         cars_in_orders_list = []
         for key, value in cars_in_orders:
