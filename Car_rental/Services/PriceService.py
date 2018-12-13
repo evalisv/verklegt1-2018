@@ -1,8 +1,8 @@
-from repositories.PriceRepo import PriceRepository
+from repositories.PriceRepo import PriceRepo
 
 class PriceService():
     def __init__(self):
-        self.__price_repo = PriceRepository()
+        self.__price_repo = PriceRepo()
 
 
     def get_price_list(self):
@@ -13,20 +13,23 @@ class PriceService():
         return
 
     def calculate_price(self, class_filter, days):
+        self.__class_filter = class_filter
+        self.__days = days
         price_list = self.__price_repo.get_price_list()
         vat = float(1,24)
         insurance = int(1,24)
         total_price = 0
         for line in price_list:
-            if line[0] == class_filter:
-                price = line[1]
+            if line["Category"] == class_filter:
+                price = line["Price"]
                 total_price = (price * days)
                 total_price_with_vat = (total_price * vat)
                 total_price_with_insurance = (total_price_with_vat + insurance)
         print(" Price without VAT: ", total_price)
         print(" Price with VAT: ", total_price_with_vat)
-        print(" Total price with insurance: ", total_price_with_insurance
-        return
+        print(" Total price with insurance: ", total_price_with_insurance)
+        
+
 
 
     def change_price(self, key, key_filter,class_filter):
@@ -54,4 +57,3 @@ class PriceService():
         pass
                 
 
-s
