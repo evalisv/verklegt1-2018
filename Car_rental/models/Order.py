@@ -1,6 +1,6 @@
 class Order:
     
-    def __init__(self, number, customer_id, lp_number, category, pickup_date, return_date, price, insurance):
+    def __init__(self, number = '', customer_id = '', lp_number = '', pickup_date = '', return_date = '', price = '', insurance = ''):
         self.__number = number
         self.__customer_id = customer_id
         self.__lp_number = lp_number
