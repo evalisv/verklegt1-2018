@@ -8,6 +8,7 @@ from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 from Services.PriceService import PriceService
 # from Services.OrderService import OrderService
+from ui.login import login
 
 indent = (" "*3)
 
@@ -20,9 +21,11 @@ class EmployeeUi:
         #self.__order_service = OrderService()
 
     def main_menu(self):
+        access = login()
+        print(access)
         action = ""
         while(action != "q"):
-            os.system("cls")
+            # os.system("cls")
             print(" You can do the following:")
             print(30 *"-")
             print(indent,"1 | Cars")
@@ -154,12 +157,8 @@ class EmployeeUi:
                         #Rent cars and ther under 
                         
                         action = ""
-<<<<<<< HEAD
                         while(action != "q"):  
                             os.system("cls")  
-=======
-                        while(action != "q"):    
-<<<<<<< HEAD
                             print("You can do the following:")
                             print(30*"-")
                             print("1 | Register new customers")  
@@ -219,17 +218,12 @@ class EmployeeUi:
 
 
 
-<<<<<<< HEAD
-                            elif action == "2":
-                                #Choose customers
-=======
                                         if action == "m":
                                             #Go to Main Menu
                                             break 
                                         """
                             if action == "2":
                                 #Choos customers
->>>>>>> a8f983d260f938bdebfac983301f65476a50e8bd
                                 pass
 
                             elif action == "b":
