@@ -54,5 +54,7 @@ class CustomerRepo:
             csv_writer.writeheader()
             for line in new_value:
                 csv_writer.writerow(line)
-                
+    
+    def get_customer_id(self):
+        return Customer.get_id_number(self)
         
