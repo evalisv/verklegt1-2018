@@ -143,13 +143,20 @@ class EmployeeUi:
                                 print(indent,"m | Go to Main menu")
                                 print(indent,"q | Quit")
                                 print()
+
                                 
                                 class_filter = input(" Input letter:  ")
                                 days = input(" Input number of days: ")
                                 days_int = int(days)
                                 self.__price_service.calculate_price(class_filter, days_int)
+                                os.system("cls")
                                 print()
-                                print(indent,"m | Go to Main Menu")
+                                print(indent,"b | Go back")
+                                print(indent, "q | Quit")
+                                action = input(" Input letter: ")
+
+                                if action == "b".lower():
+                                    break
                                 
                     elif action == "6" and access == "admin":
                         # Register new car
