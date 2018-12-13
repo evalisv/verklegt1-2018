@@ -352,7 +352,7 @@ class EmployeeUi:
                 while(action != "q" or action == "b"):
                     os.system("cls")
                     print(" You can do the following:")
-                    print(30 *"-")
+                    print(40 *"-")
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -430,7 +430,7 @@ class EmployeeUi:
                             
                             key_filter = "Customer ID"
                             
-                            print(" Change:")
+                            print(" You can change the following: ")
                             print(30 *"-")
                             print(indent,"1 | First name")
                             print(indent,"2 | Last name")

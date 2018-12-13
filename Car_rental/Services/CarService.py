@@ -14,6 +14,9 @@ class CarService():
         return True
 
     def get_cars_list(self):
+        print()
+        print("List of all cars")
+        print()
         print(" ", "{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
         for line in self.__car_repo.get_cars_list():
@@ -25,6 +28,9 @@ class CarService():
 
 
     def available_cars(self):
+        print()
+        print("List of available cars")
+        print()
         print(" ","{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
         for line in self.__car_repo.available_cars():
@@ -36,6 +42,9 @@ class CarService():
         return
 
     def unavailable_cars(self):
+        print()
+        print("List of unavailable cars")
+        print()
         print(" ","{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
         for line in self.__car_repo.unavailable_cars():
