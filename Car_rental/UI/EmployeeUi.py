@@ -44,8 +44,16 @@ class EmployeeUi:
                     print(indent,"2 | See Unavailable cars")
                     print(indent,"3 | List of all cars")
                     print(indent,"4 | See Details of a car")
+<<<<<<< HEAD
                     print(indent,"5 | Register new car")
                     print(indent,"6 | Prices")
+=======
+                    print(indent,"5 | See price list")
+                    if access == "admin":
+                        print(indent,"6 | Register new car")
+                        print(indent,"7 | Change price list")
+                        print(indent,"8 | Change car registration")
+>>>>>>> 704a33becd2afb0c9f7185e1ef0969923d2e682d
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
                     print()
@@ -99,8 +107,23 @@ class EmployeeUi:
                     if action == "m":
                         # Go to Main menu
                         break
+<<<<<<< HEAD
             
                     if action == "5":
+=======
+
+                    elif action == "5":
+                        # See price list
+                        #os.sytem("cls")
+                        action = ""
+                        self.__price_service.get_price_list()
+                        print()
+                        print(indent,"b | Go back")
+                        print(indent,"m | Go to Main Menu")
+                        action = input(" Input letter: ").lower()
+                                    
+                    elif action == "6" and access == "admin":
+>>>>>>> 704a33becd2afb0c9f7185e1ef0969923d2e682d
                         # Register new car
                         os.system("cls")
                         lp_number = input(" Licence plate number: ")
@@ -114,6 +137,7 @@ class EmployeeUi:
                         new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
                         self.__car_service.add_car(new_car)
 
+<<<<<<< HEAD
                     if action == "6":
                         # See price list
                         os.sytem("cls")
@@ -153,6 +177,14 @@ class EmployeeUi:
                                 
                                 
                     
+=======
+                    elif action == "7" and access == "admin":
+                        pass
+
+                    elif action == "8" and access == "admin":
+                        pass
+
+>>>>>>> 704a33becd2afb0c9f7185e1ef0969923d2e682d
                                         
 
             if action == "2":
@@ -242,7 +274,13 @@ class EmployeeUi:
                     print(indent, "1 | Register new customer")
                     print(indent,"2 | List all customers")
                     print(indent,"3 | Change customer information")
+<<<<<<< HEAD
                     print(indent,"4 | Remove customer from system")
+=======
+                    if access == "admin":
+                        print(indent,"4 | Remove customer from system")
+                    print(indent,"b | Go back")
+>>>>>>> 704a33becd2afb0c9f7185e1ef0969923d2e682d
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
                     print()
@@ -352,10 +390,17 @@ class EmployeeUi:
 
                             elif action == "m":
                                 break
+<<<<<<< HEAD
 
 
                     
                     if action == "4":
+=======
+                            elif action == "b":
+                                continue                 
+       
+                    elif action == "4" and access == "admin":
+>>>>>>> 704a33becd2afb0c9f7185e1ef0969923d2e682d
                         #Remove Customer from system
                         os.system("cls")
                         
