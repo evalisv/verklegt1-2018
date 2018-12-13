@@ -262,6 +262,31 @@ class EmployeeUi:
                                 #Go to Main Menu
                                 self.main_menu()
 
+                        
+                        #Rent a car
+                        number = input('Choose order number')
+                        category = input('Choose Category: ')
+                        pick_up_date = input('Choose pick-up date(Y:M:D)')
+                        return_date = input('Choose return date(Y:M:D)')
+                        insurance = input('Do you want to buy insurance? (Yes/No)')
+
+                        customer_id = self.customer.get_id_number()
+
+                        order = Order()
+                        order.__category = category
+                        order.__pickup_date = pick_up_date
+                        order.__return_date = return_date
+                        order.__customer_id = customer_id
+                        order.__insurance = insurance
+
+                        available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
+                        order.__lp_number = available_car_lp
+                        price = self.__order_service.calculate_price(order)
+
+                        order.__price = price
+
+self.__order_service.add_order(order)
+
 
 
                     elif action == "2":
