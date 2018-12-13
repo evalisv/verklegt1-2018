@@ -1,7 +1,7 @@
 from repositories.CarRepo import CarRepo
 from repositories.CustomerRepo import CustomerRepo
 from repositories.OrderRepo import OrderRepo
-from PriceService import PriceService
+from Services.PriceService import PriceService
 from datetime import datetime
 
 

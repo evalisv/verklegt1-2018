@@ -1,8 +1,8 @@
-from repositories.CarRepo import CarRepository
+from repositories.CarRepo import CarRepo
 
 class CarService():
     def __init__(self):
-        self.__car_repo = CarRepository()
+        self.__car_repo = CarRepo()
 
     def add_car(self, car):
         if self.is_valid_car(car):

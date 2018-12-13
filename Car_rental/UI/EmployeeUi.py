@@ -8,7 +8,6 @@ from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 from Services.PriceService import PriceService
 from Services.OrderService import OrderService
-from Services.OrderService import OrderService
 from ui.login import login
 
 indent = (" "*3)
@@ -188,7 +187,7 @@ class EmployeeUi:
                     
                     elif action == "q":
                         #Quit
-                        pass
+                        raise SystemExit
 
             elif action == "2":
                 # Goes to Orders menu
