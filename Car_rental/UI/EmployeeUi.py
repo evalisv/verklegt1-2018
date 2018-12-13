@@ -145,9 +145,9 @@ class EmployeeUi:
                                 print()
                                 
                                 class_filter = input(" Input letter:  ")
-                                days = int(input(" Input number of days: ")
-                                
-                                self.__price_service.calculate_price(class_filter, days)
+                                days = input(" Input number of days: ")
+                                days_int = int(days)
+                                self.__price_service.calculate_price(class_filter, days_int)
                                 print()
                                 print(indent,"m | Go to Main Menu")
                                 
@@ -250,27 +250,7 @@ class EmployeeUi:
                                 self.__customer_service.add_customer(new_customer)
                                 
                                 #######print(new_customer)
-                                """
-                                if action == "1":
-                                    #Rent cars 
-                                    os.system("cls")
-                                    action = ""
-                                    while(action != "q"):    
-                                        print("You can do the following:")
-                                        print(30*"-")
-                                        print("1 | Rent Cars")  
-                                        print("m | Go to Main menu")
-                                        print("q | Quit")
-                                        print()
-
-                                        action = input("Input number/letter: ").lower()
-
-
-
-                                        if action == "m":
-                                            #Go to Main Menu
-                                            break 
-                                        """
+                                
                             if action == "2":
                                 #Choos customers
                                 pass
@@ -290,7 +270,7 @@ class EmployeeUi:
 
                     elif action == "3":
                         #Return Cars
-                        order_number = imput('Enter Order Number: ')
+                        order_number = input('Enter Order Number: ')
                         self.__order_service.return_car(order_number)
                         pass
 
@@ -315,8 +295,9 @@ class EmployeeUi:
                     elif action == "5":
                         #Cancel Reservation
                         order_number = input('Enter Order Number: ')
-                        self.__order_service.cancel_order(order_number
-                        pass 
+                        self.__order_service.cancel_order(order_number)
+                        
+                        
 
                     elif action == "6":
                         #Go Back
@@ -324,7 +305,7 @@ class EmployeeUi:
 
                     elif action == "m":
                         #Go to Main Menu
-                        break
+                        pass
                     
                     elif action == "q":
                         #Quit
