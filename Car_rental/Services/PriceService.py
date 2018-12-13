@@ -12,22 +12,25 @@ class PriceService():
             print("  ", "{:<15} {:<20} {:<20}".format(line["Category"], line["Price"], line["Insurance"]))
         return
 
-    def calculate_price(self, class_filter, days):
+    def calculate_price(self, class_filter, days_int):
         self.__class_filter = class_filter
-        self.__days = days
+        self.__days_int = days_int
         price_list = self.__price_repo.get_price_list()
-        vat = float(1,24)
-        insurance = int(1,24)
-        total_price = 0
+        vat = float(1.24)
+        insurance = int(1200)
+        total_price = ""
         for line in price_list:
             if line["Category"] == class_filter:
                 price = line["Price"]
-                total_price = (price * days)
+                price_int = int(price)
+                total_price = price_int * days_int
                 total_price_with_vat = (total_price * vat)
                 total_price_with_insurance = (total_price_with_vat + insurance)
-        print(" Price without VAT: ", total_price)
-        print(" Price with VAT: ", total_price_with_vat)
-        print(" Total price with insurance: ", total_price_with_insurance)
+        print()
+        print(" Price without VAT: ", total_price, "ISK")
+        print(" Price with VAT: ", total_price_with_vat, "ISK")
+        print(" Total price with insurance: ", total_price_with_insurance, "ISK")
+        return
         
 
 
