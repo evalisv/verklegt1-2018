@@ -2,6 +2,8 @@ import csv
 from models.Order import Order
 from datetime import datetime
 
+date_format = "%m:%d:%Y"
+
 class OrderRepo():
     def __init__(self):
         self.__order = []
@@ -98,7 +100,7 @@ class OrderRepo():
         return number_of_days
 
     
-    def find_next_order_number():
+    def find_next_order_number(self):
         with open('order.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
             number_list = []
             csv_reader = csv.DictReader(order_file)
