@@ -492,6 +492,6 @@ class EmployeeUi:
                             action = input(" Input letter: ").lower
                             self.additional_options(action)
                     
-                    if action == "b":
+                    if action == "b" or action == "m":
                         self.main_menu()
-                    self.additional_options(action)
+            
