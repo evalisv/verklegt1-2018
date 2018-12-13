@@ -7,7 +7,8 @@ from models.Price import Price
 from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 from Services.PriceService import PriceService
-# from Services.OrderService import OrderService
+from Services.OrderService import OrderService
+from ui.login import login
 
 indent = (" "*3)
 
@@ -17,7 +18,7 @@ class EmployeeUi:
         self.__car_service = CarService()
         self.__customer_service = CustomerService()
         self.__price_service = PriceService()
-        # self.__order_service = OrderService()
+        self.__order_service = OrderService()
 
     def main_menu(self):
         action = ""
@@ -227,14 +228,32 @@ class EmployeeUi:
 
                     elif action == "3":
                         #Return Cars
+                        order_number = imput('Enter Order Number: ')
+                        self.__order_service.return_car(order_number)
                         pass
 
                     elif action == "4":
+                        
                         #Change Reservation
+                        print('You can change:')
+                        print('- Number')
+                        print('- Customer')
+                        print('- License Plate Number')
+                        print('- Category')
+                        print('- Pick-up Date')
+                        print('- Return Date')
+                        print('- Price')
+                        print('- Insurance')
+                        order_number = input('Enter Order Number: ')
+                        element_to_change = input('What do you want to change?')
+                        new_value = input('What do you want to change it to?')
+                        self.__order_service.change_order(order_number, element_to_change, new_value)
                         pass
 
                     elif action == "5":
                         #Cancel Reservation
+                        order_number = input('Enter Order Number: ')
+                        self.__order_service.cancel_order(order_number
                         pass 
 
                     elif action == "6":

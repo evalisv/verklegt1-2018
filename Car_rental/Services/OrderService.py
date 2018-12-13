@@ -1,6 +1,7 @@
 from repositories.CarRepo import CarRepository
 from repositories.CustomerRepo import CustomerRepo
 from repositories.OrderRepo import OrderRepo
+from datetime import datetime
 
 date_format = "%m/%d/%Y"
 
@@ -9,17 +10,17 @@ class OrderService():
         self.__order_repo = OrderRepo()
 
     # Calculate the price - Fallið ekki klárt þar sem það á eftir að sækja upplýsingar um flokkinn og tímalengd leigunnar
-    def calculate_price(self, order):
-        car_class = self.__order_repo.get_class(order)
-        number_of_days = self.__order_repo.get_number_of_days(order)
-        if car_class == "A":
-            class_price = price_class_a
-        elif car_class == "B":
-            class_price = price_class_b
-        elif car_class == "C":
-            class_price = price_class_c
-        price = (class_price * number_of_days) + (insurance_fee * number_of_days)
-        return price
+    # def calculate_price(self, order):
+    #     car_class = self.__order_repo.get_class(order)
+    #     number_of_days = self.__order_repo.get_number_of_days(order)
+    #     if car_class == "A":
+    #         class_price = price_class_a
+    #     elif car_class == "B":
+    #         class_price = price_class_b
+    #     elif car_class == "C":
+    #         class_price = price_class_c
+    #     price = (class_price * number_of_days) + (insurance_fee * number_of_days)
+    #     return price
 
     def cancel_order(self, number):
         self.__order_repo.cancel_order(number)
@@ -91,7 +92,7 @@ class OrderService():
 
 
         #Kannar hvort til séu bilar sem eru ekki með pantanir skráðar.
-        if len(cars_in_orders_list) =! len(all_cars_list):
+        if len(cars_in_orders_list) != len(all_cars_list):
             for car in all_cars_list:
                 if car not in cars_in_orders_list:
                     cars_available.append(car)
