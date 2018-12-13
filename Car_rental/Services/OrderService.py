@@ -79,7 +79,7 @@ class OrderService():
 
 
         #Breytir pick-up date og return date í datetime.
-        period_wanted = [pick_up_date(), return_date()]
+        period_wanted = [pick_up_date, return_date]
         year, month, day = period_wanted[0].split(':')
         period_wanted_start = datetime(int(year), int(month), int(day))
         year, month, day = period_wanted[1].split(':')
