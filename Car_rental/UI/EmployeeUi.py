@@ -255,14 +255,32 @@ class EmployeeUi:
 
                     elif action == "3":
                         #Return Cars
+                        order_number = imput('Enter Order Number: ')
+                        self.__order_service.return_car(order_number)
                         pass
 
                     elif action == "4":
+                        
                         #Change Reservation
+                        print('You can change:')
+                        print('- Number')
+                        print('- Customer')
+                        print('- License Plate Number')
+                        print('- Category')
+                        print('- Pick-up Date')
+                        print('- Return Date')
+                        print('- Price')
+                        print('- Insurance')
+                        order_number = input('Enter Order Number: ')
+                        element_to_change = input('What do you want to change?')
+                        new_value = input('What do you want to change it to?')
+                        self.__order_service.change_order(order_number, element_to_change, new_value)
                         pass
 
                     elif action == "5":
                         #Cancel Reservation
+                        order_number = input('Enter Order Number: ')
+                        self.__order_service.cancel_order(order_number
                         pass 
 
                     elif action == "6":
