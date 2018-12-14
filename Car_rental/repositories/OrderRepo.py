@@ -120,7 +120,7 @@ class OrderRepo():
                     number_list.append(number)
             highest_number = max(number_list)
             
-            next_order_number = highest_number + 1
+            next_order_number = highest_number + str(1)
             
         return next_order_number
 
