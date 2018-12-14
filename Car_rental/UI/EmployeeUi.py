@@ -250,8 +250,7 @@ class EmployeeUi:
 
                         
                             if action == "1":
-                                self.__order_service.rent_car()
-                                #Rent a car. henti þessu randomly hérna inn til að komast í það af menu :P
+                            
                                 
                                 # Register new customer
                                 os.system("cls")
