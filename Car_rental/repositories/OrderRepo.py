@@ -48,6 +48,7 @@ class OrderRepo():
                     if row[0] != number:
                         update_list.append(row)
                     
+                    
         #Overwrites file with list. New list has every order minus the one canceled.
         with open('Data/orders.csv', 'w', encoding = "utf-8", lineterminator = "\n") as order_file:
             csv_writer = csv.writer(order_file)
