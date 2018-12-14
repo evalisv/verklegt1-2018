@@ -51,16 +51,16 @@ class OrderRepo():
             for item in update_list:
                 csv_writer.writerow(item)
 
-    def change_order(self, order, header, new_value):
+    def change_order(self, order, index, new_value):
         
         
         #Same as cancel order, except the order is modified and then added to the update_list.
         update_list = []
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
-            csv_reader = csv.DictReader(order_file)
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
+            csv_reader = csv.reader(order_file)
             for row in csv_reader:
-                if row['Number'] == order.get_number():
-                    row[header] = new_value
+                if row[0] == order.get_number():
+                    row[index] = new_value
                     update_list.append(row)
                 else:
                     update_list.append(row)
