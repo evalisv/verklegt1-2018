@@ -176,7 +176,6 @@ class EmployeeUi:
                     print("")
                     self.print_options()
                     print("")
-                    action = input(" Input letter: ")
                     if action == "m".lower():
                         self.main_menu()
 
