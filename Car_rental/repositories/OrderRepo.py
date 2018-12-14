@@ -21,17 +21,17 @@ class OrderRepo():
 
             fieldnames = ['Number', 'Customer', 'License Plate Number', 'Category', 'Pick-up Date', 'Return Date', 'Price', 'Insurance']
 
-            csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames, lineterminator="\n")
+            csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames, lineterminator="\n\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             
             csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number, 'Category': category, 'Pick-up Date': pickup_date,
                             'Return Date': return_date, 'Price': price, 'Insurance': insurance})
 
     def find_order(self, number):
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
-            csv_reader = csv.DictReader(order_file)
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
+            csv_reader = csv.reader(order_file)
             for row in csv_reader:
-                if row['Number'] == number:
+                if row[0] == number:
                     return row
 
     
@@ -39,39 +39,47 @@ class OrderRepo():
 
         #Puts every orders into a list, except the one you want to cancel
         update_list = []
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             csv_reader = csv.reader(order_file)
             for row in csv_reader:
-                if row[0] != number:
-                    update_list.append(row)
+                if row == []:
+                    pass
+                else:
+                    if row[0] != number:
+                        update_list.append(row)
+                    
                     
         #Overwrites file with list. New list has every order minus the one canceled.
-        with open('Data/orders.csv', 'w', encoding = "utf-8", lineterminator = "\n") as order_file:
+        with open('Data/orders.csv', 'w', encoding = "utf-8", newline = '') as order_file:
             csv_writer = csv.writer(order_file)
             for item in update_list:
                 csv_writer.writerow(item)
 
-    def change_order(self, order, header, new_value):
+    def change_order(self, order, index, new_value):
         
         
         #Same as cancel order, except the order is modified and then added to the update_list.
         update_list = []
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
-            csv_reader = csv.DictReader(order_file)
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
+            csv_reader = csv.reader(order_file)
             for row in csv_reader:
-                if row['Number'] == order.get_number():
-                    row[header] = new_value
-                    update_list.append(row)
+                if row == []:
+                    pass
                 else:
-                    update_list.append(row)
+                    if row[0] == order:
+                        index = int(index)
+                        row[index] = new_value
+                        update_list.append(row)
+                    else:
+                        update_list.append(row)
 
        
 
         #Overwrites file with list. New file includes changed order.
-        with open('Data/orders.csv', 'w', newline='') as order_file:
+        with open('Data/orders.csv', 'w', encoding = "utf-8", newline='') as order_file:
             fieldnames = ['License Plate Number', 'Category', 'Model', 'Brand', 'Colour', 'Year', 'Kilometers', 'Status']
-            csv_writer = csv.DictWriter(order_file, fieldnames = fieldnames, lineterminator = "\n")
-            csv_writer.writeheader()
+            csv_writer = csv.writer(order_file)
+            
             for line in update_list:        
                 csv_writer.writerow(line)
 
@@ -101,14 +109,21 @@ class OrderRepo():
 
     
     def find_next_order_number(self):
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
-            number_list = []
-            csv_reader = csv.DictReader(order_file)
-            for line in csv_reader:
-                number = line['Number']
-                number_list.append(number)
+        number_list = []
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
+            
+            csv_reader = csv.reader(order_file)
+            for row in csv_reader:
+                if row == []:
+                    pass
+                else:                 
+                    number = row[0]
+                    if number.isdigit():
+                        number = int(number)
+                        number_list.append(number)
             highest_number = max(number_list)
-            next_order_number = (highest_number + 1)
+            
+            next_order_number = highest_number + 1
             
         return next_order_number
 
