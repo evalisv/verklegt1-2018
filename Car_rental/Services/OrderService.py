@@ -73,7 +73,7 @@ class OrderService():
         order.customer_id = customer_id
         order.insurance = insurance
         #number = self.find_next_order_number()
-        order.number = 101
+        order.number = self.find_next_order_number()
         return_date = self.calculate_return_date(pick_up_date, number_of_days)
         order.return_date = return_date
         nr_of_days = int(number_of_days)
