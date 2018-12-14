@@ -250,6 +250,7 @@ class EmployeeUi:
 
                         
                             if action == "1":
+                                self.__order_service.rent_car()
                                 #Rent a car. henti þessu randomly hérna inn til að komast í það af menu :P
                                 category = input('Enter Category: ')
                                 pick_up_date = input('Enter pick-up date(Y:M:D):')
