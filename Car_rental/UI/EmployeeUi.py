@@ -214,64 +214,70 @@ class EmployeeUi:
                         #Hér þarf að taka til hendinni og laga virknina. 
                         #Skref 1 er að stimpla inn kennitölu, ef hún er ekki á skrá þá þarf að skrá viðskiptavin
 
+                        category = input('Enter Category: ')
+                        pick_up_date = input('Enter pick-up date(Y:M:D):')
+                        number_of_days = input('Enter number of days:')
+                        insurance = input('Insurance? (Yes/No)')
+                        customer_id = input('Enter customer id: ')
+                        self.__order_service.rent_car(category, pick_up_date,number_of_days,insurance, customer_id)
                         
-                        action = ""
-                        while(action != "q"):  
-                            os.system("cls")  
-                            print("You can do the following:")
-                            print(30*"-")
-                            print("1 | Register new customers")  
-                            print("2 | Choose customers")
-                            print("m | Go to Main menu")
-                            print()
+                        # action = ""
+                        # while(action != "q"):  
+                        #     os.system("cls")  
+                        #     print("You can do the following:")
+                        #     print(30*"-")
+                        #     print("1 | Register new customers")  
+                        #     print("2 | Choose customers")
+                        #     print("m | Go to Main menu")
+                        #     print()
 
-                            action = input("Input number/letter: ").lower()
+                        #     action = input("Input number/letter: ").lower()
 
 
 
-                            print(" You can do the following:")
-                            print(30 *"-")
-                            print(indent,"1 | Register new customers")  
-                            print(indent,"2 | Choose customers")
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | Quit")
-                            print()
+                        #     print(" You can do the following:")
+                        #     print(30 *"-")
+                        #     print(indent,"1 | Register new customers")  
+                        #     print(indent,"2 | Choose customers")
+                        #     print(indent,"b | Go back")
+                        #     print(indent,"m | Go to Main menu")
+                        #     print(indent,"q | Quit")
+                        #     print()
 
-                            action = input(" Input number/letter: ").lower()
+                        #     action = input(" Input number/letter: ").lower()
 
                         
-                            if action == "1":
-                                self.__order_service.return_car()
+                        #     if action == "1":
+                        #         self.__order_service.return_car()
                                 
                                 
-                                # Register new customer
-                                os.system("cls")
-                                id_number = input("Customer ID: ")
-                                first_name = input("First name: ")
-                                last_name = input("Last name: ")
-                                age = input("Age: ")
-                                country = input("Country: ")
-                                email = input("E-mail: ")
-                                phone = input("Phone number: ")
-                                dl_number = input("Drivers license number: ")
-                                cc_number = input("Credit card number: ")
-                                new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
-                                #new_customer = customer(id_number, first_name)
-                                self.__customer_service.add_customer(new_customer)
+                        #         # Register new customer
+                        #         os.system("cls")
+                        #         id_number = input("Customer ID: ")
+                        #         first_name = input("First name: ")
+                        #         last_name = input("Last name: ")
+                        #         age = input("Age: ")
+                        #         country = input("Country: ")
+                        #         email = input("E-mail: ")
+                        #         phone = input("Phone number: ")
+                        #         dl_number = input("Drivers license number: ")
+                        #         cc_number = input("Credit card number: ")
+                        #         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
+                        #         #new_customer = customer(id_number, first_name)
+                        #         self.__customer_service.add_customer(new_customer)
                                 
-                                #######print(new_customer)
+                        #         #######print(new_customer)
                                 
-                            if action == "2":
-                                #Choos customers
-                                pass
+                        #     if action == "2":
+                        #         #Choos customers
+                        #         pass
                             
-                            self.additional_options(action)
+                        #     self.additional_options(action)
 
 
                             
-                            # #Rent a car
-                            # self.__order_service.rent_car()
+                        #     # #Rent a car
+                        #     # 
 
                     elif action == "2":
                     #Calculate Cost of rent

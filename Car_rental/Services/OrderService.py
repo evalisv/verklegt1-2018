@@ -58,13 +58,13 @@ class OrderService():
 
         
 
-    def rent_car(self):
-        category = input('Enter Category: ')
-        pick_up_date = input('Enter pick-up date(Y:M:D):')
-        number_of_days = input('Enter number of days:')
-        insurance = input('Insurance? (Yes/No)')
-        customer_id = input('Enter customer id: ')
-        #number = input('Enter order number:')
+    def rent_car(self, category, pick_up_date, number_of_days, insurance, customer_id):
+        # category = input('Enter Category: ')
+        # pick_up_date = input('Enter pick-up date(Y:M:D):')
+        # number_of_days = input('Enter number of days:')
+        # insurance = input('Insurance? (Yes/No)')
+        # customer_id = input('Enter customer id: ')
+        # #number = input('Enter order number:')
 
         
 
@@ -82,7 +82,7 @@ class OrderService():
         available_car_lp = self.find_available_car(category, pick_up_date, return_date)
         order.lp_number = available_car_lp
                                 
-        price = self.__price_service.calculate_price_for_order(category, nr_of_days)
+        price = self.__price_service.calculate_price(category, nr_of_days)
 
         order.price = price
         self.add_order(order)
@@ -117,7 +117,10 @@ class OrderService():
                 if period_wanted_start > start_period:
                     if period_wanted_end < end_period:
                         car_lp_list.append(car_lp)
-            return car_lp_list[0]
+            try:
+                return car_lp_list[0]
+            except:
+                return "No car available"
 
 
         #Breytir pick-up date og return date í datetime.
@@ -202,6 +205,9 @@ class OrderService():
 
                     cars_available.append(car_list)
 
-        return cars_available[0]
-
+        try:
+            return cars_available[0]
+        except:
+            print("No available car")
+            return None
     
