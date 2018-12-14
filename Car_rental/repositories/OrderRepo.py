@@ -111,7 +111,7 @@ class OrderRepo():
             highest_number = max(number_list)
             next_order_number = (int(highest_number) + 1)
             
-        return next_order_number
+        return str(next_order_number)
 
 
         
