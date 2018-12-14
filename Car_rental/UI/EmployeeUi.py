@@ -106,7 +106,17 @@ class EmployeeUi:
                     
                     elif action == "4":
                     # See details of a car
-                        pass
+                        action = ""
+                        while action != "q":
+                            lp_number = input("Licence plate number: ")
+                            self.__car_service.details_of_car(lp_number)
+                            print()
+                            print(indent, "b | Go back")
+                            print(indent, "m | Go to Main Menu")
+                            print(indent, "q | Quit")
+                            action = input(" Input letter: ").lower()
+                            self.additional_options(action)
+                        
                                     
                     
                     elif action == "5":
