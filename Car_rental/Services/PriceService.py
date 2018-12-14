@@ -30,6 +30,7 @@ class PriceService():
                 total_price_with_insurance = int(total_price_with_vat + insurance)
 
         print()
+        print(8*"-", "Calculate prices", 8*"-", "\n")
         print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
         print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
         print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")

@@ -18,14 +18,21 @@ class CarRepo:
             status = car.get_status()
 
 
-            fieldnames = ['Licence Plate Number', 'Category', 'Model', 'Brand', 'Colour', 'Year', 'Kilometers', 'Status']
+            fieldnames = ["Licence Plate Number", "Category", "Model", "Brand", "Colour", "Year", "Kilometers", "Status"]
 
             csv_writer = csv.DictWriter(car_file, fieldnames=fieldnames, lineterminator="\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             csv_writer.writerow({'Licence Plate Number' : lp_number, 'Category' : category, 'Model' : model, 'Brand' : brand,
              'Colour' : colour, 'Year' : year, 'Kilometers' : kilometers, 'Status' : status})
 
-    def remove_car(self, car):
+    def remove_car(self, new_value):
+        self.__new_value = new_value
+        with open ("data/customers.csv", "w", encoding = "utf-8") as changed_csv:
+            fieldnames = ["License Plate Number", "Category", "Model", "Brand", "Colour", "Year", "Kilometers", "Status"]
+            csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
+            csv_writer.writeheader()
+            for line in new_value:
+                csv_writer.writerow(line)
         pass
 
 

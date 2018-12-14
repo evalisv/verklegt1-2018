@@ -80,4 +80,39 @@ class CarService():
             print("-"*140)
             print(" ","{:<30} {:15} {:15} {:<15} {:<15} {:<15} {:<15} {:<15}".format(line["License Plate Number"], line["Category"], line["Model"], line["Brand"], line["Colour"], line["Year"], line["Kilometers"], line["Status"]))
                 
-        
+
+
+    def remove_car(self, key_filter, car_filter):
+        self.__car_filter = car_filter
+        self.__key_filter = key_filter
+        match_value = 1
+        cars_list = self.__car_repo.get_cars_list()
+        for line in cars_list:
+            
+            if line[key_filter] == car_filter:
+                print(" Car to be removed:", line["License Plate Number"])
+                match_value += 1
+                print(" Confirm removal?")
+                action = input( "Y/N: ").lower()
+                if action == "y":
+                    cars_list.remove(line)
+                if action == "n":
+                    print(" Car removal canceled")
+                    print(" Do you want to try again?")
+                    try_again = input("Y/N: ").lower()
+                    if try_again == "y":
+                        return False
+                    else:
+                        return True
+        if match_value == 1:
+            # Notify that something wasn't found
+            print(" No car with given license plate number found. Do you want to try again?")
+            try_again = input("Y/N: ")
+            if try_again == "y":
+                return False
+            else:
+                return True
+        if match_value != 1 and action =="y":
+            self.__car_repo.remove_car(cars_list)
+            print(" Success! Car has been removed from the system")
+            return True    

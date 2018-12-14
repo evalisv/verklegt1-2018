@@ -74,6 +74,7 @@ class EmployeeUi:
                     print(indent,"6 | Register new car")
                     print(indent,"7 | Change price list")
                     print(indent,"8 | Change car registration")
+                    print(indent,"9 | Remove car from system")
                 print(indent,"b | Go back")
                 print(indent,"q | Quit")
                 print()
@@ -128,7 +129,6 @@ class EmployeeUi:
                         print(indent,"2 | Calculate prices")
                         action = self.print_options()
 
-
                         if action == "1":
                             self.__price_service.get_price_list()
                             print()
@@ -145,14 +145,12 @@ class EmployeeUi:
 
                                 
                             class_filter = input(" Input letter:  ").upper()
-
                             days = input(" Input number of days: ")
                             days_int = int(days)
+                            os.system("cls")
                             self.__price_service.calculate_price(class_filter, days_int)
-                            #os.system("cls")
                             print()
-                            self.print_options()
-                            action = input(" Input letter: ")
+                            action = self.print_options()
                             if action == "m".lower():
                                 self.main_menu()
                             self.additional_options(action)
@@ -208,6 +206,29 @@ class EmployeeUi:
                 #Change car registration
                     pass
 
+                elif action == "9" and self.access == "admin":
+                    #Remove Car from system
+                    action = ""
+                    while(action != "q"):
+                        os.system("cls")
+                            
+                        print(" You are about to remove a car from the system.\n")
+                            
+                        car_filter = input(" Enter license plate number:  ")
+
+                        if car_filter != []:
+                            key_filter = "License Plate Number"
+                            a = self.__car_service.remove_car(key_filter, car_filter)
+                            
+                        if a == True:
+                            break
+                        if a == False:
+                            continue
+
+                        # back er ekki alveg að virka, en það virkar ef það hefur break...
+                            
+                        self.print_options()
+                        self.additional_options(action)
 
                 elif action == "":
                     action = 1
@@ -341,9 +362,8 @@ class EmployeeUi:
 
                 while(action != "q"):
                     os.system("cls")
-                    print(7 *"-", " Customers Menu ", 7 *"-")
+                    print(7 *"-", " Customers Menu ", 7 *"-", "\n")
                     print(" You can do the following:")
-                    print(40 *"-")
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -409,8 +429,7 @@ class EmployeeUi:
                                 continue
 
                             print()
-                            self.print_options()
-                            action = input(" Input letter: ").lower()
+                            action = self.print_options()
                             self.additional_options(action)
 
                             
