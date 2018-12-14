@@ -172,15 +172,29 @@ class EmployeeUi:
                     elif action == "6" and self.access == "admin":
                     # Register new car
                         os.system("cls")
-                        lp_number = input(" Licence plate number: ")
-                        category = input(" Category: ")
+                        lp_number = input(" Licence plate number: ").upper()
+                        while not len(lp_number) == 5:
+                            lp_number = input("Invalid Licence plate number. License plate format examples: ABC12, AB123.\n Please enter a valid licence plate number: ")
+                        category = input(" Category: ").upper()
+                        while category not in ["A", "B", "C"]:
+                            category = input("Invalid input. Valid categories are 'A', 'B', and 'C'.\n Please enter a valid category: ").upper()
+                        brand = input(" Brand: ").capitalize()
+                        while not brand.isalpha():
+                            brand = input("Invalid brand name.\n Please enter a valid brand name: ").capitalize()
                         model = input(" Model: ")
-                        brand = input(" Brand: ")
-                        colour = input(" Colour: ")
+                        colour = input(" Colour: ").capitalize()
+                        while colour not in ["Yellow", "Red", "Green", "Blue", "Black", "White", "Gray"]:
+                            colour = input("Invalid color. Valid colours are yellow, red, green, blue, white, and gray.\n Please enter a valid colour:  ").capitalize()
                         year = input(" Year: ")
+                        while not len(year) == 4:
+                            year = input("Invalid year.\n Please enter a valid year.")
                         kilometers = input(" Kilometers: ")
-                        status = input(" Status: ")
-                        new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
+                        while not kilometers.isdigit():
+                            kilometers = input("Invalid input. Please enter only digits.\n Kilometers: ")
+                        status = input(" Status: ").capitalize()
+                        while status not in ["Available", "Unavailable"]:
+                            status = input("Invalid status. Valid inputs are 'Available' and 'Unavailable'.\n Status: ")
+                        new_car = Car(lp_number, category, model, model, colour, year, kilometers, status)
                         self.__car_service.add_car(new_car)
                         print("")
                         print(" You have registered a new car!")
@@ -510,7 +524,10 @@ class EmployeeUi:
                             print(indent,"m | Go to Main menu")
                             print(indent,"q | Quit")
                             action = input(" Input letter: ").lower
-                            self.additional_options(action)
+                            if action == "b":
+                                break
+                            else:
+                                self.additional_options(action)
                     
 
                     elif action == "":
