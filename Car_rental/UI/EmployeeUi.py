@@ -250,7 +250,7 @@ class EmployeeUi:
 
                         
                             if action == "1":
-                                self.__order_service.rent_car()
+                                self.__order_service.return_car()
                                 
                                 
                                 # Register new customer
