@@ -44,7 +44,7 @@ class OrderService():
 
         
 
-    def rent_car(self, order):
+    def rent_car(self):
         category = input('Enter Category: ')
         pick_up_date = input('Enter pick-up date(Y:M:D):')
         number_of_days = input('Enter number of days:')
