@@ -167,10 +167,14 @@ class EmployeeUi:
                     category = input(" Category: ").upper()
                     while category not in ["A", "B", "C"]:
                         category = input("Invalid input. Valid categories are 'A', 'B', and 'C'.\n Please enter a valid category: ").upper()
+                    ###############################################################################
+                    model = input(" Model: ")
+                    
+                    #################################################################################
                     brand = input(" Brand: ").capitalize()
                     while not brand.isalpha():
                         brand = input("Invalid brand name.\n Please enter a valid brand name: ").capitalize()
-                    model = input(" Model: ")
+                    
                     colour = input(" Colour: ").capitalize()
                     while colour not in ["Yellow", "Red", "Green", "Blue", "Black", "White", "Gray"]:
                         colour = input("Invalid color. Valid colours are yellow, red, green, blue, white, and gray.\n Please enter a valid colour:  ").capitalize()
@@ -183,7 +187,7 @@ class EmployeeUi:
                     status = input(" Status: ").capitalize()
                     while status not in ["Available", "Unavailable"]:
                         status = input("Invalid status. Valid inputs are 'Available' and 'Unavailable'.\n Status: ")
-                    new_car = Car(lp_number, category, brand, model, colour, year, kilometers, status)
+                    new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
 
                     self.__car_service.add_car(new_car)
                     print("")
@@ -209,16 +213,6 @@ class EmployeeUi:
                     pass
 
 
-<<<<<<< HEAD
-                    elif action == "":
-                        action = 1
-                    elif action == "b":
-                        self.main_menu()
-                    elif action != 1:
-                        self.additional_options(action)
-                   
-###################################################################################
-=======
                 elif action == "":
                     action = 1
                 elif action == "b":
@@ -226,7 +220,6 @@ class EmployeeUi:
                 elif action != 1:
                     self.additional_options(action)
                     
->>>>>>> 74df243265170838412d35727b41a0134906ed3c
 
             elif action == "2":
             # Goes to Orders menu
