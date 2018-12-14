@@ -266,7 +266,7 @@ class EmployeeUi:
                                 order.insurance = insurance
                                 number = '101'
                                 order.number = number
-                                return_date = self.__order_service.return_date(pick_up_date, number_of_days)
+                                return_date = self.__order_service.calculate_return_date(pick_up_date, number_of_days)
                                 order.return_date = return_date
 
                                 available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
