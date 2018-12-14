@@ -477,7 +477,7 @@ class EmployeeUi:
                                 key = "Credit Card Number"
                             elif action == "c":
                                 break
-                            self.additional_options(action)
+                            
 
                             if (action != "") and ((action != "m") or (action != "c")):
                                 self.__customer_service.change_customer_info(key, key_filter, customer_filter)

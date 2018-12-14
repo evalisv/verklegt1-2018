@@ -32,7 +32,7 @@ class CustomerService():
         self.__new_customer = new_customer
         customer_list = self.__customer_repo.get_customer_list()
         for item in customer_list:
-            if item["Customer ID"] in customer_list:
+            if item["Customer ID"] not in customer_list:
                 return True
             else:
                 return False
