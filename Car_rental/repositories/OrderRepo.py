@@ -9,7 +9,7 @@ class OrderRepo():
         self.__order = []
 
     def add_order(self, order):
-        with open('Data/orders.csv', 'a+', encoding = "utf-8", newline = '') as order_file:
+        with open('Data/orders.csv', 'a+', encoding = "utf-8") as order_file:
             number = order.get_order_number()
             customer_id = order.get_customer_id()
             category = order.get_category()
