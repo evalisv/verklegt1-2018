@@ -22,6 +22,14 @@ class EmployeeUi:
         self.__order_service = OrderService()
         self.access = ""
 
+
+    def print_options(self):
+        print(indent, "b | Go back")
+        print(indent, "m | Go to Main Menu")
+        print(indent, "q | Quit")
+        print("")
+        return input(" Input number/letter: ").lower()
+
     def additional_options(self,action):
         if action == "m":
             return self.main_menu()
@@ -53,155 +61,155 @@ class EmployeeUi:
 
             if action == "1":
             # Goes to Cars menu
-                
-                while(action != "q"):   
+                action = ""
+                os.system("cls") 
+                print(10 *"-", " Cars Menu ", 10*"-")
+                print(" You can do the following:\n")
+                print(indent,"1 | See Available cars")
+                print(indent,"2 | See Unavailable cars")
+                print(indent,"3 | See List of all cars")
+                print(indent,"4 | See Details of a car")
+                print(indent,"5 | See Prices")
+                if self.access == "admin":
+                    print(indent,"6 | Register new car")
+                    print(indent,"7 | Change price list")
+                    print(indent,"8 | Change car registration")
+                print(indent,"b | Go back")
+                print(indent,"q | Quit")
+                print()
+                    
+                action = input(" Input number/letter: ").lower()
+                    
+                if action == "1":
+                # See available cars
+                    os.system("cls")
                     action = ""
-                    os.system("cls") 
-                    print(7 *"-", " Cars Menu ", 7 *"-")
-                    print(" You can do the following:\n")
-                    
-                    print(indent,"1 | See Available cars")
-                    print(indent,"2 | See Unavailable cars")
-                    print(indent,"3 | See List of all cars")
-                    print(indent,"4 | See Details of a car")
-                    print(indent,"5 | See Prices")
-                    if self.access == "admin":
-                        print(indent,"6 | Register new car")
-                        print(indent,"7 | Change price list")
-                        print(indent,"8 | Change car registration")
-                    print(indent,"b | Go back")
-                    print(indent,"q | Quit")
-                    print()
-                    
-                    action = input(" Input number/letter: ").lower()
-                    
-                    if action == "1":
-                    # See available cars
-                        os.system("cls")
-                        action = ""
-                        self.__car_service.available_cars()
+                    self.__car_service.available_cars()
                        
-                        print()
-                        action = input(" Press enter to go back ")
+                    print()
+                    action = input(" Press enter to go back ")
                     
 
                     
-                    elif action == "2":
-                    # See unavailable cars
-                        os.system("cls")
-                        action = ""
-                        self.__car_service.unavailable_cars()
-                        print()
-                        action = input(" Press enter to go back ")
+                elif action == "2":
+                # See unavailable cars
+                    os.system("cls")
+                    action = ""
+                    self.__car_service.unavailable_cars()
+                    print()
+                    action = input(" Press enter to go back ")
                                             
                     
                     
-                    elif action == "3":
-                    # List of all cars
-                        os.system("cls")
-                        action = ""
-                        self.__car_service.get_cars_list()
-                        print()
-                        action = input(" Press enter to go back ")
+                elif action == "3":
+                # List of all cars
+                    os.system("cls")
+                    action = ""
+                    self.__car_service.get_cars_list()
+                    print()
+                    action = input(" Press enter to go back ")
                     
-                    elif action == "4":
-                    # See details of a car
-                        action = ""
-                        while action != "q":
-                            lp_number = input("Licence plate number: ")
-                            self.__car_service.details_of_car(lp_number)
-                            print()
-                            print(indent, "b | Go back")
-                            print(indent, "m | Go to Main Menu")
-                            print(indent, "q | Quit")
-                            action = input(" Input letter: ").lower()
-                            self.additional_options(action)
+                elif action == "4":
+                    lp_number = input("Licence plate number: ")
+                    self.__car_service.details_of_car(lp_number)
+                    print()
+                    action = self.print_options()
+                    self.additional_options(action)
                         
-                                    
                     
-                    elif action == "5":
-                    # See price list
-                        os.system("cls")
-                        action = ""
-                        while(action != "q"):    
-                            print(9*"-", "Price Menu", 9*"-")
-                            print(" You can do the following:\n")
+                elif action == "5":
+                # See price list
+                    os.system("cls")
+                    action = ""
+                    while(action != "q"):    
+                        print(9*"-", "Price Menu", 9*"-")
+                        print(" You can do the following:\n")
+                        print(indent,"1 | See price list")
+                        print(indent,"2 | Calculate prices")
+                        action = self.print_options()
 
-                            print(indent,"1 | See price list")
-                            print(indent,"2 | Calculate prices")
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | Quit")
+
+                        if action == "1":
+                            self.__price_service.get_price_list()
                             print()
-                            print()
-
-                            action = input(" Input number/letter: ").lower()
-
-                            if action == "1":
-                                self.__price_service.get_price_list()
-                                print()
-                                print(indent,"m | Go to Main Menu")
-                                action = input(" Input number/letter: ")
-                                self.additional_options(action)
-                            if action == "2":
-                                print(8*"-", "Calculate prices", 8*"-")
-                                print( "Choose class: \n")
-
-                                print(indent,"A | Class A")
-                                print(indent,"B | Class B")
-                                print(indent,"C | Class C")
-                                print("")
+                            print(indent,"m | Go to Main Menu")
+                            action = input(" Input number/letter: ")
+                            self.additional_options(action)
+                        if action == "2":
+                            print(8*"-", "Calculate prices", 8*"-")
+                            print( "Choose class: \n")
+                            print(indent,"A | Class A")
+                            print(indent,"B | Class B")
+                            print(indent,"C | Class C")
+                            print("")
 
                                 
-                                class_filter = input(" Input letter:  ").upper()
+                            class_filter = input(" Input letter:  ").upper()
 
-                                days = input(" Input number of days: ")
-                                days_int = int(days)
-                                self.__price_service.calculate_price(class_filter, days_int)
-                                #os.system("cls")
-                                print()
-                                print(indent,"b | Go back")
-                                print(indent,"m | Go to Main menu")
-                                print(indent, "q | Quit")
-                                action = input(" Input letter: ")
-                                if action == "m".lower():
-                                    self.main_menu()
-                                self.additional_options(action)
+                            days = input(" Input number of days: ")
+                            days_int = int(days)
+                            self.__price_service.calculate_price(class_filter, days_int)
+                            #os.system("cls")
+                            print()
+                            self.print_options()
+                            action = input(" Input letter: ")
+                            if action == "m".lower():
+                                self.main_menu()
+                            self.additional_options(action)
 
                                 
-                    elif action == "6" and self.access == "admin":
-                    # Register new car
-                        os.system("cls")
-                        lp_number = input(" Licence plate number: ")
-                        category = input(" Category: ")
-                        model = input(" Model: ")
-                        brand = input(" Brand: ")
-                        colour = input(" Colour: ")
-                        year = input(" Year: ")
-                        kilometers = input(" Kilometers: ")
-                        status = input(" Status: ")
-                        new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
-                        self.__car_service.add_car(new_car)
-                        print("")
-                        print(" You have registered a new car!")
-                        print("")
-                        print(indent,"b | Go back")
-                        print(indent,"m | Go to Main menu")
-                        print(indent, "q | Quit")
-                        print("")
-                        action = input(" Input letter: ")
-                        if action == "m".lower():
-                            self.main_menu()
+                elif action == "6" and self.access == "admin":
+                # Register new car
+                    os.system("cls")
+                    lp_number = input(" Licence plate number: ").upper()
+                    while not len(lp_number) == 5:
+                        lp_number = input("Invalid Licence plate number. License plate format examples: ABC12, AB123.\n Please enter a valid licence plate number: ")
+                    category = input(" Category: ").upper()
+                    while category not in ["A", "B", "C"]:
+                        category = input("Invalid input. Valid categories are 'A', 'B', and 'C'.\n Please enter a valid category: ").upper()
+                    brand = input(" Brand: ").capitalize()
+                    while not brand.isalpha():
+                        brand = input("Invalid brand name.\n Please enter a valid brand name: ").capitalize()
+                    model = input(" Model: ")
+                    colour = input(" Colour: ").capitalize()
+                    while colour not in ["Yellow", "Red", "Green", "Blue", "Black", "White", "Gray"]:
+                        colour = input("Invalid color. Valid colours are yellow, red, green, blue, white, and gray.\n Please enter a valid colour:  ").capitalize()
+                    year = input(" Year: ")
+                    while not len(year) == 4:
+                        year = input("Invalid year.\n Please enter a valid year.")
+                    kilometers = input(" Kilometers: ")
+                    while not kilometers.isdigit():
+                        kilometers = input("Invalid input. Please enter only digits.\n Kilometers: ")
+                    status = input(" Status: ").capitalize()
+                    while status not in ["Available", "Unavailable"]:
+                        status = input("Invalid status. Valid inputs are 'Available' and 'Unavailable'.\n Status: ")
+                    new_car = Car(lp_number, category, brand, model, colour, year, kilometers, status)
 
-                    elif action == "7" and self.access == "admin":
-                    #Change price list 
-                        pass
+                    self.__car_service.add_car(new_car)
+                    print("")
+                    print(" You have registered a new car!")
+                    print("")
+                    self.print_options()
+                    print("")
+                    if action == "m".lower():
+                        self.main_menu()
 
-                    elif action == "8" and self.access == "admin":
-                    #Change car registration
-                        pass
+                elif action == "7" and self.access == "admin":
+                    #Change price list
+                    action = ""
+                    os.system("cls")   
+                    class_filter = input("Class: ")
+                    key = "Price"
+                    self.__price_service.change_price(key, class_filter)
+                    action = self.print_options()
+                    self.additional_options(action)
+
+                elif action == "8" and self.access == "admin":
+                #Change car registration
+                    pass
 
 
+<<<<<<< HEAD
                     elif action == "":
                         action = 1
                     elif action == "b":
@@ -210,6 +218,15 @@ class EmployeeUi:
                         self.additional_options(action)
                    
 ###################################################################################
+=======
+                elif action == "":
+                    action = 1
+                elif action == "b":
+                    self.main_menu()
+                elif action != 1:
+                    self.additional_options(action)
+                    
+>>>>>>> 74df243265170838412d35727b41a0134906ed3c
 
             elif action == "2":
             # Goes to Orders menu
@@ -255,9 +272,7 @@ class EmployeeUi:
 
                             print(indent,"1 | Register new customers")  
                             print(indent,"2 | Choose customers")
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | Quit")
+                            self.print_options()
                             print()
 
                             action = input(" Input number/letter: ").lower()
@@ -407,9 +422,7 @@ class EmployeeUi:
                                 continue
 
                             print()
-                            print(indent, "b | Go back")
-                            print(indent, "m | Go to Main Menu")
-                            print(indent, "q | Quit")
+                            self.print_options()
                             action = input(" Input letter: ").lower()
                             self.additional_options(action)
 
@@ -420,9 +433,7 @@ class EmployeeUi:
                         os.system("cls")
                         self.__customer_service.get_customers()
                         print()
-                        print(indent, "b | Go back")
-                        print(indent, "m | Go to Main Menu")
-                        print(indent, "q | Quit")
+                        self.print_options()
                         action = input(" Input letter: ").lower()
                         self.additional_options(action)
 
@@ -472,13 +483,11 @@ class EmployeeUi:
                                 key = "Credit Card Number"
                             elif action == "c":
                                 break
-                            self.additional_options(action)
+                            
 
                             if (action != "") and ((action != "m") or (action != "c")):
                                 self.__customer_service.change_customer_info(key, key_filter, customer_filter)
-                            print(indent, "m | Go to Main Menu")
-                            print(indent, "b | Go back")
-                            print(indent, "q | Quit")
+                            self.print_options()
 
                             action = input("Input letter:")
                             self.additional_options(action)
@@ -508,9 +517,7 @@ class EmployeeUi:
 
                             # back er ekki alveg að virka, en það virkar ef það hefur break...
                             
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | Quit")
+                            self.print_options()
                             action = input(" Input letter: ").lower
                             self.additional_options(action)
                     

@@ -19,7 +19,7 @@ class PriceRepo:
     def change_price(self, new_value):
         self.__new_value = new_value
         with open ("data/prices.csv", "w", encoding = "utf-8") as changed_csv:
-            fieldnames = ["Class", "Price", "Insurance"]
+            fieldnames = ["Category", "Price", "Insurance"]
             csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
             csv_writer.writeheader()
             for line in new_value:
