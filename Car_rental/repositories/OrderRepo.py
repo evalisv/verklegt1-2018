@@ -65,7 +65,7 @@ class OrderRepo():
                 if row == []:
                     pass
                 else:
-                    if row[0] == order.get_number():
+                    if row[0] == order:
                         index = int(index)
                         row[index] = new_value
                         update_list.append(row)
