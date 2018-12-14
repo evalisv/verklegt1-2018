@@ -119,6 +119,7 @@ class OrderRepo():
                     number = row[0]
                     number_list.append(number)
             highest_number = max(number_list)
+            highest_number = int(highest_number)
             next_order_number = (highest_number + 1)
             
         return str(next_order_number)
