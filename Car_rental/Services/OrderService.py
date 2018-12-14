@@ -116,9 +116,8 @@ class OrderService():
 
         cars_in_orders = self.__order_repo.cars_in_orders(category)
 
-        cars_in_orders_list = []
-        for key, value in cars_in_orders:
-            cars_in_orders_list.append(key)
+        cars_in_orders_list = list(cars_in_orders.keys())
+        
 
 
 
