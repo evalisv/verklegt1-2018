@@ -69,7 +69,7 @@ class OrderService():
 
     def calculate_return_date(self, pickup_date, nr_days):
         year, month, day = pickup_date.split(':')
-        pickup_date_datetime = datetime(year, month, day)
+        pickup_date_datetime = datetime(int(year), int(month), int(day))
         days = int(nr_days)
         return_date = (pickup_date_datetime + timedelta(days=days))
         return return_date
