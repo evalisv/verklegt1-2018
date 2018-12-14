@@ -270,7 +270,6 @@ class EmployeeUi:
                             if action == "1":
                                 self.__order_service.return_car()
                                 
-                                
                                 # Register new customer
                                 os.system("cls")
                                 id_number = input("Customer ID: ")
@@ -389,7 +388,7 @@ class EmployeeUi:
                             dl_number = input("Invalid drivers license number, must me at least 9 letters/digits long.\n Please enter a valid drivers license number: ")
                         cc_number = input(" Credit card number: ")
                         while not cc_number.isdigit():
-                            cc_number = input("Invalid creditcard number.\n Please enter a valid creditcard number: ")
+                            cc_number = input("Invalid creditcard number.\n Valid creditcard number only contains digits. \n Please enter a valid creditcard number: ")
                         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
 
 
@@ -421,8 +420,7 @@ class EmployeeUi:
                         os.system("cls")
                         self.__customer_service.get_customers()
                         print()
-                        self.print_options()
-                        action = input(" Input letter: ").lower()
+                        action = self.print_options()
                         self.additional_options(action)
 
                         
