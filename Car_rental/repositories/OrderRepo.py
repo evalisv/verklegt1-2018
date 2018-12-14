@@ -103,12 +103,13 @@ class OrderRepo():
     def find_next_order_number(self):
         with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             number_list = []
-            csv_reader = csv.DictReader(order_file)
+            csv_reader = csv.reader(order_file)
+            next(csv_reader)
             for row in csv_reader:
-                number = row['Number']
+                number = row[0]
                 number_list.append(number)
             highest_number = max(number_list)
-            next_order_number = (highest_number + 1)
+            next_order_number = (int(highest_number) + 1)
             
         return next_order_number
 
