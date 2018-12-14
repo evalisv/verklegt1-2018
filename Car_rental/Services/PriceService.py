@@ -6,6 +6,8 @@ class PriceService():
 
 
     def get_price_list(self):
+        print(20*"-", "Price list", 20*"-")
+        print("")
         print(" ", "{:<15} {:<20} {:<20}".format("Class", "Price per day", "Insurance"))
         print("-"*50)
         for line in self.__price_repo.get_price_list():
