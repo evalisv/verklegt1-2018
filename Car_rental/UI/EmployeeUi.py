@@ -310,15 +310,15 @@ class EmployeeUi:
                     self.additional_options(action)
 
 
-
+###########################################################################
             elif action == "3":
             # Goes to Customers menu
 
                 while(action != "q"):
                     os.system("cls")
                     print(7 *"-", " Customers Menu ", 7 *"-")
-                    print(" You can do the following:")
-                    print(40 *"-")
+                    print(" You can do the following:\n")
+                    
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -464,4 +464,3 @@ class EmployeeUi:
                     
                     if action == "b" or action == "m":
                         self.main_menu()
-            
