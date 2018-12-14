@@ -15,7 +15,7 @@ class CarService():
 
     def get_cars_list(self):
         print()
-        print("List of all cars")
+        print(21*"-", "List of all cars",21*"-")
         print()
         print(" ", "{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
@@ -29,7 +29,7 @@ class CarService():
 
     def available_cars(self):
         print()
-        print("List of available cars")
+        print(18*"-","List of available cars",18*"-")
         print()
         print(" ","{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
@@ -43,7 +43,7 @@ class CarService():
 
     def unavailable_cars(self):
         print()
-        print("List of unavailable cars")
+        print(17*"-","List of unavailable cars",17*"-")
         print()
         print(" ","{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
@@ -54,3 +54,30 @@ class CarService():
             print(" ")
             print(" There are no unavailable cars")
         return
+
+    def details_of_car(self, lp_number):
+        self.__lp_number = lp_number
+        match_value = 1
+        cars_list = self.__car_repo.get_cars_list()
+        for line in cars_list:
+            
+            if line["License Plate Number"] == lp_number:
+                match_value += 1
+                break
+
+        if match_value == 1:
+            # Notify that something wasn't found
+            print()
+            print(" No car found")
+
+
+        if match_value != 1:
+            print(60*"-", "Details of a car", 60*"-")
+            print()
+            print("You found this car:")
+            print()
+            print(" ","{:<30} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format("Licence Plate Number", "Category", "Model", "Brand", "Colour", "Year", "Kilometers", "Status"))
+            print("-"*140)
+            print(" ","{:<30} {:15} {:15} {:<15} {:<15} {:<15} {:<15} {:<15}".format(line["License Plate Number"], line["Category"], line["Model"], line["Brand"], line["Colour"], line["Year"], line["Kilometers"], line["Status"]))
+                
+        

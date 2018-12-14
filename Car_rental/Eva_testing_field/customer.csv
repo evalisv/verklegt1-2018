@@ -1,4 +1,8 @@
-Customer ID,Name,Age,Country,Email,Phone,Drivers License Number,Credit Card Number
-asdfasdf,asdfasdfa,asdfasdfasdf,asdfasdfasdf,asdfasdfasdf,asdfasdfas,fasdfas,dfasfdasdf
-0310952639,Eva Lísa,23,Iceland,evalis@ru.is,5812345,Mk088,4564564654564564
-3009592379,Gudny Adalbjorg Jonsdottir,59,gudnyaj@icloud.com,KN031,5646545456454
+Customer ID,First Name,Last Name,Age,Country,Email,Phone,Drivers License Number,Credit Card Number
+2611893059,Jökull,Gunnarsson,,Iceland,jokullg16@ru.is,7756030,7897646547,4444110000000000
+1010802017,Harpa,Sjöfn,,Iceland,meh@meh.is,5882211,56456765765,1111220000000000
+A781929,Kamal,Babu,,India,kamalbabu@friendsofindia.is,24873215478,4564564321,7777890000000000
+S78787878,Jack,Black,,USA,jackblack@jackblack.com,+1 45654687,23564564687,2222110000000000
+L8989898,Donald,Trump,,USA,donaldtrump@endoftheworld.com,+1 1,54654678687,4444110000000000
+6543219879,Ali,Baba,99,Egyptaland,ali@ali.is,123,89898988,12981298129819281
+
