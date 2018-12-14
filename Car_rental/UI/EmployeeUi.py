@@ -251,11 +251,10 @@ class EmployeeUi:
                         
                             if action == "1":
                                 #Rent a car. henti þessu randomly hérna inn til að komast í það af menu :P
-                                number = input('Choose order number')
-                                category = input('Choose Category: ')
-                                pick_up_date = input('Choose pick-up date(Y:M:D)')
-                                return_date = input('Choose return date(Y:M:D)')
-                                insurance = input('Do you want to buy insurance? (Yes/No)')
+                                category = input('Enter Category: ')
+                                pick_up_date = input('Enter pick-up date(Y:M:D):')
+                                return_date = input('Enter number of days:')
+                                insurance = input('Insurance? (Yes/No)')
 
                                 customer_id = 12345678
 
@@ -265,6 +264,7 @@ class EmployeeUi:
                                 order.return_date = return_date
                                 order.customer_id = customer_id
                                 order.insurance = insurance
+                                number = self.__order_service.find_next_order_number()
                                 order.number = number
 
                                 available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
