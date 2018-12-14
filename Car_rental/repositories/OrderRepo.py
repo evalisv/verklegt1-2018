@@ -112,10 +112,12 @@ class OrderRepo():
         with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             number_list = []
             csv_reader = csv.reader(order_file)
-            next(csv_reader)
             for row in csv_reader:
-                number = row[0]
-                number_list.append(number)
+                if row == []:
+                    pass
+                else:                 
+                    number = row[0]
+                    number_list.append(number)
             highest_number = max(number_list)
             next_order_number = (int(highest_number) + 1)
             
