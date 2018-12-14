@@ -74,6 +74,7 @@ class EmployeeUi:
                     print(indent,"6 | Register new car")
                     print(indent,"7 | Change price list")
                     print(indent,"8 | Change car registration")
+                    print(indent,"9 | Remove car from system")
                 print(indent,"b | Go back")
                 print(indent,"q | Quit")
                 print()
@@ -126,6 +127,7 @@ class EmployeeUi:
                         print(9*"-", "Price Menu", 9*"-")
                         print(" You can do the following:\n")
 
+<<<<<<< HEAD
 
                     if action == "1":
                         self.__price_service.get_price_list()
@@ -141,6 +143,8 @@ class EmployeeUi:
                         print(indent,"C | Class C")
                         print("")
 
+=======
+>>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb
                         if action == "1":
                             os.system("cls")
                             self.__price_service.get_price_list()
@@ -151,6 +155,7 @@ class EmployeeUi:
                             print(8*"-", "Calculate prices", 8*"-")
                             print( "Choose class: \n")
 
+<<<<<<< HEAD
                         days = input(" Input number of days: ")
                         days_int = int(days)
                         self.__price_service.calculate_price(class_filter, days_int)
@@ -161,6 +166,35 @@ class EmployeeUi:
                         if action == "m".lower():
                             self.main_menu()
                         self.additional_options(action)
+=======
+<<<<<<< HEAD
+                            if action == "1":
+                                os.system("cls")
+                                self.__price_service.get_price_list()
+                                action = input(" Press enter to go back ")
+
+                            if action == "2":
+                                os.system("cls")
+                                print(8*"-", "Calculate prices", 8*"-")
+                                print( "Choose class: \n")
+=======
+                                
+                            class_filter = input(" Input letter:  ").upper()
+<<<<<<< HEAD
+=======
+>>>>>>> 183b8b6312019cd5112f3b1fdf4fb966611846d9
+
+>>>>>>> 20776e78b719160ccd8ca720bc1e851b066ca1f4
+                            days = input(" Input number of days: ")
+                            days_int = int(days)
+                            os.system("cls")
+                            self.__price_service.calculate_price(class_filter, days_int)
+                            print()
+                            action = self.print_options()
+                            if action == "m".lower():
+                                self.main_menu()
+                            self.additional_options(action)
+>>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb
 
                                 
                 elif action == "6" and self.access == "admin":
@@ -213,6 +247,29 @@ class EmployeeUi:
                 #Change car registration
                     pass
 
+                elif action == "9" and self.access == "admin":
+                    #Remove Car from system
+                    action = ""
+                    while(action != "q"):
+                        os.system("cls")
+                            
+                        print(" You are about to remove a car from the system.\n")
+                            
+                        car_filter = input(" Enter license plate number:  ")
+
+                        if car_filter != []:
+                            key_filter = "License Plate Number"
+                            a = self.__car_service.remove_car(key_filter, car_filter)
+                            
+                        if a == True:
+                            break
+                        if a == False:
+                            continue
+
+                        # back er ekki alveg að virka, en það virkar ef það hefur break...
+                            
+                        self.print_options()
+                        self.additional_options(action)
 
                 elif action == "":
                     action = 1
@@ -376,9 +433,8 @@ class EmployeeUi:
 
                 while(action != "q"):
                     os.system("cls")
-                    print(7 *"-", " Customers Menu ", 7 *"-")
+                    print(7 *"-", " Customers Menu ", 7 *"-", "\n")
                     print(" You can do the following:")
-                    print(40 *"-")
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -444,8 +500,7 @@ class EmployeeUi:
                                 continue
 
                             print()
-                            self.print_options()
-                            action = input(" Input letter: ").lower()
+                            action = self.print_options()
                             self.additional_options(action)
 
                             

@@ -33,10 +33,18 @@ class PriceService():
         elif insurance == "n":
             return total_price_with_vat
 
+<<<<<<< HEAD
         # print()
         # print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
         # print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
         # print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
+=======
+        print()
+        print(8*"-", "Calculate prices", 8*"-", "\n")
+        print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
+        print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
+        print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
+>>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb
         
         
 
