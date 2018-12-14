@@ -6,8 +6,7 @@ class CustomerService():
 
     def add_customer(self, new_customer):
         self.__new_customer = new_customer
-        #new_customer_list = self.__new_customer.split(",")
-        if self.is_valid_customer(new_customer):
+        if self.is_valid_customer(new_customer) == True:
             print()
             action = ""
             print("Confirm registration?")
@@ -23,13 +22,22 @@ class CustomerService():
                 print("Customer registration canceled.")
                 print("")
                 pass
-    def is_valid_customer(self, customer):
-        self.__customer = customer
-        if customer["Customer ID"] not in self.__customer_repo.__customers:
-            return True
-        else:
-            print("Customer with given Customer ID is already in system.")
-            return False
+        elif self.is_valid_customer(new_customer) == False:
+            print("Customer already in system: ")
+            print("Press enter to Main menu")
+            action = input()
+            
+
+    def is_valid_customer(self, new_customer):
+        self.__new_customer = new_customer
+        customer_list = self.__customer_repo.get_customer_list()
+        for item in customer_list:
+            if item["Customer ID"] in customer_list:
+                return True
+            else:
+                return False
+                
+
 
     def get_customers(self):
         print()
