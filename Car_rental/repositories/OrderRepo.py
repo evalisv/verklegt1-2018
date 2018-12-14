@@ -101,7 +101,7 @@ class OrderRepo():
 
     
     def find_next_order_number(self):
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             number_list = []
             csv_reader = csv.DictReader(order_file)
             for line in csv_reader:
