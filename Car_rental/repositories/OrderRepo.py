@@ -24,7 +24,8 @@ class OrderRepo():
             csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames)
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             
-            csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number, 'Category': category, 'Pick-up Date': pickup_date,
+            csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number,
+                             'Category': category, 'Pick-up Date': pickup_date,
                             'Return Date': return_date, 'Price': price, 'Insurance': insurance})
 
     def find_order(self, number):
@@ -97,15 +98,16 @@ class OrderRepo():
                         period_taken_dict[car_lp].append(period_taken)
                     else:
                         period_taken_dict[car_lp] = [period_taken]
+        print(period_taken_dict)
         return period_taken_dict
 
 
-    def get_number_of_days(self, order):
-        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
-        start = datetime.strptime(self.order.get_pickup_date(order), date_format)
-        end = datetime.strptime(self.order.get_return_date(order), date_format)
-        number_of_days = end - start
-        return number_of_days
+    # def get_number_of_days(self, order):
+    #     start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+    #     start = datetime.strptime(self.order.get_pickup_date(order), date_format)
+    #     end = datetime.strptime(self.order.get_return_date(order), date_format)
+    #     number_of_days = end - start
+    #     return number_of_days
 
     
     def find_next_order_number(self):

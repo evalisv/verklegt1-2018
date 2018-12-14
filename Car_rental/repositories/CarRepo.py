@@ -35,7 +35,9 @@ class CarRepo:
             csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
             if cars_list == []:
                 for line in csv_reader:
-                    cars_list.append(line)
+                    car = Car(line["License Plate Number"],line["Category"],line["Model"],
+                              line["Brand"], line["Year"], line["Kilometers"],line["Colour"], line["Status"])
+                    cars_list.append(car)
 
         return cars_list
 

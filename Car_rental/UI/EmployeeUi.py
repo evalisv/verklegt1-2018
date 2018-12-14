@@ -117,68 +117,50 @@ class EmployeeUi:
                     self.additional_options(action)
                         
                     
-<<<<<<< HEAD
-                    elif action == "5":
-                    # See price list
-                        os.system("cls")
-                        action = ""
-                        while(action != "q"):    
-                            os.system("cls")
-                            print(9*"-", "Price Menu", 9*"-")
-                            print(" You can do the following:\n")
-=======
                 elif action == "5":
                 # See price list
                     os.system("cls")
                     action = ""
                     while(action != "q"):    
+                        os.system("cls")
                         print(9*"-", "Price Menu", 9*"-")
                         print(" You can do the following:\n")
-                        print(indent,"1 | See price list")
-                        print(indent,"2 | Calculate prices")
-                        action = self.print_options()
->>>>>>> 183b8b6312019cd5112f3b1fdf4fb966611846d9
 
+
+                    if action == "1":
+                        self.__price_service.get_price_list()
+                        print()
+                        print(indent,"m | Go to Main Menu")
+                        action = input(" Input number/letter: ")
+                        self.additional_options(action)
+                    if action == "2":
+                        print(8*"-", "Calculate prices", 8*"-")
+                        print( "Choose class: \n")
+                        print(indent,"A | Class A")
+                        print(indent,"B | Class B")
+                        print(indent,"C | Class C")
+                        print("")
 
                         if action == "1":
+                            os.system("cls")
                             self.__price_service.get_price_list()
-                            print()
-                            print(indent,"m | Go to Main Menu")
-                            action = input(" Input number/letter: ")
-                            self.additional_options(action)
+                            action = input(" Press enter to go back ")
+
                         if action == "2":
+                            os.system("cls")
                             print(8*"-", "Calculate prices", 8*"-")
                             print( "Choose class: \n")
-                            print(indent,"A | Class A")
-                            print(indent,"B | Class B")
-                            print(indent,"C | Class C")
-                            print("")
 
-<<<<<<< HEAD
-                            if action == "1":
-                                os.system("cls")
-                                self.__price_service.get_price_list()
-                                action = input(" Press enter to go back ")
-
-                            if action == "2":
-                                os.system("cls")
-                                print(8*"-", "Calculate prices", 8*"-")
-                                print( "Choose class: \n")
-=======
-                                
-                            class_filter = input(" Input letter:  ").upper()
->>>>>>> 183b8b6312019cd5112f3b1fdf4fb966611846d9
-
-                            days = input(" Input number of days: ")
-                            days_int = int(days)
-                            self.__price_service.calculate_price(class_filter, days_int)
-                            #os.system("cls")
-                            print()
-                            self.print_options()
-                            action = input(" Input letter: ")
-                            if action == "m".lower():
-                                self.main_menu()
-                            self.additional_options(action)
+                        days = input(" Input number of days: ")
+                        days_int = int(days)
+                        self.__price_service.calculate_price(class_filter, days_int)
+                        #os.system("cls")
+                        print()
+                        self.print_options()
+                        action = input(" Input letter: ")
+                        if action == "m".lower():
+                            self.main_menu()
+                        self.additional_options(action)
 
                                 
                 elif action == "6" and self.access == "admin":
@@ -266,11 +248,11 @@ class EmployeeUi:
                         #Skref 1 er að stimpla inn kennitölu, ef hún er ekki á skrá þá þarf að skrá viðskiptavin
 
                         category = input('Enter Category: ')
-                        pick_up_date = input('Enter pick-up date(Y:M:D):')
-                        number_of_days = input('Enter number of days:')
+                        pick_up_date = input('Enter pick-up date(dd.mm.yyyy):')
+                        return_date = input('Enter return date(dd.mm.yyyy):')
                         insurance = input('Insurance? (Yes/No)')
                         customer_id = input('Enter customer id: ')
-                        self.__order_service.rent_car(category, pick_up_date,number_of_days,insurance, customer_id)
+                        self.__order_service.rent_car(category, pick_up_date, return_date, insurance, customer_id)
                         
                         # action = ""
                         # while(action != "q"):  
@@ -307,7 +289,6 @@ class EmployeeUi:
                         #     if action == "1":
                         #         self.__order_service.return_car()
                                 
-<<<<<<< HEAD
                                 
                         #         # Register new customer
                         #         os.system("cls")
@@ -323,22 +304,6 @@ class EmployeeUi:
                         #         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
                         #         #new_customer = customer(id_number, first_name)
                         #         self.__customer_service.add_customer(new_customer)
-=======
-                                # Register new customer
-                                os.system("cls")
-                                id_number = input("Customer ID: ")
-                                first_name = input("First name: ")
-                                last_name = input("Last name: ")
-                                age = input("Age: ")
-                                country = input("Country: ")
-                                email = input("E-mail: ")
-                                phone = input("Phone number: ")
-                                dl_number = input("Drivers license number: ")
-                                cc_number = input("Credit card number: ")
-                                new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
-                                #new_customer = customer(id_number, first_name)
-                                self.__customer_service.add_customer(new_customer)
->>>>>>> 183b8b6312019cd5112f3b1fdf4fb966611846d9
                                 
                         #         #######print(new_customer)
                                 
@@ -369,7 +334,7 @@ class EmployeeUi:
 
                         days = input(" Input number of days: ")
                         days_int = int(days)
-                        self.__price_service.calculate_price(class_filter, days_int)
+                        self.__price_service.calculate_price(class_filter, days_int, insurance)
                         action = input(" Press enter to go back ")
 
                     elif action == "3":
