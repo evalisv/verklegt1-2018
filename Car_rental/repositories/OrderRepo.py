@@ -77,7 +77,7 @@ class OrderRepo():
         #Overwrites file with list. New file includes changed order.
         with open('Data/orders.csv', 'w', encoding = "utf-8", newline='') as order_file:
             fieldnames = ['License Plate Number', 'Category', 'Model', 'Brand', 'Colour', 'Year', 'Kilometers', 'Status']
-            csv_writer = csv.writer(order_file, lineterminator = "\n")
+            csv_writer = csv.writer(order_file)
             
             for line in update_list:        
                 csv_writer.writerow(line)
