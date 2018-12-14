@@ -28,8 +28,8 @@ class CustomerRepo:
     def get_customer_list(self):
         with open ("Data/customers.csv", "r", encoding = "utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
-            if self.__customers == []:
-                for line in csv_reader:
+            for line in csv_reader:
+                if line not in self.__customers:
                     self.__customers.append(line)
 
         return self.__customers
