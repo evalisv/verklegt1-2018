@@ -45,26 +45,31 @@ class OrderService():
         
 
     def rent_car(self, order):
-        number = input('Choose order number')
-        category = input('Choose Category: ')
-        pick_up_date = input('Choose pick-up date(Y:M:D)')
-        return_date = input('Choose return date(Y:M:D)')
-        insurance = input('Do you want to buy insurance? (Yes/No)')
+        category = input('Enter Category: ')
+        pick_up_date = input('Enter pick-up date(Y:M:D):')
+        number_of_days = input('Enter number of days:')
+        insurance = input('Insurance? (Yes/No)')
 
-        customer_id = self.__customer_repo.get_customer_id()
+        customer_id = 12345678
 
-        self.__order_repo.__category = category
-        self.__order_repo.__pickup_date = pick_up_date
-        self.__order_repo.__return_date = return_date
-        self.__order_repo.__customer_id = customer_id
-        self.__order_repo.__insurance = insurance
+        order = Order()
+        order.category = category
+        order.pickup_date = pick_up_date
 
-        self.find_available_car(category, pick_up_date, return_date)
-        self.__price_service.calculate_price(order)
+        order.customer_id = customer_id
+        order.insurance = insurance
+        number = self.__order_service.find_next_order_number()
+        order.number = number
+        return_date = self.__order_service.calculate_return_date(pick_up_date, number_of_days)
+        order.return_date = return_date
+        nr_of_days = int(number_of_days)
+        available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
+        order.lp_number = available_car_lp
+                                
+        price = self.__price_service.calculate_price(category, nr_of_days)
 
-        order.__price = price
-
-        self.__order_repo.add_order(order)
+        order.price = price
+        self.__order_service.add_order(order)
         pass
 
     def calculate_return_date(self, pickup_date, nr_days):
