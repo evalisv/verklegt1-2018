@@ -21,7 +21,7 @@ class OrderRepo():
 
             fieldnames = ['Number', 'Customer', 'License Plate Number', 'Category', 'Pick-up Date', 'Return Date', 'Price', 'Insurance']
 
-            csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames, lineterminator="\n\n")
+            csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames)
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             
             csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number, 'Category': category, 'Pick-up Date': pickup_date,
@@ -121,7 +121,10 @@ class OrderRepo():
                     if number.isdigit():
                         number = int(number)
                         number_list.append(number)
-            highest_number = max(number_list)
+            try:
+                highest_number = max(number_list)
+            except:
+                highest_number = 100
             
             next_order_number = highest_number + 1
             

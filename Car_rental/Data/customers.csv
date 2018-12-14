@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 License Plate Number,Category,Model,Brand,Colour,Year,Kilometers,Status
 ERF78,A,i10,Hyundai,Red,2016,37000,Available
 HLE12,A,i10,Hyundai,Blue,2018,12000,Available
@@ -18,3 +19,16 @@ LGK90,Gapj,AGgwg,AGgjwpg,gkagjas9,SAGWg,ag9,ag9wtur9
 =======,,,,,,,
 kn031,A,Yaris,Yaris,2000,Red,2018,Available
 >>>>>>> 74df243265170838412d35727b41a0134906ed3c,,,,,,,
+=======
+Customer ID,First Name,Last Name,Age,Country,Email,Phone,Drivers License Number,Credit Card Number
+2611893059,Jökull,Gunnarsson,,Iceland,jokullg16@ru.is,7756030,7897646547,4444110000000000
+1010802017,Harpa,Sjöfn,,Iceland,meh@meh.is,5882211,56456765765,1111220000000000
+A781929,Kamal,Babu,,India,kamalbabu@friendsofindia.is,24873215478,4564564321,7777890000000000
+S78787878,Jack,Black,,USA,jackblack@jackblack.com,+1 45654687,23564564687,2222110000000000
+L8989898,Donald,Trump,,USA,donaldtrump@endoftheworld.com,+1 1,54654678687,4444110000000000
+6543219879,Ali,Baba,99,Egyptaland,ali@ali.is,123,89898988,12981298129819281
+1101644759,Katla,Thorsteinsdottir,54,Iceland,katla@3skref.is,003546632616,123456789,000111222333
+1234567890,Ólöf,Risten,30,Iceland,bla@bla.is,+354 123 4567,Ble123456,1234123412341234
+0310952639,Eva,Lísa,23,Iceland,eval18@ru.is,003548445419,123456789,0000000000000000
+1305602199,Olafur,Palsson,28,Iceland,olafur@olafur.is,6913813,100100100,000111444777
+>>>>>>> 20776e78b719160ccd8ca720bc1e851b066ca1f4

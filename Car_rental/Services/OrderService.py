@@ -17,15 +17,15 @@ class OrderService():
         self.__customer_repo = CustomerRepo()
         self.__car_repo = CarRepo()
         self.__price_service = PriceService()
+        self.__model_order = Order()
 
     def add_order(self, order):
         self.__order_repo.add_order(order)
     
 
 
-    def cancel_order(self):
-        number = input('Enter order number: ')
-        self.__order_repo.cancel_order(number)
+    def cancel_order(self,order_number):
+        self.__order_repo.cancel_order(order_number)
 
     def change_order(self):
         number = input('Enter number')
@@ -41,16 +41,16 @@ class OrderService():
     def register_new_customer(self, customer):
         self.__customer_repo.add_customer(customer)
 
-    def return_car(self):
-        order_number = input('Enter order number: ')
+    def return_car(self, order_number):
         
         new_value = datetime.today()
         index = 5
         
         
         self.__order_repo.change_order(order_number, index, new_value)
-            
-        self.__car_repo.change_status(car)
+        # car = self.__model_order.get_lp_number
+        # print(car)
+        # self.__car_repo.change_status(car)
 
     def find_next_order_number(self):
         number = self.__order_repo.find_next_order_number()
@@ -58,15 +58,7 @@ class OrderService():
 
         
 
-    def rent_car(self):
-        category = input('Enter Category: ')
-        pick_up_date = input('Enter pick-up date(Y:M:D):')
-        number_of_days = input('Enter number of days:')
-        insurance = input('Insurance? (Yes/No)')
-        customer_id = input('Enter customer id: ')
-        #number = input('Enter order number:')
-
-        
+    def rent_car(self, category, pick_up_date, number_of_days, insurance, customer_id):
 
         order = Order()
         order.category = category
@@ -82,11 +74,10 @@ class OrderService():
         available_car_lp = self.find_available_car(category, pick_up_date, return_date)
         order.lp_number = available_car_lp
                                 
-        price = self.__price_service.calculate_price_for_order(category, nr_of_days)
+        price = self.__price_service.calculate_price(category, nr_of_days)
 
         order.price = price
         self.add_order(order)
-        pass
 
     def calculate_return_date(self, pickup_date, nr_days):
         year, month, day = pickup_date.split(':')
@@ -117,7 +108,10 @@ class OrderService():
                 if period_wanted_start > start_period:
                     if period_wanted_end < end_period:
                         car_lp_list.append(car_lp)
-            return car_lp_list[0]
+            try:
+                return car_lp_list[0]
+            except:
+                 print("No car available")
 
 
         #Breytir pick-up date og return date í datetime.
@@ -128,7 +122,7 @@ class OrderService():
         period_wanted_end = datetime(int(year), int(month), int(day))
 
 
-        #Bý til lista af öllum bilum og bilum í pöntunum.
+        #Bý til lista af öllum bilum í réttu category og bilum í pöntunum.
         car_list = self.__car_repo.get_cars_list()
         all_cars_list = []
         for cars in car_list:
@@ -138,6 +132,7 @@ class OrderService():
         cars_in_orders = self.__order_repo.cars_in_orders(category)
 
         cars_in_orders_list = list(cars_in_orders.keys())
+        print(cars_in_orders)
         
 
 
@@ -151,9 +146,10 @@ class OrderService():
             for car in all_cars_list:
                 if car not in cars_in_orders_list:
                     cars_available.append(car)
-        #Ef enginn bill er alveg laus, leitar af bil sem er laus fyrir gefið timabil.
+        # Ef enginn bill er alveg laus, leitar af bil sem er laus fyrir gefið timabil.
         else:
             for car_lp in cars_in_orders:    
+                print(car_lp)
                 period_taken_list = cars_in_orders[car_lp]
                 period_taken_list_datetime = []
 
@@ -167,41 +163,48 @@ class OrderService():
                     period_taken_list_datetime.append(period_taken)
         
                 #Ef bill er bara skráður í eina pöntun.
-                if len(period_taken_list) < 2:
+                # if len(period_taken_list) < 2:
                     
                     #Finn timabil þar sem bill er laus.
-                    first_period = [datetime.now(), period_taken_list_datetime[0][0]]
-                    last_period = [period_taken_list_datetime[0][1], (period_taken_list_datetime[0][1] + timedelta(days=365))]        
-                    period_available = [first_period, last_period]
-                    car_list = find_available_period(period_available, period_wanted_start, period_wanted_end)
-                    cars_available.append(car_list)
+                first_period = [datetime.now(), period_taken_list_datetime[0][0]]
+                last_period = [period_taken_list_datetime[0][1], (period_taken_list_datetime[0][1] + timedelta(days=365))]        
+                period_available = [first_period, last_period]
+                print(period_available)
+                car_list = find_available_period(period_available, period_wanted_start, period_wanted_end)
+                print(car_list)
+                cars_available.append(car_list)
+                print(cars_available)
         
-                #Ef bill er skraður í fleiri en einni pöntun.
-                else:
+                # #Ef bill er skraður í fleiri en einni pöntun.
+                # else:
         
-                    #Fæ lengd 
-                    list_length = len(period_taken_list_datetime)
+                #     #Fæ lengd 
+                #     list_length = len(period_taken_list_datetime)
                     
-                    #Fyrsta lausa timabil er frá deginum í dag til fyrsta pickup date.
-                    first_period = [datetime.now(), period_taken_list_datetime[0][0]]
-                    #Seinasta lausa timabil er frá seinasta return date + ár fram í timann.
-                    last_period = [period_taken_list_datetime[len(period_taken_list_datetime) - 1][1], (period_taken_list_datetime[len(period_taken_list_datetime) - 1][1] + timedelta(days=365))]
+                #     #Fyrsta lausa timabil er frá deginum í dag til fyrsta pickup date.
+                #     first_period = [datetime.now(), period_taken_list_datetime[0][0]]
+                #     #Seinasta lausa timabil er frá seinasta return date + ár fram í timann.
+                #     last_period = [period_taken_list_datetime[len(period_taken_list_datetime) - 1][1], (period_taken_list_datetime[len(period_taken_list_datetime) - 1][1] + timedelta(days=365))]
 
-                    period_available = [first_period]
+                #     period_available = [first_period]
     
-                    index = 0
-                    #Finn timabil þar sem bill er laus.
-                    while index <= (len(period_taken_list_datetime) - 2):
-                        available_period = [(period_taken_list_datetime)[index][1], (period_taken_list_datetime)[(index + 1)][0]]
-                        period_available.append(available_period)
-                        index += 1
+                #     index = 0
+                #     #Finn timabil þar sem bill er laus.
+                #     while index <= (len(period_taken_list_datetime) - 2):
+                #         available_period = [(period_taken_list_datetime)[index][1], (period_taken_list_datetime)[(index + 1)][0]]
+                #         period_available.append(available_period)
+                #         index += 1
 
-                    period_available.append(last_period)
+                #     period_available.append(last_period)
 
-                    car_list = find_available_period(period_available, period_wanted_start, period_wanted_end)
+                #     car_list = find_available_period(period_available, period_wanted_start, period_wanted_end)
 
-                    cars_available.append(car_list)
+                #     cars_available.append(car_list)
+                #     print(cars_available)
 
-        return cars_available[0]
-
+        try:
+            return cars_available[0]
+        except:
+            print("No available car")
+            return None
     
