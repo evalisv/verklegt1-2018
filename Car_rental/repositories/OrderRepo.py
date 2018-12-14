@@ -50,7 +50,7 @@ class OrderRepo():
                     
                     
         #Overwrites file with list. New list has every order minus the one canceled.
-        with open('Data/orders.csv', 'w', encoding = "utf-8", lineterminator = "\n") as order_file:
+        with open('Data/orders.csv', 'w', encoding = "utf-8") as order_file:
             csv_writer = csv.writer(order_file)
             for item in update_list:
                 csv_writer.writerow(item)
