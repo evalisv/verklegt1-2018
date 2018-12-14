@@ -109,7 +109,7 @@ class OrderRepo():
 
     
     def find_next_order_number(self):
-        umber_list = []
+        number_list = []
         with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             
             csv_reader = csv.reader(order_file)
