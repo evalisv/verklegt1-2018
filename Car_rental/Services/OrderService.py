@@ -3,6 +3,7 @@ from repositories.CustomerRepo import CustomerRepo
 from repositories.OrderRepo import OrderRepo
 from Services.PriceService import PriceService
 from datetime import datetime
+from datetime import timedelta
 
 
 class OrderService():
@@ -65,6 +66,13 @@ class OrderService():
 
         self.__order_repo.add_order(order)
         pass
+
+    def calculate_return_date(self, pickup_date, nr_days):
+        year, month, day = pickup_date.split(':')
+        pickup_date_datetime = datetime(year, month, day)
+        days = int(nr_days)
+        return_date = (pickup_date_datetime + timedelta(days=days))
+        return return_date
         
 
     def find_available_car(self, category, pick_up_date, return_date):
