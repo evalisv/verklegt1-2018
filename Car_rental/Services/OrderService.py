@@ -59,9 +59,10 @@ class OrderService():
         pick_up_date = input('Enter pick-up date(Y:M:D):')
         number_of_days = input('Enter number of days:')
         insurance = input('Insurance? (Yes/No)')
+        customer_id = input('Enter customer id: ')
         number = input('Enter order number:')
 
-        customer_id = 12345678
+        
 
         order = Order()
         order.category = category
