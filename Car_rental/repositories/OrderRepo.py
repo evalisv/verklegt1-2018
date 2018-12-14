@@ -39,7 +39,7 @@ class OrderRepo():
 
         #Puts every orders into a list, except the one you want to cancel
         update_list = []
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             csv_reader = csv.reader(order_file)
             for row in csv_reader:
                 if row[0] != number:
