@@ -264,7 +264,7 @@ class EmployeeUi:
 
                                 order.customer_id = customer_id
                                 order.insurance = insurance
-                                number = '101'
+                                number = self.__order_service.find_next_order_number()
                                 order.number = number
                                 return_date = self.__order_service.calculate_return_date(pick_up_date, number_of_days)
                                 order.return_date = return_date
