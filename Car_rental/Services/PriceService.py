@@ -38,15 +38,14 @@ class PriceService():
 
 
 
-    def change_price(self, key, key_filter,class_filter):
+    def change_price(self, key, class_filter):
         self.__class_filter = class_filter
         self.__key = key
-        self.__key_filter = key_filter
         match_value = 1
         price_list = self.__price_repo.get_price_list()
         for line in price_list:
-            
-            if line[key_filter] == class_filter:
+            if line["Category"] == class_filter.upper():
+                print(10*"-", "Change Prices", 10*"-", "\n")
                 print(" Information to be changed:", line[key])
                 new_value = input(" Correct information: ")
                 line[key] = new_value
@@ -58,8 +57,9 @@ class PriceService():
 
         if match_value != 1:
             self.__price_repo.change_price(price_list)
+            print("")
             print(" Success! Prices changed")
+            print("")
 
-        pass
                 
 
