@@ -31,7 +31,7 @@ class OrderService():
 
     def find_order(self):
         number = input('Enter order number: ')
-        self.__order_repo.find_order(number)
+        order = self.__order_repo.find_order(number)
         print(order)
 
     def register_new_customer(self, customer):
