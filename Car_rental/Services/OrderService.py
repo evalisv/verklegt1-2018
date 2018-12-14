@@ -41,12 +41,14 @@ class OrderService():
     def register_new_customer(self, customer):
         self.__customer_repo.add_customer(customer)
 
-    def return_car(self, order):
+    def return_car(self):
+        order_number = input('Enter order number: ')
         old_value = order.get_return_date()
         new_value = datetime.today()
-        number = order.get_number()
+        index = 5
         
-        self.__order_repo.change_order(number, old_value, new_value)
+        
+        self.__order_repo.change_order(order_number, index, new_value)
             
         self.__car_repo.change_status(car)
 
