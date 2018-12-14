@@ -17,9 +17,11 @@ class CustomerService():
                 self.__customer_repo.add_customer(new_customer)
                 print()
                 print("Customer successfully registered!")
+                print("")
             else:
                 print()
                 print("Customer registration canceled.")
+                print("")
                 pass
     def is_valid_customer(self, customer):
         self.__customer = customer
@@ -31,7 +33,7 @@ class CustomerService():
 
     def get_customers(self):
         print()
-        print("List of all customers")
+        print(58*"-","List of all customers",59*"-")
         print()
         print(" ","{:<20} {:<40} {:<40} {:<20} {:<20}".format("Customer ID", "Full name", "Email", "Phone", "Country"))
         print("-"*140)
@@ -64,7 +66,7 @@ class CustomerService():
         if match_value != 1:
             self.__customer_repo.change_customer(customer_list)
             print()
-            print(" Success! Customer information has been changed changed from", old_info, "to", new_value)
+            print(" Success! Customer information has been changed from", old_info, "to", new_value)
 
     def find_customer(self, customer_id):
         self.__customer_id = customer_id

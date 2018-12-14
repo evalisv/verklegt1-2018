@@ -54,3 +54,30 @@ class CarService():
             print(" ")
             print(" There are no unavailable cars")
         return
+
+    def details_of_car(self, lp_number):
+        self.__lp_number = lp_number
+        match_value = 1
+        cars_list = self.__car_repo.get_cars_list()
+        for line in cars_list:
+            
+            if line["License Plate Number"] == lp_number:
+                match_value += 1
+                break
+
+        if match_value == 1:
+            # Notify that something wasn't found
+            print()
+            print(" No car found")
+
+
+        if match_value != 1:
+            print(60*"-", "Details of a car", 60*"-")
+            print()
+            print("You found this car:")
+            print()
+            print(" ","{:<30} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format("Licence Plate Number", "Category", "Model", "Brand", "Colour", "Year", "Kilometers", "Status"))
+            print("-"*140)
+            print(" ","{:<30} {:15} {:15} {:<15} {:<15} {:<15} {:<15} {:<15}".format(line["License Plate Number"], line["Category"], line["Model"], line["Brand"], line["Colour"], line["Year"], line["Kilometers"], line["Status"]))
+                
+        

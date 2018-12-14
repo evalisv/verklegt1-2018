@@ -70,7 +70,6 @@ class EmployeeUi:
                         print(indent,"7 | Change price list")
                         print(indent,"8 | Change car registration")
                     print(indent,"b | Go back")
-                    print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
                     print()
                     
@@ -107,7 +106,17 @@ class EmployeeUi:
                     
                     elif action == "4":
                     # See details of a car
-                        pass
+                        action = ""
+                        while action != "q":
+                            lp_number = input("Licence plate number: ")
+                            self.__car_service.details_of_car(lp_number)
+                            print()
+                            print(indent, "b | Go back")
+                            print(indent, "m | Go to Main Menu")
+                            print(indent, "q | Quit")
+                            action = input(" Input letter: ").lower()
+                            self.additional_options(action)
+                        
                                     
                     
                     elif action == "5":
@@ -115,8 +124,9 @@ class EmployeeUi:
                         os.system("cls")
                         action = ""
                         while(action != "q"):    
-                            print(" You can do the following:")
-                            print(30 *"-")
+                            print(9*"-", "Price Menu", 9*"-")
+                            print(" You can do the following:\n")
+
                             print(indent,"1 | See price list")
                             print(indent,"2 | Calculate prices")
                             print(indent,"b | Go back")
@@ -134,18 +144,17 @@ class EmployeeUi:
                                 action = input(" Input number/letter: ")
                                 self.additional_options(action)
                             if action == "2":
-                                print( "Choose class: ")
-                                print(30 *"-")
+                                print(8*"-", "Calculate prices", 8*"-")
+                                print( "Choose class: \n")
+
                                 print(indent,"A | Class A")
                                 print(indent,"B | Class B")
                                 print(indent,"C | Class C")
-                                print(indent,"b | Go back")
-                                print(indent,"m | Go to Main menu")
-                                print(indent,"q | Quit")
-                                print()
+                                print("")
 
                                 
                                 class_filter = input(" Input letter:  ").upper()
+
                                 days = input(" Input number of days: ")
                                 days_int = int(days)
                                 self.__price_service.calculate_price(class_filter, days_int)
@@ -155,6 +164,8 @@ class EmployeeUi:
                                 print(indent,"m | Go to Main menu")
                                 print(indent, "q | Quit")
                                 action = input(" Input letter: ")
+                                if action == "m".lower():
+                                    self.main_menu()
                                 self.additional_options(action)
 
                                 
@@ -171,6 +182,16 @@ class EmployeeUi:
                         status = input(" Status: ")
                         new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
                         self.__car_service.add_car(new_car)
+                        print("")
+                        print(" You have registered a new car!")
+                        print("")
+                        print(indent,"b | Go back")
+                        print(indent,"m | Go to Main menu")
+                        print(indent, "q | Quit")
+                        print("")
+                        action = input(" Input letter: ")
+                        if action == "m".lower():
+                            self.main_menu()
 
                     elif action == "7" and self.access == "admin":
                     #Change price list 
@@ -218,8 +239,8 @@ class EmployeeUi:
                         action = ""
                         while(action != "q"):  
                             os.system("cls")  
-                            print("You can do the following:")
-                            print(30*"-")
+                            print("You can do the following:\n")
+
                             print("1 | Register new customers")  
                             print("2 | Choose customers")
                             print("m | Go to Main menu")
@@ -229,8 +250,8 @@ class EmployeeUi:
 
 
 
-                            print(" You can do the following:")
-                            print(30 *"-")
+                            print(" You can do the following:\n")
+
                             print(indent,"1 | Register new customers")  
                             print(indent,"2 | Choose customers")
                             print(indent,"b | Go back")
@@ -285,24 +306,24 @@ class EmployeeUi:
 
                     elif action == "4":
                     #Change Reservation
-                        print('You can change:')
-                        print('- Number')
-                        print('- Customer')
-                        print('- License Plate Number')
-                        print('- Category')
-                        print('- Pick-up Date')
-                        print('- Return Date')
-                        print('- Price')
-                        print('- Insurance')
-                        order_number = input('Enter Order Number: ')
-                        element_to_change = input('What do you want to change?')
-                        new_value = input('What do you want to change it to?')
+                        print("You can change:\n")
+                        print("- Number")
+                        print("- Customer")
+                        print("- License Plate Number")
+                        print("- Category")
+                        print("- Pick-up Date")
+                        print("- Return Date")
+                        print("- Price")
+                        print("- Insurance")
+                        order_number = input("Enter Order Number: ")
+                        element_to_change = input("What do you want to change?")
+                        new_value = input("What do you want to change it to?")
                         self.__order_service.change_order(order_number, element_to_change, new_value)
                         pass
 
                     elif action == "5":
                     #Cancel Reservation
-                        order_number = input('Enter Order Number: ')
+                        order_number = input("Enter Order Number: ")
                         self.__order_service.cancel_order(order_number)
 
                     if action == "b":
@@ -416,8 +437,8 @@ class EmployeeUi:
                             
                             key_filter = "Customer ID"
                             
-                            print(" You can change the following: ")
-                            print(30 *"-")
+                            print(" You can change the following:\n ")
+
                             print(indent,"1 | First name")
                             print(indent,"2 | Last name")
                             print(indent,"3 | Date of birth")
@@ -469,8 +490,8 @@ class EmployeeUi:
                         while(action != "q"):
                             os.system("cls")
                             
-                            print(" You are about to remove a customer from the system.")
-                            print(30 *"-")
+                            print(" You are about to remove a customer from the system.\n")
+                            
                             
                             customer_filter = input(" Enter customers ID:  ")
 
