@@ -43,7 +43,7 @@ class OrderService():
 
     def return_car(self):
         order_number = input('Enter order number: ')
-        old_value = order.get_return_date()
+        
         new_value = datetime.today()
         index = 5
         
