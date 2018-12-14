@@ -51,7 +51,8 @@ class OrderService():
         self.__car_repo.change_status(car)
 
     def find_next_order_number(self):
-        self.__order_repo.find_next_order_number()
+        number = self.__order_repo.find_next_order_number()
+        return number
 
         
 
