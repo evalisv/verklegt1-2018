@@ -268,11 +268,11 @@ class EmployeeUi:
                                 order.number = number
                                 return_date = self.__order_service.calculate_return_date(pick_up_date, number_of_days)
                                 order.return_date = return_date
-
+                                nr_of_days = int(number_of_days)
                                 available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
                                 order.lp_number = available_car_lp
-                                nr_of_days = int(number_of_days)
-                                price = self.__price_service.calculate_price(category, nr_days)
+                                
+                                price = self.__price_service.calculate_price(category, nr_of_days)
 
                                 order.price = price
                                 self.__order_service.add_order(order)
