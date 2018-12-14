@@ -121,7 +121,10 @@ class OrderRepo():
                     if number.isdigit():
                         number = int(number)
                         number_list.append(number)
-            highest_number = max(number_list)
+            try:
+                highest_number = max(number_list)
+            except:
+                highest_number = 100
             
             next_order_number = highest_number + 1
             

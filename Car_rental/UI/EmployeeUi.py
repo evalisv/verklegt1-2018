@@ -114,11 +114,6 @@ class EmployeeUi:
                     elif action == "4":
                     # See details of a car
                         action = ""
-<<<<<<< HEAD
-                        lp_number = input("Licence plate number: ")
-                        self.__car_service.details_of_car(lp_number)
-                        action = input(" Press enter to go back ")
-=======
                         while action != "q":
                             lp_number = input("Licence plate number: ")
                             self.__car_service.details_of_car(lp_number)
@@ -126,7 +121,6 @@ class EmployeeUi:
                             self.print_options()
                             action = input(" Input letter: ").lower()
                             self.additional_options(action)
->>>>>>> 338d54b2c55a5cb4313cffba1b5b42005773ffc5
                         
                                     
                     
@@ -169,18 +163,12 @@ class EmployeeUi:
                                 days_int = int(days)
                                 self.__price_service.calculate_price(class_filter, days_int)
                                 #os.system("cls")
-<<<<<<< HEAD
-                                action = input(" Press enter to go back ")
-                            self.additional_options(action)
-                        self.additional_options(action)
-=======
                                 print()
                                 self.print_options()
                                 action = input(" Input letter: ")
                                 if action == "m".lower():
                                     self.main_menu()
                                 self.additional_options(action)
->>>>>>> 338d54b2c55a5cb4313cffba1b5b42005773ffc5
 
                                 
                     elif action == "6" and self.access == "admin":
@@ -268,7 +256,6 @@ class EmployeeUi:
 
 
 
-<<<<<<< HEAD
                         #     print(" You can do the following:")
                         #     print(30 *"-")
                         #     print(indent,"1 | Register new customers")  
@@ -277,14 +264,12 @@ class EmployeeUi:
                         #     print(indent,"m | Go to Main menu")
                         #     print(indent,"q | Quit")
                         #     print()
-=======
-                            print(" You can do the following:\n")
+                            # print(" You can do the following:\n")
 
-                            print(indent,"1 | Register new customers")  
-                            print(indent,"2 | Choose customers")
-                            self.print_options()
-                            print()
->>>>>>> 338d54b2c55a5cb4313cffba1b5b42005773ffc5
+                            # print(indent,"1 | Register new customers")  
+                            # print(indent,"2 | Choose customers")
+                            # self.print_options()
+                            # print()
 
                         #     action = input(" Input number/letter: ").lower()
 
