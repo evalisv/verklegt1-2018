@@ -45,8 +45,8 @@ class EmployeeUi:
                     break
                 while(action != "q"):   
                     os.system("cls") 
-                    print(" You can do the following:")
-                    print(30 *"-")
+                    print(9 *"-", " Cars ", 9 *"-")
+                    print(" You can do the following:\n")
                     print(indent,"1 | See Available cars")
                     print(indent,"2 | See Unavailable cars")
                     print(indent,"3 | See List of all cars")
@@ -214,8 +214,8 @@ class EmployeeUi:
                     break
                 while(action != "q"): 
                     os.system("cls")   
-                    print(" You can do the following:")
-                    print(30 *"-")
+                    print(8 *"-", " Orders ", 8 *"-")
+                    print(" You can do the following:\n")
                     print(indent,"1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
                     print(indent,"2 | Calculate Cost of rent")
                     print(indent,"3 | Return cars")
@@ -379,8 +379,8 @@ class EmployeeUi:
                     break
                 while(action != "q" or action == "b"):
                     os.system("cls")
-                    print(" You can do the following:")
-                    print(40 *"-")
+                    print(7 *"-", " Customers ", 7 *"-")
+                    print(" You can do the following:\n")
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
