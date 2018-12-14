@@ -17,15 +17,15 @@ class OrderService():
         self.__customer_repo = CustomerRepo()
         self.__car_repo = CarRepo()
         self.__price_service = PriceService()
+        self.__model_order = Order()
 
     def add_order(self, order):
         self.__order_repo.add_order(order)
     
 
 
-    def cancel_order(self):
-        number = input('Enter order number: ')
-        self.__order_repo.cancel_order(number)
+    def cancel_order(self,order_number):
+        self.__order_repo.cancel_order(order_number)
 
     def change_order(self):
         number = input('Enter number')
@@ -41,16 +41,16 @@ class OrderService():
     def register_new_customer(self, customer):
         self.__customer_repo.add_customer(customer)
 
-    def return_car(self):
-        order_number = input('Enter order number: ')
+    def return_car(self, order_number):
         
         new_value = datetime.today()
         index = 5
         
         
         self.__order_repo.change_order(order_number, index, new_value)
-            
-        self.__car_repo.change_status(car)
+        # car = self.__model_order.get_lp_number
+        # print(car)
+        # self.__car_repo.change_status(car)
 
     def find_next_order_number(self):
         number = self.__order_repo.find_next_order_number()
@@ -86,7 +86,6 @@ class OrderService():
 
         order.price = price
         self.add_order(order)
-        pass
 
     def calculate_return_date(self, pickup_date, nr_days):
         year, month, day = pickup_date.split(':')

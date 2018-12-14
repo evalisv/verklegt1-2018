@@ -58,14 +58,14 @@ class CarRepo:
         return unavailable_cars_list
 
     def change_status(self, car):
-        
         update_list = []
     
-        with open('cars.csv', 'r', encoding = "utf-8", lineterminator = "\n") as cars_file:
+        with open('Data\cars.csv', 'r', encoding = "utf-8") as cars_file:
             csv_reader = csv.reader(cars_file)
             
             for row in csv_reader:
-                if row[0] == car.get_liscence():
+                if row[0] == car.get_lp_number():
+                    
                     change_row = row
                     if change_row[7] == 'Taken':
                         change_row[7] = 'Available'               
