@@ -420,8 +420,7 @@ class EmployeeUi:
                         os.system("cls")
                         self.__customer_service.get_customers()
                         print()
-                        self.print_options()
-                        action = input(" Input letter: ").lower()
+                        action = self.print_options()
                         self.additional_options(action)
 
                         
