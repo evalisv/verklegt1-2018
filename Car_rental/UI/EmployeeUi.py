@@ -250,7 +250,8 @@ class EmployeeUi:
 
                         
                             if action == "1":
-                                self.__order_service.cancel_order()
+                                number = self.__order_service.find_next_order_number()
+                                print(number)
                                 
                                 # Register new customer
                                 os.system("cls")
