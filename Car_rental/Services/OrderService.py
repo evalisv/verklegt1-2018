@@ -23,7 +23,8 @@ class OrderService():
     
 
 
-    def cancel_order(self, number):
+    def cancel_order(self):
+        number = input('Enter order number: ')
         self.__order_repo.cancel_order(number)
 
     def change_order(self):
