@@ -253,7 +253,7 @@ class EmployeeUi:
                                 #Rent a car. henti þessu randomly hérna inn til að komast í það af menu :P
                                 category = input('Enter Category: ')
                                 pick_up_date = input('Enter pick-up date(Y:M:D):')
-                                return_date = input('Enter number of days:')
+                                number_of_days = input('Enter number of days:')
                                 insurance = input('Insurance? (Yes/No)')
 
                                 customer_id = 12345678
@@ -269,7 +269,7 @@ class EmployeeUi:
 
                                 available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
                                 order.lp_number = available_car_lp
-                                nr_days = 10
+                                nr_of_days = int(number_of_days)
                                 price = self.__price_service.calculate_price(category, nr_days)
 
                                 order.price = price
