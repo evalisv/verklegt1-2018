@@ -25,8 +25,11 @@ class CustomerService():
                 pass
     def is_valid_customer(self, customer):
         self.__customer = customer
-
-        return True
+        if customer["Customer ID"] not in self.__customer_repo.__customers:
+            return True
+        else:
+            print("Customer with given Customer ID is already in system.")
+            return False
 
     def get_customers(self):
         print()
@@ -79,10 +82,15 @@ class CustomerService():
                 
         if match_value == 1:
             # Notify that something wasn't found
-            print()
-            print(" No customer found")
+            print(" No customer with given ID found. Do you want to try again?")
+            try_again = input("Y/N: ")
+            if try_again == "y":
+                return False
+            else:
+                return True
         
-        if match_value != 1:
+        
+        elif match_value != 1:
             print()
             print("You found this customer:")
             print()
@@ -109,15 +117,15 @@ class CustomerService():
                 if action == "n":
                     print(" Customer removal canceled")
                     print(" Do you want to try again?")
-                    try_again = input("Y/N")
+                    try_again = input("Y/N: ").lower()
                     if try_again == "y":
                         return False
                     else:
                         return True
         if match_value == 1:
             # Notify that something wasn't found
-            print(" No customer with given ID found.Do you want to try again?")
-            try_again = input("Y/N")
+            print(" No customer with given ID found. Do you want to try again?")
+            try_again = input("Y/N: ")
             if try_again == "y":
                 return False
             else:
