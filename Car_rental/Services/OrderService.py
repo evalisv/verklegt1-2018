@@ -26,8 +26,9 @@ class OrderService():
     def cancel_order(self, number):
         self.__order_repo.cancel_order(number)
 
-    def change_order(self, number, old_value, new_value):
-        self.__order_repo.change_order(number, old_value, new_value)
+    def change_order(self, number, index, new_value):
+        
+        self.__order_repo.change_order(number, index, new_value)
 
     def find_order(self):
         number = input('Enter order number: ')
