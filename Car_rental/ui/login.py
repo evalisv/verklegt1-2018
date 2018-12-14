@@ -1,6 +1,7 @@
 import csv
 
 def login():
+    print(7*"-", " Log In ", 7*"-", "\n")
     print('Please sign in')
     with open("Data/users.csv", encoding="utf-8") as csvfile:
         database = csv.DictReader(csvfile)

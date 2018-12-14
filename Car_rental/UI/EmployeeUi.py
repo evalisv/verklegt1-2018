@@ -22,6 +22,13 @@ class EmployeeUi:
         self.__order_service = OrderService()
         self.access = ""
 
+
+    def print_options(self):
+        print(indent, "b | Go back")
+        print(indent, "m | Go to Main Menu")
+        print(indent, "q | Quit")
+        return()
+
     def additional_options(self,action):
         if action == "m":
             return self.main_menu()
@@ -111,9 +118,7 @@ class EmployeeUi:
                             lp_number = input("Licence plate number: ")
                             self.__car_service.details_of_car(lp_number)
                             print()
-                            print(indent, "b | Go back")
-                            print(indent, "m | Go to Main Menu")
-                            print(indent, "q | Quit")
+                            self.print_options()
                             action = input(" Input letter: ").lower()
                             self.additional_options(action)
                         
@@ -129,9 +134,7 @@ class EmployeeUi:
 
                             print(indent,"1 | See price list")
                             print(indent,"2 | Calculate prices")
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | Quit")
+                            self.print_options()
                             print()
                             print()
 
@@ -160,9 +163,7 @@ class EmployeeUi:
                                 self.__price_service.calculate_price(class_filter, days_int)
                                 #os.system("cls")
                                 print()
-                                print(indent,"b | Go back")
-                                print(indent,"m | Go to Main menu")
-                                print(indent, "q | Quit")
+                                self.print_options()
                                 action = input(" Input letter: ")
                                 if action == "m".lower():
                                     self.main_menu()
@@ -199,9 +200,7 @@ class EmployeeUi:
                         print("")
                         print(" You have registered a new car!")
                         print("")
-                        print(indent,"b | Go back")
-                        print(indent,"m | Go to Main menu")
-                        print(indent, "q | Quit")
+                        self.print_options()
                         print("")
                         action = input(" Input letter: ")
                         if action == "m".lower():
@@ -268,9 +267,7 @@ class EmployeeUi:
 
                             print(indent,"1 | Register new customers")  
                             print(indent,"2 | Choose customers")
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | Quit")
+                            self.print_options()
                             print()
 
                             action = input(" Input number/letter: ").lower()
@@ -419,9 +416,7 @@ class EmployeeUi:
                                 continue
 
                             print()
-                            print(indent, "b | Go back")
-                            print(indent, "m | Go to Main Menu")
-                            print(indent, "q | Quit")
+                            self.print_options()
                             action = input(" Input letter: ").lower()
                             self.additional_options(action)
 
@@ -432,9 +427,7 @@ class EmployeeUi:
                         os.system("cls")
                         self.__customer_service.get_customers()
                         print()
-                        print(indent, "b | Go back")
-                        print(indent, "m | Go to Main Menu")
-                        print(indent, "q | Quit")
+                        self.print_options()
                         action = input(" Input letter: ").lower()
                         self.additional_options(action)
 
@@ -488,9 +481,7 @@ class EmployeeUi:
 
                             if (action != "") and ((action != "m") or (action != "c")):
                                 self.__customer_service.change_customer_info(key, key_filter, customer_filter)
-                            print(indent, "m | Go to Main Menu")
-                            print(indent, "b | Go back")
-                            print(indent, "q | Quit")
+                            self.print_options()
 
                             action = input("Input letter:")
                             self.additional_options(action)
@@ -520,9 +511,7 @@ class EmployeeUi:
 
                             # back er ekki alveg að virka, en það virkar ef það hefur break...
                             
-                            print(indent,"b | Go back")
-                            print(indent,"m | Go to Main menu")
-                            print(indent,"q | Quit")
+                            self.print_options()
                             action = input(" Input letter: ").lower
                             if action == "b":
                                 break
