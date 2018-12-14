@@ -104,8 +104,8 @@ class OrderRepo():
         with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             number_list = []
             csv_reader = csv.DictReader(order_file)
-            for line in csv_reader:
-                number = line['Number']
+            for row in csv_reader:
+                number = row['Number']
                 number_list.append(number)
             highest_number = max(number_list)
             next_order_number = (highest_number + 1)
