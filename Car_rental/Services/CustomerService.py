@@ -28,7 +28,7 @@ class CustomerService():
 
     def get_customers(self):
         print()
-        print("List of all customers")
+        print(58*"-","List of all customers",59*"-")
         print()
         print(" ","{:<20} {:<40} {:<40} {:<20} {:<20}".format("Customer ID", "Full name", "Email", "Phone", "Country"))
         print("-"*140)
