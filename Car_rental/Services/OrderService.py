@@ -72,7 +72,16 @@ class OrderService():
         pickup_date_datetime = datetime(int(year), int(month), int(day))
         days = int(nr_days)
         return_date = (pickup_date_datetime + timedelta(days=days))
-        return return_date
+        return_date = return_date.strftime('%Y/%m/%d')
+        year, month, day = return_date.split('/')
+        if month[0] == '0':
+            month = month[1]
+        if day[0] == '0':
+            day = day[1]
+        return_date_format = year + ':' + month + ':' + day
+        
+        return return_date_format
+        
         
 
     def find_available_car(self, category, pick_up_date, return_date):
