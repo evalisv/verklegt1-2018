@@ -57,14 +57,9 @@ class EmployeeUi:
                 while(action != "q"):   
                     action = ""
                     os.system("cls") 
-<<<<<<< HEAD
-                    print(9 *"-", " Cars ", 9 *"-")
-                    print(" You can do the following:\n")
-=======
                     print(7 *"-", " Cars Menu ", 7 *"-")
                     print(" You can do the following:")
                     print(30 *"-")
->>>>>>> 5f81f855f82650cb87006336d881060878cc8a9e
                     print(indent,"1 | See Available cars")
                     print(indent,"2 | See Unavailable cars")
                     print(indent,"3 | See List of all cars")
@@ -207,14 +202,9 @@ class EmployeeUi:
                 
                 while(action != "q"): 
                     os.system("cls")   
-<<<<<<< HEAD
-                    print(8 *"-", " Orders ", 8 *"-")
-                    print(" You can do the following:\n")
-=======
                     print(7 *"-", " Orders Menu ", 7 *"-")
                     print(" You can do the following:")
                     print(30 *"-")
->>>>>>> 5f81f855f82650cb87006336d881060878cc8a9e
                     print(indent,"1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
                     print(indent,"2 | Calculate Cost of rent")
                     print(indent,"3 | Return cars")
@@ -334,14 +324,9 @@ class EmployeeUi:
 
                 while(action != "q"):
                     os.system("cls")
-<<<<<<< HEAD
-                    print(7 *"-", " Customers ", 7 *"-")
-                    print(" You can do the following:\n")
-=======
                     print(7 *"-", " Customers Menu ", 7 *"-")
                     print(" You can do the following:")
                     print(40 *"-")
->>>>>>> 5f81f855f82650cb87006336d881060878cc8a9e
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -359,14 +344,34 @@ class EmployeeUi:
                     # Register new customer
                         os.system("cls")
                         id_number = input(" Customer ID: ")
+                        while len(id_number) != 10:
+                            id_number = input(" Invalid Customer ID. Customer ID is either Icelandic SSN or Passport number of length 10.\n Please enter a valid Customer ID:  ")
                         first_name = input(" First name: ")
+                        while not first_name.isalpha():
+                            first_name = input(" Invalid first name.\n Please enter a valid first name: ")
                         last_name = input(" Last name: ")
+                        while not last_name.isalpha():
+                            last_name = input(" Invalid last name.\n Please enter a valid last name: ")
                         age = input(" Age: ")
+                        while not age.isdigit():
+                            age = input(" Invalid input, only digits allowed.\n Age: ")
                         country = input(" Country: ")
+                        while not country.isalpha():
+                            country = input(" Invalid input. \n Please enter a valid country: ")
                         email = input(" E-mail: ")
+                        while ("@" and ".")not in email:
+                            email = input(" Invalid E-mail address.\n Please enter a valid E-mail address:  ")
+                            if len(email) <= 6:
+                                email = input(" Invalid E-mail address.\n Please enter a valid E-mail address: ")
                         phone = input(" Phone number: ")
+                        while not phone.isdigit() and len(phone) <= 9:
+                            phone = input(" Invalid phone number. Phone number should only be digits on and must contain country code.\n Please enter a valid Phone number: ")
                         dl_number = input(" Drivers license number: ")
+                        while len(dl_number) <= 8:
+                            dl_number = input("Invalid drivers license number, must me at least 9 letters/digits long.\n Please enter a valid drivers license number: ")
                         cc_number = input(" Credit card number: ")
+                        while not cc_number.isdigit():
+                            cc_number = input("Invalid creditcard number.\n Please enter a valid creditcard number: ")
                         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
 
 
