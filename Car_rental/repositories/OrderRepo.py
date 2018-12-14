@@ -119,6 +119,7 @@ class OrderRepo():
                 else:                 
                     number = row[0]
                     if number.isdigit():
+                        number = int(number)
                         number_list.append(number)
             highest_number = max(number_list)
             
