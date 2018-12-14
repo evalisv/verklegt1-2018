@@ -74,7 +74,7 @@ class OrderService():
         price = self.__price_service.calculate_price_for_order(category, nr_of_days)
 
         order.price = price
-        self.__order_service.add_order(order)
+        self.add_order(order)
         pass
 
     def calculate_return_date(self, pickup_date, nr_days):
