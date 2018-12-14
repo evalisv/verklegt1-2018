@@ -40,7 +40,7 @@ class EmployeeUi:
         while(action != "q"):
             action = ""
             os.system("cls")
-            print(7 *"-", " Main Menu ", 7 *"-")
+            print(9 *"-", " Main Menu ", 9 *"-")
             print(" You can do the following:\n")
             
             print(indent,"1 | Cars")
@@ -57,14 +57,9 @@ class EmployeeUi:
                 while(action != "q"):   
                     action = ""
                     os.system("cls") 
-<<<<<<< HEAD
-                    print(9 *"-", " Cars ", 9 *"-")
-                    print(" You can do the following:\n")
-=======
                     print(7 *"-", " Cars Menu ", 7 *"-")
-                    print(" You can do the following:")
-                    print(30 *"-")
->>>>>>> 5f81f855f82650cb87006336d881060878cc8a9e
+                    print(" You can do the following:\n")
+                    
                     print(indent,"1 | See Available cars")
                     print(indent,"2 | See Unavailable cars")
                     print(indent,"3 | See List of all cars")
@@ -86,6 +81,7 @@ class EmployeeUi:
                         os.system("cls")
                         action = ""
                         self.__car_service.available_cars()
+                       
                         print()
                         action = input(" Press enter to go back ")
                     
@@ -97,14 +93,8 @@ class EmployeeUi:
                         action = ""
                         self.__car_service.unavailable_cars()
                         print()
-                        print(indent,"b | Go back")
-                        print(indent,"m | Go to Main menu")
-                        print(indent,"q | Quit")
-                        print()
-                        
-                        action = input(" Input letter: ").lower()
-
-                        self.additional_options(action)                       
+                        action = input(" Press enter to go back ")
+                                            
                     
                     
                     elif action == "3":
@@ -113,13 +103,7 @@ class EmployeeUi:
                         action = ""
                         self.__car_service.get_cars_list()
                         print()
-                        print(indent,"b | Go back")
-                        print(indent,"m | Go to Main menu")
-                        print(indent,"q | Quit")
-                        print()
-                        action = input(" Input letter: ").lower()
-
-                        self.additional_options(action)
+                        action = input(" Press enter to go back ")
                     
                     elif action == "4":
                     # See details of a car
@@ -195,26 +179,24 @@ class EmployeeUi:
                     elif action == "8" and self.access == "admin":
                     #Change car registration
                         pass
-                    if action == "":
+
+
+                    elif action == "":
                         action = 1
-                    if action == "b":
+                    elif action == "b":
                         self.main_menu()
-                    if action != 1:
+                    elif action != 1:
                         self.additional_options(action)
+                    
 
             elif action == "2":
             # Goes to Orders menu
                 
                 while(action != "q"): 
                     os.system("cls")   
-<<<<<<< HEAD
-                    print(8 *"-", " Orders ", 8 *"-")
+                    print(8 *"-", " Orders Menu ", 9 *"-")
                     print(" You can do the following:\n")
-=======
-                    print(7 *"-", " Orders Menu ", 7 *"-")
-                    print(" You can do the following:")
-                    print(30 *"-")
->>>>>>> 5f81f855f82650cb87006336d881060878cc8a9e
+                    
                     print(indent,"1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
                     print(indent,"2 | Calculate Cost of rent")
                     print(indent,"3 | Return cars")
@@ -334,14 +316,9 @@ class EmployeeUi:
 
                 while(action != "q"):
                     os.system("cls")
-<<<<<<< HEAD
-                    print(7 *"-", " Customers ", 7 *"-")
-                    print(" You can do the following:\n")
-=======
                     print(7 *"-", " Customers Menu ", 7 *"-")
                     print(" You can do the following:")
                     print(40 *"-")
->>>>>>> 5f81f855f82650cb87006336d881060878cc8a9e
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
