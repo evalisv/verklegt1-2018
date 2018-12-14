@@ -373,15 +373,24 @@ class EmployeeUi:
                     elif action == "2":
                     # Find customer
                         action = ""
-                        while action != "q":
+                        while (action != "q"):
+                            os. system("cls")
+
                             customer_id = input("Customer ID: ")
-                            self.__customer_service.find_customer(customer_id)
+                            a = self.__customer_service.find_customer(customer_id)
+                            if a == True:
+                                break
+                            if a == False:
+                                continue
+
                             print()
                             print(indent, "b | Go back")
                             print(indent, "m | Go to Main Menu")
                             print(indent, "q | Quit")
                             action = input(" Input letter: ").lower()
                             self.additional_options(action)
+
+                            
                         
                     elif action == "3":
                     # List all customers
@@ -474,7 +483,7 @@ class EmployeeUi:
                             if a == False:
                                 continue
 
-                            
+                            # back er ekki alveg að virka, en það virkar ef það hefur break...
                             
                             print(indent,"b | Go back")
                             print(indent,"m | Go to Main menu")
@@ -482,6 +491,10 @@ class EmployeeUi:
                             action = input(" Input letter: ").lower
                             self.additional_options(action)
                     
-                    if action == "b" or action == "m":
+
+                    elif action == "":
+                        action = 1
+                    elif action == "b":
                         self.main_menu()
-            
+                    elif action != 1:
+                        self.additional_options(action)
