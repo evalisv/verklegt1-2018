@@ -63,12 +63,12 @@ class OrderService():
 
         order.customer_id = customer_id
         order.insurance = insurance
-        number = self.__order_service.find_next_order_number()
+        number = self.find_next_order_number()
         order.number = number
-        return_date = self.__order_service.calculate_return_date(pick_up_date, number_of_days)
+        return_date = self.calculate_return_date(pick_up_date, number_of_days)
         order.return_date = return_date
         nr_of_days = int(number_of_days)
-        available_car_lp = self.__order_service.find_available_car(category, pick_up_date, return_date)
+        available_car_lp = self.find_available_car(category, pick_up_date, return_date)
         order.lp_number = available_car_lp
                                 
         price = self.__price_service.calculate_price(category, nr_of_days)
