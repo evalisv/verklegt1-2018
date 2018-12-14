@@ -28,10 +28,10 @@ class OrderRepo():
                             'Return Date': return_date, 'Price': price, 'Insurance': insurance})
 
     def find_order(self, number):
-        with open('Data/orders.csv', 'r', encoding = "utf-8", lineterminator = "\n") as order_file:
-            csv_reader = csv.DictReader(order_file)
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
+            csv_reader = csv.reader(order_file)
             for row in csv_reader:
-                if row['Number'] == number:
+                if row[0] == number:
                     return row
 
     
