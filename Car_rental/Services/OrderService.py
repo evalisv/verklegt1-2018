@@ -2,9 +2,14 @@ from repositories.CarRepo import CarRepo
 from repositories.CustomerRepo import CustomerRepo
 from repositories.OrderRepo import OrderRepo
 from Services.PriceService import PriceService
+from Services.CarService import CarService
+from Services.CustomerService import CustomerService
 from datetime import datetime
 from datetime import timedelta
-
+from models.Customer import Customer
+from models.Car import Car
+from models.Order import Order
+from models.Price import Price
 
 class OrderService():
     def __init__(self):
