@@ -27,7 +27,8 @@ class EmployeeUi:
         print(indent, "b | Go back")
         print(indent, "m | Go to Main Menu")
         print(indent, "q | Quit")
-        return()
+        print("")
+        return input(" Input number/letter: ").lower()
 
     def additional_options(self,action):
         if action == "m":
@@ -60,11 +61,9 @@ class EmployeeUi:
 
             if action == "1":
             # Goes to Cars menu
-                
-                while(action != "q"):   
                     action = ""
                     os.system("cls") 
-                    print(7 *"-", " Cars Menu ", 7 *"-")
+                    print(10 *"-", " Cars Menu ", 10*"-")
                     print(" You can do the following:\n")
                     
                     print(indent,"1 | See Available cars")
@@ -112,17 +111,12 @@ class EmployeeUi:
                         action = input(" Press enter to go back ")
                     
                     elif action == "4":
-                    # See details of a car
-                        action = ""
-                        while action != "q":
-                            lp_number = input("Licence plate number: ")
-                            self.__car_service.details_of_car(lp_number)
-                            print()
-                            self.print_options()
-                            action = input(" Input letter: ").lower()
-                            self.additional_options(action)
+                        lp_number = input("Licence plate number: ")
+                        self.__car_service.details_of_car(lp_number)
+                        print()
+                        action = self.print_options()
+                        self.additional_options(action)
                         
-                                    
                     
                     elif action == "5":
                     # See price list
@@ -134,11 +128,8 @@ class EmployeeUi:
 
                             print(indent,"1 | See price list")
                             print(indent,"2 | Calculate prices")
-                            self.print_options()
-                            print()
-                            print()
+                            action = self.print_options()
 
-                            action = input(" Input number/letter: ").lower()
 
                             if action == "1":
                                 self.__price_service.get_price_list()
@@ -193,8 +184,14 @@ class EmployeeUi:
                             self.main_menu()
 
                     elif action == "7" and self.access == "admin":
-                    #Change price list 
-                        pass
+                        #Change price list
+                        action = ""
+                        os.system("cls")   
+                        class_filter = input("Class: ")
+                        key = "Price"
+                        self.__price_service.change_price(key, class_filter)
+                        action = self.print_options()
+                        self.additional_options(action)
 
                     elif action == "8" and self.access == "admin":
                     #Change car registration
