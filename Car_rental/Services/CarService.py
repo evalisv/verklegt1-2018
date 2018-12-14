@@ -15,7 +15,7 @@ class CarService():
 
     def get_cars_list(self):
         print()
-        print("List of all cars")
+        print(21*"-", "List of all cars",21*"-")
         print()
         print(" ", "{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
@@ -29,7 +29,7 @@ class CarService():
 
     def available_cars(self):
         print()
-        print("List of available cars")
+        print(18*"-","List of available cars",18*"-")
         print()
         print(" ","{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
@@ -43,7 +43,7 @@ class CarService():
 
     def unavailable_cars(self):
         print()
-        print("List of unavailable cars")
+        print(17*"-","List of unavailable cars",17*"-")
         print()
         print(" ","{:<15} {:<15} {:<15} {:<15}".format("LP Number", "Model", "Kilometers", "Status"))
         print("-"*60)
