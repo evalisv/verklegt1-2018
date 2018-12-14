@@ -54,6 +54,7 @@ class OrderService():
         pick_up_date = input('Enter pick-up date(Y:M:D):')
         number_of_days = input('Enter number of days:')
         insurance = input('Insurance? (Yes/No)')
+        number = input('Enter order number:')
 
         customer_id = 12345678
 
@@ -63,7 +64,7 @@ class OrderService():
 
         order.customer_id = customer_id
         order.insurance = insurance
-        number = self.find_next_order_number()
+        #number = self.find_next_order_number()
         order.number = number
         return_date = self.calculate_return_date(pick_up_date, number_of_days)
         order.return_date = return_date
