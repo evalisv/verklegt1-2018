@@ -2,8 +2,14 @@ from repositories.CarRepo import CarRepo
 from repositories.CustomerRepo import CustomerRepo
 from repositories.OrderRepo import OrderRepo
 from Services.PriceService import PriceService
+from Services.CarService import CarService
+from Services.CustomerService import CustomerService
 from datetime import datetime
-
+from datetime import timedelta
+from models.Customer import Customer
+from models.Car import Car
+from models.Order import Order
+from models.Price import Price
 
 class OrderService():
     def __init__(self):
@@ -17,54 +23,86 @@ class OrderService():
     
 
 
-    def cancel_order(self, number):
+    def cancel_order(self):
+        number = input('Enter order number: ')
         self.__order_repo.cancel_order(number)
 
-    def change_order(self, number, old_value, new_value):
-        self.__order_repo.change_order(number, old_value, new_value)
+    def change_order(self):
+        number = input('Enter number')
+        index = input('Enter index:')
+        new_value = input('Enter new value')
+        self.__order_repo.change_order(number, index, new_value)
 
-    def find_order(self, number):
-        self.__order_repo.find_order(number)
+    def find_order(self):
+        number = input('Enter order number: ')
+        order = self.__order_repo.find_order(number)
+        print(order)
 
     def register_new_customer(self, customer):
         self.__customer_repo.add_customer(customer)
 
-    def return_car(self, order):
-        old_value = order.get_return_date()
-        new_value = datetime.today()
-        number = order.get_number()
+    def return_car(self):
+        order_number = input('Enter order number: ')
         
-        self.__order_repo.change_order(number, old_value, new_value)
+        new_value = datetime.today()
+        index = 5
+        
+        
+        self.__order_repo.change_order(order_number, index, new_value)
             
         self.__car_repo.change_status(car)
 
-    def find_next_order_number():
-        self.__order_repo.find_next_order_number()
+    def find_next_order_number(self):
+        number = self.__order_repo.find_next_order_number()
+        return number
 
         
 
-    def rent_car(self, order):
-        number = input('Choose order number')
-        category = input('Choose Category: ')
-        pick_up_date = input('Choose pick-up date(Y:M:D)')
-        return_date = input('Choose return date(Y:M:D)')
-        insurance = input('Do you want to buy insurance? (Yes/No)')
+    def rent_car(self):
+        category = input('Enter Category: ')
+        pick_up_date = input('Enter pick-up date(Y:M:D):')
+        number_of_days = input('Enter number of days:')
+        insurance = input('Insurance? (Yes/No)')
+        customer_id = input('Enter customer id: ')
+        #number = input('Enter order number:')
 
-        customer_id = self.__customer_repo.get_customer_id()
+        
 
-        self.__order_repo.__category = category
-        self.__order_repo.__pickup_date = pick_up_date
-        self.__order_repo.__return_date = return_date
-        self.__order_repo.__customer_id = customer_id
-        self.__order_repo.__insurance = insurance
+        order = Order()
+        order.category = category
+        order.pickup_date = pick_up_date
 
-        self.find_available_car(category, pick_up_date, return_date)
-        self.__price_service.calculate_price(order)
+        order.customer_id = customer_id
+        order.insurance = insurance
+        #number = self.find_next_order_number()
+        order.number = self.find_next_order_number()
+        return_date = self.calculate_return_date(pick_up_date, number_of_days)
+        order.return_date = return_date
+        nr_of_days = int(number_of_days)
+        available_car_lp = self.find_available_car(category, pick_up_date, return_date)
+        order.lp_number = available_car_lp
+                                
+        price = self.__price_service.calculate_price_for_order(category, nr_of_days)
 
-        order.__price = price
-
-        self.__order_repo.add_order(order)
+        order.price = price
+        self.add_order(order)
         pass
+
+    def calculate_return_date(self, pickup_date, nr_days):
+        year, month, day = pickup_date.split(':')
+        pickup_date_datetime = datetime(int(year), int(month), int(day))
+        days = int(nr_days)
+        return_date = (pickup_date_datetime + timedelta(days=days))
+        return_date = return_date.strftime('%Y/%m/%d')
+        year, month, day = return_date.split('/')
+        if month[0] == '0':
+            month = month[1]
+        if day[0] == '0':
+            day = day[1]
+        return_date_format = year + ':' + month + ':' + day
+        
+        return return_date_format
+        
         
 
     def find_available_car(self, category, pick_up_date, return_date):
@@ -99,9 +137,8 @@ class OrderService():
 
         cars_in_orders = self.__order_repo.cars_in_orders(category)
 
-        cars_in_orders_list = []
-        for key, value in cars_in_orders:
-            cars_in_orders_list.append(key)
+        cars_in_orders_list = list(cars_in_orders.keys())
+        
 
 
 
