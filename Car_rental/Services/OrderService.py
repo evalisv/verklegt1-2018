@@ -71,7 +71,7 @@ class OrderService():
         available_car_lp = self.find_available_car(category, pick_up_date, return_date)
         order.lp_number = available_car_lp
                                 
-        price = self.__price_service.calculate_price(category, nr_of_days)
+        price = self.__price_service.calculate_price_for_order(category, nr_of_days)
 
         order.price = price
         self.__order_service.add_order(order)
