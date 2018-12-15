@@ -127,7 +127,6 @@ class EmployeeUi:
                         print(9*"-", "Price Menu", 9*"-")
                         print(" You can do the following:\n")
 
-<<<<<<< HEAD
 
                     if action == "1":
                         self.__price_service.get_price_list()
@@ -143,8 +142,6 @@ class EmployeeUi:
                         print(indent,"C | Class C")
                         print("")
 
-=======
->>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb
                         if action == "1":
                             os.system("cls")
                             self.__price_service.get_price_list()
@@ -155,7 +152,7 @@ class EmployeeUi:
                             print(8*"-", "Calculate prices", 8*"-")
                             print( "Choose class: \n")
 
-<<<<<<< HEAD
+
                         days = input(" Input number of days: ")
                         days_int = int(days)
                         self.__price_service.calculate_price(class_filter, days_int)
@@ -166,8 +163,7 @@ class EmployeeUi:
                         if action == "m".lower():
                             self.main_menu()
                         self.additional_options(action)
-=======
-<<<<<<< HEAD
+
                             if action == "1":
                                 os.system("cls")
                                 self.__price_service.get_price_list()
@@ -177,14 +173,11 @@ class EmployeeUi:
                                 os.system("cls")
                                 print(8*"-", "Calculate prices", 8*"-")
                                 print( "Choose class: \n")
-=======
+
                                 
                             class_filter = input(" Input letter:  ").upper()
-<<<<<<< HEAD
-=======
->>>>>>> 183b8b6312019cd5112f3b1fdf4fb966611846d9
 
->>>>>>> 20776e78b719160ccd8ca720bc1e851b066ca1f4
+
                             days = input(" Input number of days: ")
                             days_int = int(days)
                             os.system("cls")
@@ -194,7 +187,6 @@ class EmployeeUi:
                             if action == "m".lower():
                                 self.main_menu()
                             self.additional_options(action)
->>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb
 
                                 
                 elif action == "6" and self.access == "admin":

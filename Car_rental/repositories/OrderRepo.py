@@ -2,11 +2,11 @@ import csv
 from models.Order import Order
 from datetime import datetime
 
-date_format = "%m:%d:%Y"
+date_format = "%d.%m.%y"
 
 class OrderRepo():
     def __init__(self):
-        self.__order = []
+        self.__orders_list = []
 
     def add_order(self, order):
         with open('Data/orders.csv', 'a+', encoding = "utf-8") as order_file:
@@ -35,23 +35,25 @@ class OrderRepo():
                 if row[0] == number:
                     return row
 
+    def get_order_list(self):
+        with open ("Data/orders.csv", "r", encoding = "utf-8") as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            for line in csv_reader:
+                if line not in self.__orders_list:
+                    self.__orders_list.append(line)
+        return self.__orders_list
     
     def cancel_order(self, number):
-
         #Puts every orders into a list, except the one you want to cancel
         update_list = []
         with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
             csv_reader = csv.reader(order_file)
             for row in csv_reader:
-                if row == []:
-                    pass
-                else:
-                    if row[0] != number:
-                        update_list.append(row)
-                    
-                    
+                if row["Number"] != number:
+                    update_list.append(row)
+                 
         #Overwrites file with list. New list has every order minus the one canceled.
-        with open('Data/orders.csv', 'w', encoding = "utf-8", newline = '') as order_file:
+        with open('Data/orders.csv', 'w', encoding = "utf-8", lineterminator = "\n") as order_file:
             csv_writer = csv.writer(order_file)
             for item in update_list:
                 csv_writer.writerow(item)

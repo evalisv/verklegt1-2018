@@ -97,7 +97,17 @@ class OrderService():
         
 
     def find_available_car(self, category, pickup_date, return_date):
-        
+        available_car_list = []
+        car_list = self.__car_repo.get_cars_list()
+        order_list = self.__order_repo.get_order_list()
+
+        for car in car_list:
+            for order in order_list:
+                if car in order_list and ((car["Return Date"] < order["Pick-up Date"]) and car["Pick-up Date"] > order["Return Date"]) and car not in available_car_list:
+                    available_car_list.append(car)
+
+
+
         year, month, day = pickup_date.split('.')
         pickup_date_datetime = datetime(int(day), int(month),int(year))
         year, month, day = return_date.split('.')
@@ -127,6 +137,7 @@ class OrderService():
 ###################################################################################
 ######################### Bannsvæði hér að neðan! #################################
 ################################# grín?? ##########################################
+############################ Fúlasta alvara #######################################
 
 
         # #Breytir pick-up date og return date í datetime.
