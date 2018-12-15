@@ -14,28 +14,6 @@ class PriceService():
             print("  ", "{:<15} {:<20} {:<20}".format(line["Category"], line["Price"], line["Insurance"]))
         return
 
-    def calculate_price(self, class_filter, days_int):
-        self.__class_filter = class_filter
-        self.__days_int = days_int
-        price_list = self.__price_repo.get_price_list()
-        vat = float(1.24)
-        total_price = ""
-        for line in price_list:
-            if line["Category"] == class_filter:
-                price = line["Price"]
-                insurance = line["Insurance"]
-                price_int = int(price)
-                insurance_int = int(insurance)
-                total_price = (price_int * days_int)
-                total_price_with_vat = int(total_price * vat)
-                total_price_with_insurance = int(total_price_with_vat + insurance_int)
-        print()
-        print(10*"-", "Calculate prices", 10*"-", "\n")
-        print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
-        print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
-        print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
-        return None
-
 
     def calculate_price_for_order(self, class_filter, days_int, with_insurance):
         self.__class_filter = class_filter
@@ -56,12 +34,7 @@ class PriceService():
             return total_price_with_insurance
         elif with_insurance in ["N", "n"]:
             return total_price_with_vat
-        print()
-        print(10*"-", "Calculate prices", 10*"-", "\n")
-        print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
-        print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
-        if insurance in ["Y", "y"]:
-            print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
+        
         
     def calculate_price(self, class_filter, days_int):
         self.__class_filter = class_filter

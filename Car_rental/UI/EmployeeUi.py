@@ -213,7 +213,7 @@ class EmployeeUi:
                     self.main_menu()
                 elif action != 1:
                     self.additional_options(action)
-                    
+                  
 
             elif action == "2":
             # Goes to Orders menu
@@ -226,9 +226,8 @@ class EmployeeUi:
                     print(indent,"1 | Rent cars") # ætti að koma valmöguleik að register new customers OR choose customers 
                     print(indent,"2 | Calculate Cost of rent")
                     print(indent,"3 | Return cars")
-                    print(indent,"4 | Change Reservation")
-                    print(indent,"5 | Cancel Reservation")
-                    print(indent,"6 | See list of all orders")
+                    print(indent,"4 | Cancel Reservation")
+                    print(indent,"5 | See list of all orders")
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
                     print()
@@ -248,7 +247,10 @@ class EmployeeUi:
                         insurance = input("Do you want extra insurance? Y/N? :").upper()
                         new_order = Order(number, customer_id, lp_number, category, pickup_date, return_date, price, insurance, actual_return_date)
                         self.__order_service.rent_car(new_order)
-
+                        
+                        action = self.print_options()
+                        
+                        self.additional_options(action)
 
                         #Hér þarf að taka til hendinni og laga virknina. 
                         #Skref 1 er að stimpla inn kennitölu, ef hún er ekki á skrá þá þarf að skrá viðskiptavin
@@ -355,35 +357,54 @@ class EmployeeUi:
                         pass
 
                     elif action == "3":
-                    #Return Cars
+                        #Return Cars
                         order_number = input('Enter Order Number: ')
                         self.__order_service.return_car(order_number)
+
+                        action = self.print_options()
+                        
+                        self.additional_options(action)
                         pass
+
+                    # elif action == "4":
+                    # #Change Reservation
+
+                    #     order_filter = input("Enter Order Number: ")
+                    #     while not order_filter.isdigit():
+                    #         order_filter = input("Please enter valid order number: ")
+
+                        
+                    #     print("You can change:\n")
+                    #     print(indent,"1 | Pick-up Date")
+                    #     print(indent,"2 | Return Date")
+                    #     print(indent,"c | Cancel")
+                    #     print(indent,"q | Quit")
+
+                    #     action = input("What do you want to change?: ")
+                    #     while action not in ["1", "2"]:
+                    #         action = input("Invalid input. Enter 1 or 2: ")
+                        
+                    #     key_filter = "Number"
+                        
+                    #     if action == "1":
+                    #         key = "Pick-up Date"
+                    #     elif action == "2":
+                    #         key = "Return Date"
+                    #     if (action != "") and ((action != "m") or (action != "c")):
+                    #         self.__order_service.change_order(key, key_filter, order_filter)
+
+                    #     self.print_options()
+
+                    #     action = input("Input letter: ")
+                    #     self.additional_options(action)
 
                     elif action == "4":
-                    #Change Reservation
-                        print("You can change:\n")
-                        print("- Number")
-                        print("- Customer")
-                        print("- License Plate Number")
-                        print("- Category")
-                        print("- Pick-up Date")
-                        print("- Return Date")
-                        print("- Price")
-                        print("- Insurance")
-                        order_number = input("Enter Order Number: ")
-                        element_to_change = input("What do you want to change?")
-                        new_value = input("What do you want to change it to?")
-                        self.__order_service.change_order(order_number, element_to_change, new_value)
-                        pass
-
-                    elif action == "5":
                     #Cancel Reservation
                         order_number = input("Enter Order Number: ")
                         self.__order_service.cancel_order(order_number)
 
                     
-                    elif action == "6":
+                    elif action == "5":
                         #See list of all orders
                         os.system("cls")
                         action = ""
@@ -395,6 +416,8 @@ class EmployeeUi:
                             self.main_menu()
                             self.additional_options(action)
 
+                    
+                    self.additional_options(action)
 
 
             elif action == "3":

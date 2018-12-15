@@ -23,15 +23,76 @@ class OrderService():
     def add_order(self, order):
         self.__order_repo.add_order(order)
     
+    def get_orders(self):
+        print()
+        print(45*"-","List of all orders",45*"-")
+        print()
+        print(" ","{:<20} {:<20} {:<20} {:<20}".format("Customer", "License Plate Number", "Pick-up Date", "Return Date"))
+        print("-"*120)
+        for line in self.__order_repo.get_list_of_orders():
+            print(" ","{:<20} {:<20} {:<20} {:<20}".format(line["Customer"], line["License Plate Number"], line["Pick-up Date"], line["Return Date"]))
+        return
 
-    def cancel_order(self,order_number):
-        self.__order_repo.cancel_order(order_number)
+    def cancel_order(self, order_filter):
+        
+        self.__order_filter = order_filter
+        match_value = 1
+        order_list = self.__order_repo.get_list_of_orders()
+        for line in order_list:
+            
+            if line["Number"] == order_filter:
+                print(" Order to be removed:", line["Number"])
+                match_value += 1
+                print(" Confirm removal?")
+                action = input( "Y/N: ").lower()
+                if action == "y":
+                    order_list.remove(line)
+                if action == "n":
+                    print(" Order removal canceled")
+                    print(" Do you want to try again?")
+                    try_again = input("Y/N: ").lower()
+                    if try_again == "y":
+                        return False
+                    else:
+                        return True
+        if match_value == 1:
+            # Notify that something wasn't found
+            print(" No order with given number found. Do you want to try again?")
+            try_again = input("Y/N: ")
+            if try_again == "y":
+                return False
+            else:
+                return True
+        if match_value != 1 and action =="y":
+            self.__order_repo.cancel_order(order_list)
+            print(" Success! Order has been removed from the system")
+            return True
 
-    def change_order(self):
-        number = input('Enter number')
-        index = input('Enter index:')
-        new_value = input('Enter new value')
-        self.__order_repo.change_order(number, index, new_value)
+    def change_order(self, key_filter, order_filter, key):
+        self.__key_filter = key_filter
+        self.__key = key
+        self.__order_filter = order_filter
+        match_value = 1
+        order_list = self.__order_repo.get_list_of_orders()
+        for line in order_list:
+            
+            if line[key_filter] == order_filter:
+                print()
+                print(" Information to be changed:", line[key])
+                new_value = input(" Correct information: ")
+                old_info = line[key]
+                line[key] = new_value
+                match_value += 1
+                
+        if match_value == 1:
+            # Notify that something wasn't found
+            print()
+            print(" No order found")
+
+        if match_value != 1:
+            self.__order_repo.change_order(order_list)
+            print()
+            print(" Success! Order information has been changed from", old_info, "to", new_value)
 
     def find_order(self):
         number = input('Enter order number: ')
@@ -42,18 +103,12 @@ class OrderService():
         self.__customer_repo.add_customer(customer)
 
     def return_car(self, order_number):
-        actual_return_date = str(date.today().strftime("%d.%m.%Y"))
-
         
+        new_value = datetime.today()
         index = 8
         
         
-        self.__order_repo.change_order(order_number, index, actual_return_date)
-        # car = self.__model_order.get_lp_number
-        # print(car)
-        # self.__car_repo.change_status(car)
-
-
+        self.__order_repo.return_car(order_number, index, new_value)
     # virkar
     def find_next_order_number(self):
         number = self.__order_repo.find_next_order_number()
@@ -61,7 +116,7 @@ class OrderService():
 
 
     def rent_car(self, new_order):
-        print(new_order)
+        
 
         number, customer_id, lp_number, category, pickup_date, return_date, price, insurance, actual_return_date = str(new_order).split(",")
         #number = '', customer_id = '', lp_number = '', category = '', pickup_date = '', return_date = '', price = '', insurance = ''
@@ -106,7 +161,7 @@ class OrderService():
         
         available_car_list = []
         car_list = self.__car_repo.get_cars_list()
-        order_list = self.__order_repo.get_order_list()
+        order_list = self.__order_repo.get_list_of_orders()
 
         for car in car_list:
             for order in order_list:
@@ -127,8 +182,7 @@ class OrderService():
         car_list = self.__car_repo.get_cars_list()
         cars_in_category = [car for car in car_list if car["Category"] == category]
         lp_in_category = [str(car["License Plate Number"]) for car in car_list if car["Category"] == category]
-        print("cars_in_category")
-        print(cars_in_category)
+        
 
 
             
@@ -138,10 +192,9 @@ class OrderService():
         cars_available = []
         
         for order in list_of_orders:
-            print("order")
-            print(order)
+            
             lp_number = str(order[0])
-            print(lp_number)
+            
             order_pickup = order[1]
             order_return = order[2]
             day, month, year = order_pickup.split('.')
@@ -154,8 +207,7 @@ class OrderService():
         for car in lp_in_category:
             if car not in cars_taken:
                 cars_available.append(car)
-        print("cars available")
-        print(cars_available)
+        
         # cars_in_orders_list = list(cars_in_orders.keys())
         # print(cars_in_orders_list)
         # if len(cars_in_orders) == 0:
@@ -168,17 +220,9 @@ class OrderService():
         except:
             print("No car available")
 
-"""  def get_orders(self): ÞETTA ER TILBÚIÐ EN FALIÐ ÚTAF JÖKULL ER AÐ VINNA Í ÞESSU SKJALI LÍKA
-        print()
-        print(58*"-","List of all orders",59*"-")
-        print()
-        print(" ","{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}".format("Number", "LP Number", "Category", "Pick-up Date", "Return Date", "Price", "Insurance"))
-        print("-"*140)
-        for line in self.__order_repo.get_orcer_list():
-            print(" ","{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}".format(line["Number"], full_name, line["LP Number"], line["Category"], line["Pick-up Date"], line ["Return Date"], ["Price"], ["Insurance"]))
-        return
-
-"""
+    
+   
+    
 
 
 

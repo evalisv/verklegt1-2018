@@ -1,6 +1,6 @@
 License Plate Number,Category,Brand,Model,Colour,Year,Kilometers,Status
-ERF78,A,Hyundai,i10,Red,2016,37000,Available
-HLE12,A,Hyundai,i10,Blue,2018,12000,Available
+ERF78,A,Hyundai,i10,Red,2016,37000,Unavailable
+HLE12,A,Hyundai,i10,Blue,2018,12000,Unavailable
 KIP99,A,Pugeot,108,White,2017,23000,Available
 MEF34,A,Toyota,Aygo,Silver,2018,8000,Available
 JUX87,B,Honda,Accord,Blue,2016,37000,Available
@@ -11,4 +11,4 @@ KJH23,C,Dacia,Duster,Black,2016,37000,Available
 ROK77,C,Toyota,Land Cruiser,Silver,2018,12000,Available
 TRI32,C,Hyundai,Tucson,Red,2017,23000,Available
 FDS67,C,Nissan,Qashqai,Blue,2018,8000,Available
-kn031,A,Opel,astra,White,2010,200000,Unavailable
+
