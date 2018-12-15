@@ -19,12 +19,11 @@ class OrderService():
         self.__customer_repo = CustomerRepo()
         self.__car_repo = CarRepo()
         self.__price_service = PriceService()
-        self.__model_order = Order()
+        
 
     def add_order(self, order):
         self.__order_repo.add_order(order)
     
-
 
     def cancel_order(self,order_number):
         self.__order_repo.cancel_order(order_number)
@@ -100,11 +99,29 @@ class OrderService():
         
 
     def find_available_car(self, category, pickup_date, return_date):
+<<<<<<< HEAD
         
         day, month, year = pickup_date.split('.')
         pickup_date_datetime = datetime(int(year), int(month),int(day))
         day, month, year = return_date.split('.')
         return_date_datetime = datetime(int(year), int(month),int(day))
+=======
+        available_car_list = []
+        car_list = self.__car_repo.get_cars_list()
+        order_list = self.__order_repo.get_order_list()
+
+        for car in car_list:
+            for order in order_list:
+                if car in order_list and ((car["Return Date"] < order["Pick-up Date"]) and car["Pick-up Date"] > order["Return Date"]) and car not in available_car_list:
+                    available_car_list.append(car)
+
+
+
+        year, month, day = pickup_date.split('.')
+        pickup_date_datetime = datetime(int(day), int(month),int(year))
+        year, month, day = return_date.split('.')
+        return_date_datetime = datetime(int(day), int(month),int(year))
+>>>>>>> 98b60234a3b6e9fa4c6f0a9d7abb57d9bd78bbd4
 
 
 
@@ -154,11 +171,25 @@ class OrderService():
         except:
             print("No car available")
 
+"""  def get_orders(self): ÞETTA ER TILBÚIÐ EN FALIÐ ÚTAF JÖKULL ER AÐ VINNA Í ÞESSU SKJALI LÍKA
+        print()
+        print(58*"-","List of all orders",59*"-")
+        print()
+        print(" ","{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}".format("Number", "LP Number", "Category", "Pick-up Date", "Return Date", "Price", "Insurance"))
+        print("-"*140)
+        for line in self.__order_repo.get_orcer_list():
+            print(" ","{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}".format(line["Number"], full_name, line["LP Number"], line["Category"], line["Pick-up Date"], line ["Return Date"], ["Price"], ["Insurance"]))
+        return
+
+"""
+
+
 
 
 ###################################################################################
 ######################### Bannsvæði hér að neðan! #################################
 ################################# grín?? ##########################################
+############################ Fúlasta alvara #######################################
 
 
         # #Breytir pick-up date og return date í datetime.
