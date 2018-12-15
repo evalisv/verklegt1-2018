@@ -237,12 +237,16 @@ class EmployeeUi:
 
                     if action == "1":
                     #Rent cars and ther under 
+                        number = 0
+                        price = 0
+                        lp_number = " "
                         customer_id = input("Input customer id: ")
-                        category = input("Input category: ")
+                        category = input("Input category: ").upper()
                         pickup_date = input("Input pickup date (dd.mm.yyyy): ")
                         return_date = input("Input return date (dd.mm.yyyy): ")
-                        insurance = input("Do you want extra insurance? Y/N? :")
-                        self.__order_service.rent_car(category, pickup_date, return_date, insurance, customer_id)
+                        insurance = input("Do you want extra insurance? Y/N? :").upper()
+                        new_order = Order(number, customer_id, lp_number, category, pickup_date, return_date, price, insurance)
+                        self.__order_service.rent_car(new_order)
 
 
                         #Hér þarf að taka til hendinni og laga virknina. 

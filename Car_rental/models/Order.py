@@ -1,18 +1,18 @@
 class Order:
     
     def __init__(self, number, customer_id, lp_number, category, pickup_date, return_date, price, insurance):
-        self.number = number
-        self.customer_id = customer_id
-        self.lp_number = lp_number
-        self.category = category
-        self.pickup_date = pickup_date
-        self.return_date = return_date
-        self.price = price
-        self.insurance = insurance
+        self.__number = number
+        self.__customer_id = customer_id
+        self.__lp_number = lp_number
+        self.__category = category
+        self.__pickup_date = pickup_date
+        self.__return_date = return_date
+        self.__price = price
+        self.__insurance = insurance
 
     def __str__(self):
-        return "{},{},{},{},{},{},{},".format(
-            self.__number, self.__customer_id, self.__lp_number, self.__pickup_date, self.__return_date, self.__price, self.__insurance)
+        return "{},{},{},{},{},{},{},{}".format(
+            self.__number, self.__customer_id, self.__lp_number, self.__category, self.__pickup_date, self.__return_date, self.__price, self.__insurance)
 
     def get_order_number(self):
         return self.__number

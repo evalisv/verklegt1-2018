@@ -19,7 +19,6 @@ class OrderService():
         self.__customer_repo = CustomerRepo()
         self.__car_repo = CarRepo()
         self.__price_service = PriceService()
-        
 
     def add_order(self, order):
         self.__order_repo.add_order(order)
@@ -60,27 +59,27 @@ class OrderService():
         return number
 
 
-    def rent_car(self, category, pickup_date, return_date, insurance, customer_id):
+    def rent_car(self, new_order):
+        print(new_order)
+
+        number, customer_id, lp_number, category, pickup_date, return_date, price, insurance = str(new_order).split(",")
         #number = '', customer_id = '', lp_number = '', category = '', pickup_date = '', return_date = '', price = '', insurance = ''
-        order = Order()
-        order.__category = category
-        order.__pickup_date = pickup_date
-        order.__return_date = return_date
-        order.__customer_id = customer_id
-        order.__insurance = insurance
+        # self.__order_repo.__category = category
+        # self.__order_repo.__pickup_date = pickup_date
+        # self.__order_repo.__return_date = return_date
+        # self.__order_repo.__customer_id = customer_id
+        # self.__order_repo.__insurance = insurance
+        # self.__order_repo.number = self.find_next_order_number()
         days = self.number_of_days(pickup_date, return_date)
-        order.number = self.find_next_order_number()
-        
-
-        
-        
+        number = self.find_next_order_number()
         available_car_lp = self.find_available_car(category, pickup_date, return_date)
-        order.lp_number = available_car_lp
+        lp_number = available_car_lp
                                 
-        price = self.__price_service.calculate_price(category, days, insurance)
+        price = self.__price_service.calculate_price_for_order(category, days, insurance)
+        order = Order(number, customer_id, lp_number, category, pickup_date, return_date, price, insurance)
+        self.__order_repo.price = price
+        self.__order_repo.add_order(order)
 
-        order.price = price
-        self.add_order(order)
 
 
 
@@ -99,6 +98,12 @@ class OrderService():
         
 
     def find_available_car(self, category, pickup_date, return_date):
+       
+        day, month, year = pickup_date.split('.')
+        pickup_date_datetime = datetime(int(year), int(month),int(day))
+        day, month, year = return_date.split('.')
+        return_date_datetime = datetime(int(year), int(month),int(day))
+        
         available_car_list = []
         car_list = self.__car_repo.get_cars_list()
         order_list = self.__order_repo.get_order_list()
@@ -109,19 +114,19 @@ class OrderService():
                     available_car_list.append(car)
 
 
+        # Merg13:00
+        #  day, month, year = pickup_date.split('.')
+        # pickup_date_datetime = datetime(int(year), int(month),int(day))
+        # day, month, year = return_date.split('.')
+        # return_date_datetime = datetime(int(year), int(month),int(day))
 
-        day, month, year = pickup_date.split('.')
-        pickup_date_datetime = datetime(int(year), int(month),int(day))
-        day, month, year = return_date.split('.')
-        return_date_datetime = datetime(int(year), int(month),int(day))
-
-
+        # car.get_category()
 
 
         #Bý til lista af öllum bilum í réttu category og bilum í pöntunum.
         car_list = self.__car_repo.get_cars_list()
-        cars_in_category = [car for car in car_list if car.get_category() == category]
-        lp_in_category = [str(car.get_lp_number()) for car in car_list if car.get_category() == category]
+        cars_in_category = [car for car in car_list if car["Category"] == category]
+        lp_in_category = [str(car["License Plate Number"]) for car in car_list if car["Category"] == category]
         print("cars_in_category")
         print(cars_in_category)
 

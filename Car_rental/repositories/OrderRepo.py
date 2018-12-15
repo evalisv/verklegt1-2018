@@ -21,7 +21,7 @@ class OrderRepo():
 
             fieldnames = ["Number", "Customer", "License Plate Number", "Category", "Pick-up Date", "Return Date", "Price", "Insurance"]
 
-            csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames)
+            csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames, lineterminator = "\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             
             csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number,
