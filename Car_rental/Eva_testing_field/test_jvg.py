@@ -1,6 +1,8 @@
-my_dict = {'ABC12': [['16.12.2018', '20.12.2018'], ['16.12.2018', '20.12.2018'], ['15.12.2018', '16.12.2018'],
- ['16.12.2018', '20.12.2018'], ['16.12.2018', '20.12.2018'], ['16.12.2018', '20.12.2018']],
-  'ERF78': [['16.12.2018', '23.12.2018'], ['12.12.2015', '16.12.2017']]}
+from datetime import date
 
-list_of_cars = ["ABC12", "ERF78"]
+# dagurinn = str(date.today()).split("-")
+# year, month, day = dagurinn
 
+# print(year, month, day)
+day_of_return = str(date.today().strftime("%d.%m.%Y"))
+print(day_of_return)

@@ -18,15 +18,17 @@ class OrderRepo():
             return_date = order.get_return_date()
             price = order.get_price()
             insurance = order.get_insurance()
+            actual_day_of_return = order.get_actual_return_date()
 
-            fieldnames = ["Number", "Customer", "License Plate Number", "Category", "Pick-up Date", "Return Date", "Price", "Insurance"]
+            fieldnames = ["Number", "Customer", "License Plate Number", "Category",
+             "Pick-up Date", "Return Date", "Price", "Insurance", "Actual day of return"]
 
             csv_writer = csv.DictWriter(order_file, fieldnames=fieldnames, lineterminator = "\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
             
             csv_writer.writerow({'Number': number, 'Customer': customer_id, 'License Plate Number': lp_number,
                              'Category': category, 'Pick-up Date': pickup_date,
-                            'Return Date': return_date, 'Price': price, 'Insurance': insurance})
+                            'Return Date': return_date, 'Price': price, 'Insurance': insurance, "Actual day of return" : actual_day_of_return})
 
     def find_order(self, number):
         with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
@@ -58,7 +60,7 @@ class OrderRepo():
             for item in update_list:
                 csv_writer.writerow(item)
 
-    def change_order(self, order, index, new_value):
+    def change_order(self, order, index, actual_return_date):
         
         
         #Same as cancel order, except the order is modified and then added to the update_list.
@@ -71,7 +73,7 @@ class OrderRepo():
                 else:
                     if row[0] == order:
                         index = int(index)
-                        row[index] = new_value
+                        row[index] = actual_return_date
                         update_list.append(row)
                     else:
                         update_list.append(row)
