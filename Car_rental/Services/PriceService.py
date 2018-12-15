@@ -39,6 +39,7 @@ class PriceService():
     def calculate_price(self, class_filter, days_int):
         self.__class_filter = class_filter
         self.__days_int = days_int
+        
         price_list = self.__price_repo.get_price_list()
         vat = float(1.24)
         total_price = ""
@@ -56,8 +57,8 @@ class PriceService():
         print(10*"-", "Calculate prices", 10*"-", "\n")
         print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
         print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
-        if insurance in ["Y", "y"]:
-            print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
+        
+        print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
 
 
 

@@ -27,10 +27,10 @@ class OrderService():
         print()
         print(45*"-","List of all orders",45*"-")
         print()
-        print(" ","{:<20} {:<20} {:<20} {:<20}".format("Customer", "License Plate Number", "Pick-up Date", "Return Date"))
-        print("-"*120)
+        print(" ","{:<20} {:<20} {:<20} {:<20} {:<20}".format("Number", "Customer", "LP Number", "Pick-up Date", "Return Date"))
+        print("-"*110)
         for line in self.__order_repo.get_list_of_orders():
-            print(" ","{:<20} {:<20} {:<20} {:<20}".format(line["Customer"], line["License Plate Number"], line["Pick-up Date"], line["Return Date"]))
+            print(" ","{:<20} {:<20} {:<20} {:<20} {:<20}".format(line["Number"], line["Customer"], line["License Plate Number"], line["Pick-up Date"], line["Return Date"]))
         return
 
     def cancel_order(self, order_filter):
@@ -94,10 +94,29 @@ class OrderService():
             print()
             print(" Success! Order information has been changed from", old_info, "to", new_value)
 
-    def find_order(self):
-        number = input('Enter order number: ')
-        order = self.__order_repo.find_order(number)
-        print(order)
+    def find_order(self, order_number):
+        self.__order_number = order_number
+        match_value = 1
+        orders_list = self.__order_repo.get_list_of_orders()
+        
+        for line in orders_list:
+            if line["Number"] == order_number:
+                match_value += 1
+                break
+        if match_value == 1:
+            # Notify that something wasn't found
+            print()
+            print(" No order found")
+
+
+        if match_value != 1:
+            print(45*"-", "Details of an order", 45*"-")
+            print()
+            print("You found this order:")
+            print()
+            print(" ","{:<20} {:<20} {:<20} {:<20} {:<20}".format("Number", "Customer", "LP Number", "Pick-up Date", "Return Date"))
+            print("-"*110)
+            print(" ","{:<20} {:<20} {:<20} {:<20} {:<20}".format(line["Number"], line["Customer"], line["License Plate Number"], line["Pick-up Date"], line["Return Date"]))
 
     def register_new_customer(self, customer):
         self.__customer_repo.add_customer(customer)

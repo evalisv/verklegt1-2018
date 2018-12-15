@@ -68,8 +68,13 @@ class CarService():
         if match_value == 1:
             # Notify that something wasn't found
             print()
-            print(" No car found")
-
+            print(" No car found. Would you like to try again?")
+            try_again = input("Y/N: ").lower()
+            if try_again == "y":
+                return False
+            else:
+                return True
+        
 
         if match_value != 1:
             print(60*"-", "Details of a car", 60*"-")
@@ -79,7 +84,7 @@ class CarService():
             print(" ","{:<30} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format("Licence Plate Number", "Category", "Model", "Brand", "Colour", "Year", "Kilometers", "Status"))
             print("-"*140)
             print(" ","{:<30} {:15} {:15} {:<15} {:<15} {:<15} {:<15} {:<15}".format(line["License Plate Number"], line["Category"], line["Model"], line["Brand"], line["Colour"], line["Year"], line["Kilometers"], line["Status"]))
-                
+            return True
 
 
     def remove_car(self, key_filter, car_filter):
