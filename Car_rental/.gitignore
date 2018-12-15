@@ -1,2 +1,3 @@
-/.vcode
-/__pycach__
+/.vcode/*.json
+/__pycache__/*.pyc
+
