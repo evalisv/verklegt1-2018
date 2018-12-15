@@ -6,12 +6,12 @@ from Services.CarService import CarService
 from Services.CustomerService import CustomerService
 from datetime import datetime
 from datetime import timedelta
+from datetime import date
 from models.Customer import Customer
 from models.Car import Car
 from models.Order import Order
 from models.Price import Price
 
-date_format = "%d.%m.%Y"
 
 class OrderService():
     def __init__(self):
@@ -42,12 +42,13 @@ class OrderService():
         self.__customer_repo.add_customer(customer)
 
     def return_car(self, order_number):
+        actual_return_date = str(date.today().strftime("%d.%m.%Y"))
+
         
-        new_value = datetime.today()
-        index = 5
+        index = 8
         
         
-        self.__order_repo.change_order(order_number, index, new_value)
+        self.__order_repo.change_order(order_number, index, actual_return_date)
         # car = self.__model_order.get_lp_number
         # print(car)
         # self.__car_repo.change_status(car)
@@ -62,7 +63,7 @@ class OrderService():
     def rent_car(self, new_order):
         print(new_order)
 
-        number, customer_id, lp_number, category, pickup_date, return_date, price, insurance = str(new_order).split(",")
+        number, customer_id, lp_number, category, pickup_date, return_date, price, insurance, actual_return_date = str(new_order).split(",")
         #number = '', customer_id = '', lp_number = '', category = '', pickup_date = '', return_date = '', price = '', insurance = ''
         # self.__order_repo.__category = category
         # self.__order_repo.__pickup_date = pickup_date
@@ -74,9 +75,8 @@ class OrderService():
         number = self.find_next_order_number()
         available_car_lp = self.find_available_car(category, pickup_date, return_date)
         lp_number = available_car_lp
-                                
         price = self.__price_service.calculate_price_for_order(category, days, insurance)
-        order = Order(number, customer_id, lp_number, category, pickup_date, return_date, price, insurance)
+        order = Order(number, customer_id, lp_number, category, pickup_date, return_date, price, insurance, actual_return_date)
         self.__order_repo.price = price
         self.__order_repo.add_order(order)
 

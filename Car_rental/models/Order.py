@@ -1,6 +1,6 @@
 class Order:
     
-    def __init__(self, number, customer_id, lp_number, category, pickup_date, return_date, price, insurance):
+    def __init__(self, number, customer_id, lp_number, category, pickup_date, return_date, price, insurance, actual_return_date):
         self.__number = number
         self.__customer_id = customer_id
         self.__lp_number = lp_number
@@ -9,10 +9,12 @@ class Order:
         self.__return_date = return_date
         self.__price = price
         self.__insurance = insurance
+        self.__actual_return_date = actual_return_date
 
     def __str__(self):
-        return "{},{},{},{},{},{},{},{}".format(
-            self.__number, self.__customer_id, self.__lp_number, self.__category, self.__pickup_date, self.__return_date, self.__price, self.__insurance)
+        return "{},{},{},{},{},{},{},{},{}".format(
+            self.__number, self.__customer_id, self.__lp_number, self.__category, self.__pickup_date,
+             self.__return_date, self.__price, self.__insurance, self.__actual_return_date)
 
     def get_order_number(self):
         return self.__number
@@ -37,3 +39,7 @@ class Order:
 
     def get_insurance(self):
         return self.__insurance
+        
+    def get_actual_return_date(self):
+        return self.__actual_return_date
+
