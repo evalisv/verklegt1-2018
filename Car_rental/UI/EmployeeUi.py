@@ -127,10 +127,6 @@ class EmployeeUi:
                         print(9*"-", "Price Menu", 9*"-")
                         print(" You can do the following:\n")
 
-                        if action == "1":
-                            os.system("cls")
-                            self.__price_service.get_price_list()
-                            action = input(" Press enter to go back ")
 
                         if action == "2":
                             os.system("cls")
@@ -147,6 +143,14 @@ class EmployeeUi:
                         if action == "m".lower():
                             self.main_menu()
                         self.additional_options(action)
+                    if action == "2":
+                        print(8*"-", "Calculate prices", 8*"-")
+                        print( "Choose class: \n")
+                        print(indent,"A | Class A")
+                        print(indent,"B | Class B")
+                        print(indent,"C | Class C")
+                        print("")
+
                         if action == "1":
                             os.system("cls")
                             self.__price_service.get_price_list()
@@ -169,6 +173,30 @@ class EmployeeUi:
                         if action == "m".lower():
                             self.main_menu()
                         self.additional_options(action)
+
+                            if action == "1":
+                                os.system("cls")
+                                self.__price_service.get_price_list()
+                                action = input(" Press enter to go back ")
+
+                            if action == "2":
+                                os.system("cls")
+                                print(8*"-", "Calculate prices", 8*"-")
+                                print( "Choose class: \n")
+
+                                
+                            class_filter = input(" Input letter:  ").upper()
+
+
+                            days = input(" Input number of days: ")
+                            days_int = int(days)
+                            os.system("cls")
+                            self.__price_service.calculate_price(class_filter, days_int)
+                            print()
+                            action = self.print_options()
+                            if action == "m".lower():
+                                self.main_menu()
+                            self.additional_options(action)
 
                                 
                 elif action == "6" and self.access == "admin":

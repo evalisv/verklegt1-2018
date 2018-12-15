@@ -4,31 +4,31 @@ from models.Car import Car
 class CarRepo:
 
     def __init__(self):
-        self.__car = []
+        self.__cars_list = []
 
     def add_car(self, car):
         with open("Data/cars.csv", "a+", encoding = "utf-8") as car_file:
             lp_number = car.get_lp_number()
             category = car.get_category()
-            model = car.get_model()
             brand = car.get_brand()
+            model = car.get_model()
             colour = car.get_colour()
             year = car.get_year()
             kilometers = car.get_km()
             status = car.get_status()
 
 
-            fieldnames = ["License Plate Number", "Category", "Model", "Brand", "Colour", "Year", "Kilometers", "Status"]
+            fieldnames = ["Licence Plate Number", "Category", "Brand", "Model", "Colour", "Year", "Kilometers", "Status"]
 
             csv_writer = csv.DictWriter(car_file, fieldnames=fieldnames, lineterminator="\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
-            csv_writer.writerow({"License Plate Number" : lp_number, "Category" : category, "Model" : model, "Brand" : brand,
+             csv_writer.writerow({"License Plate Number" : lp_number, "Category" : category, "Brand" : brand, "Model" : model, 
              "Colour" : colour, "Year" : year, "Kilometers" : kilometers, "Status" : status})
 
     def remove_car(self, new_value):
         self.__new_value = new_value
         with open ("data/customers.csv", "w", encoding = "utf-8") as changed_csv:
-            fieldnames = ["License Plate Number", "Category", "Model", "Brand", "Colour", "Year", "Kilometers", "Status"]
+            fieldnames = ["License Plate Number", "Category", "Brand", "Model", "Colour", "Year", "Kilometers", "Status"]
             csv_writer = csv.DictWriter(changed_csv, fieldnames = fieldnames, lineterminator = "\n")
             csv_writer.writeheader()
             for line in new_value:
@@ -42,11 +42,10 @@ class CarRepo:
             csv_reader = csv.DictReader(csv_file)   #Til þess að geta filterað út frá lyklum þarf að nota DictReader
             if cars_list == []:
                 for line in csv_reader:
-                    car = Car(line["License Plate Number"],line["Category"],line["Model"],
-                              line["Brand"], line["Year"], line["Kilometers"],line["Colour"], line["Status"])
-                    cars_list.append(car)
+                   if line not in self.__cars_list:
+                        self.__cars_list.append(line)
 
-        return cars_list
+        return self.__cars_list
 
     def available_cars(self):
         available_cars_list = []
@@ -85,8 +84,13 @@ class CarRepo:
                 else:
                     update_list.append(row)
         
+<<<<<<< HEAD
+        with open('data/cars.csv', 'w', encoding = "utf-8") as cars_file:
+            csv_writer = csv.writer(cars_file, lineterminator = "\n")
+=======
         with open("cars.csv", "w", newline="") as cars_file:
             csv_writer = csv.writer(cars_file)
+>>>>>>> 70952cef55912c62bb3bb1fe235215f081891f59
             for car in update_list:
                 csv_writer.writerow(car)
 
