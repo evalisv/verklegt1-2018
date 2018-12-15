@@ -131,6 +131,19 @@ class OrderService():
         print(min_used_car)
 
 
+ """  def get_orders(self): ÞETTA ER TILBÚIÐ EN FALIÐ ÚTAF JÖKULL ER AÐ VINNA Í ÞESSU SKJALI LÍKA
+        print()
+        print(58*"-","List of all orders",59*"-")
+        print()
+        print(" ","{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}".format("Number", "LP Number", "Category", "Pick-up Date", "Return Date", "Price", "Insurance"))
+        print("-"*140)
+        for line in self.__order_repo.get_orcer_list():
+            print(" ","{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}".format(line["Number"], full_name, line["LP Number"], line["Category"], line["Pick-up Date"], line ["Return Date"], ["Price"], ["Insurance"]))
+        return
+
+        """
+
+
 
 
 ###################################################################################
