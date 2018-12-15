@@ -168,7 +168,7 @@ class EmployeeUi:
                         action = self.print_options()
                         if action == "m".lower():
                             self.main_menu()
-                         self.additional_options(action)
+                        self.additional_options(action)
 
                                 
                 elif action == "6" and self.access == "admin":
