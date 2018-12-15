@@ -23,7 +23,6 @@ class OrderService():
         self.__order_repo.add_order(order)
     
 
-
     def cancel_order(self,order_number):
         self.__order_repo.cancel_order(order_number)
 

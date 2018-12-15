@@ -33,7 +33,7 @@ Grunn virknikröfur:
 
 
 Viðbótar virknikröfur:
-1 - Login scree
+1 - Login screen
 
 2 - Misjafn aðgangur fyrir user og admin
 
