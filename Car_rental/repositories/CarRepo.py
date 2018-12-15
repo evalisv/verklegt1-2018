@@ -18,7 +18,7 @@ class CarRepo:
             status = car.get_status()
 
 
-            fieldnames = ["Licence Plate Number", "Category", "Brand", "Model", "Colour", "Year", "Kilometers", "Status"]
+            fieldnames = ["License Plate Number", "Category", "Brand", "Model", "Colour", "Year", "Kilometers", "Status"]
 
             csv_writer = csv.DictWriter(car_file, fieldnames=fieldnames, lineterminator="\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
