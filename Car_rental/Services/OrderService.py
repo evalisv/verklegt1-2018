@@ -17,7 +17,7 @@ class OrderService():
         self.__customer_repo = CustomerRepo()
         self.__car_repo = CarRepo()
         self.__price_service = PriceService()
-        self.__model_order = Order()
+        
 
     def add_order(self, order):
         self.__order_repo.add_order(order)

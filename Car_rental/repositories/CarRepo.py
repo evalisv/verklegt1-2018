@@ -22,8 +22,8 @@ class CarRepo:
 
             csv_writer = csv.DictWriter(car_file, fieldnames=fieldnames, lineterminator="\n")
             #Spurning með writeheader. Virðist adda header með hverri nýrri línu.
-             csv_writer.writerow({"License Plate Number" : lp_number, "Category" : category, "Brand" : brand, "Model" : model, 
-             "Colour" : colour, "Year" : year, "Kilometers" : kilometers, "Status" : status})
+            csv_writer.writerow({"License Plate Number" : lp_number, "Category" : category, "Brand" : brand, "Model" : model, 
+            "Colour" : colour, "Year" : year, "Kilometers" : kilometers, "Status" : status})
 
     def remove_car(self, new_value):
         self.__new_value = new_value
@@ -84,13 +84,8 @@ class CarRepo:
                 else:
                     update_list.append(row)
         
-<<<<<<< HEAD
         with open('data/cars.csv', 'w', encoding = "utf-8") as cars_file:
             csv_writer = csv.writer(cars_file, lineterminator = "\n")
-=======
-        with open("cars.csv", "w", newline="") as cars_file:
-            csv_writer = csv.writer(cars_file)
->>>>>>> 70952cef55912c62bb3bb1fe235215f081891f59
             for car in update_list:
                 csv_writer.writerow(car)
 
