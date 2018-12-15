@@ -28,16 +28,17 @@ class PriceService():
                 total_price = (price_int * days_int)
                 total_price_with_vat = int(total_price * vat)
                 total_price_with_insurance = int(total_price_with_vat + price_insurance)
-        if insurance == "y":
-            return total_price_with_insurance
-        elif insurance == "n":
-            return total_price_with_vat
+        # if insurance == "y":
+        #     return total_price_with_insurance
+        # elif insurance == "n":
+        #     return total_price_with_vat
 
         print()
         print(8*"-", "Calculate prices", 8*"-", "\n")
         print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
         print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
-        print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
+        if insurance == "y":
+            print(" Total price with insurance: ", "{:,d}".format(total_price_with_insurance), "ISK")
         
         
 

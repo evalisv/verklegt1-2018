@@ -148,7 +148,10 @@ class EmployeeUi:
 
                             days = input(" Input number of days: ")
                             days_int = int(days)
-                            self.__price_service.calculate_price(class_filter, days_int)
+                            insurance = input(" Insurance? (Y/N): ").lower()
+                            while insurance not in ["y", "n"]:
+                                insurance = input( "Invalid input, please enter 'y' or 'n': ")
+                            self.__price_service.calculate_price(class_filter, days_int, insurance)
                             #os.system("cls")
                             print()
                             self.print_options()
