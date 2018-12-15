@@ -34,7 +34,7 @@ class PriceService():
         #     return total_price_with_vat
 
         print()
-        print(8*"-", "Calculate prices", 8*"-", "\n")
+        print(10*"-", "Calculate prices", 10*"-", "\n")
         print(" Price without VAT: ", "{:,d}".format(total_price), "ISK")
         print(" Price with VAT: ", "{:,d}".format(total_price_with_vat), "ISK")
         if insurance == "y":

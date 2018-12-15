@@ -136,7 +136,7 @@ class EmployeeUi:
                             action = input(" Input number/letter: ")
                             self.additional_options(action)
                         if action == "2":
-                            print(8*"-", "Calculate prices", 8*"-")
+                            print(10*"-", "Calculate prices", 10*"-")
                             print( "Choose class: \n")
                             print(indent,"A | Class A")
                             print(indent,"B | Class B")
@@ -145,17 +145,12 @@ class EmployeeUi:
 
                                 
                             class_filter = input(" Input letter:  ").upper()
-
                             days = input(" Input number of days: ")
                             days_int = int(days)
-                            insurance = input(" Insurance? (Y/N): ").lower()
-                            while insurance not in ["y", "n"]:
-                                insurance = input( "Invalid input, please enter 'y' or 'n': ")
-                            self.__price_service.calculate_price(class_filter, days_int, insurance)
+                            self.__price_service.calculate_price(class_filter, days_int)
                             #os.system("cls")
                             print()
-                            self.print_options()
-                            action = input(" Input letter: ")
+                            action = self.print_options()
                             if action == "m".lower():
                                 self.main_menu()
                             self.additional_options(action)
@@ -233,6 +228,7 @@ class EmployeeUi:
                     print(indent,"3 | Return cars")
                     print(indent,"4 | Change Reservation")
                     print(indent,"5 | Cancel Reservation")
+                    print(indent,"6 | See list of all orders")
                     print(indent,"m | Go to Main menu")
                     print(indent,"q | Quit")
                     print()
@@ -318,12 +314,32 @@ class EmployeeUi:
                             self.additional_options(action)
 
 
+                                
+
                             
                             # #Rent a car
                             # self.__order_service.rent_car()
 
                     elif action == "2":
                     #Calculate Cost of rent
+                        print(8*"-", "Calculate prices", 8*"-")
+                        print( "Choose class: \n")
+                        print(indent,"A | Class A")
+                        print(indent,"B | Class B")
+                        print(indent,"C | Class C")
+                        print("")
+                        
+                        class_filter = input(" Input letter:  ").upper()
+                        days = input(" Input number of days: ")
+                        days_int = int(days)
+                        self.__price_service.calculate_price(class_filter, days_int)
+                        print()
+                        self.print_options()
+                        action = input(" Input letter: ")
+                        if action == "m".lower():
+                            self.main_menu()
+                        self.additional_options(action)
+
                         pass
 
                     elif action == "3":
@@ -354,9 +370,18 @@ class EmployeeUi:
                         order_number = input("Enter Order Number: ")
                         self.__order_service.cancel_order(order_number)
 
-                    if action == "b":
-                        self.main_menu()
-                    self.additional_options(action)
+                    
+                    elif action == "6":
+                        #See list of all orders
+                        os.system("cls")
+                        action = ""
+                        self.__order_service.get_orders()
+                        print()
+                        action = input(" Press enter to go back ")
+
+                        if action == "b":
+                            self.main_menu()
+                            self.additional_options(action)
 
 
 
