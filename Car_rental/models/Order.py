@@ -12,7 +12,7 @@ class Order:
 
     def __str__(self):
         return "{},{},{},{},{},{},{},".format(
-            self.__number, self.customer_id, self.lp_number, self.pickup_date, self.return_date, self.price, self.insurance)
+            self.number, self.customer_id, self.lp_number, self.pickup_date, self.return_date, self.price, self.insurance)
 
     def get_order_number(self):
         return self.number
