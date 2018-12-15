@@ -11,6 +11,8 @@ from models.Car import Car
 from models.Order import Order
 from models.Price import Price
 
+date_format = "%d.%m.%Y"
+
 class OrderService():
     def __init__(self):
         self.__order_repo = OrderRepo()
@@ -85,10 +87,11 @@ class OrderService():
 
 
     def number_of_days(self, pickup_date, return_date):
-        year, month, day = pickup_date.split('.')
-        pickup_date_datetime = datetime(int(day), int(month),int(year))
-        year, month, day = return_date.split('.')
-        return_date_datetime = datetime(int(day), int(month),int(year))
+
+        day, month, year = pickup_date.split('.')
+        pickup_date_datetime = datetime(int(year), int(month),int(day))
+        day, month, year = return_date.split('.')
+        return_date_datetime = datetime(int(year), int(month),int(day))
 
         number_of_days = (return_date_datetime - pickup_date_datetime)
         number_of_days = int(number_of_days.days)
@@ -98,29 +101,58 @@ class OrderService():
 
     def find_available_car(self, category, pickup_date, return_date):
         
-        year, month, day = pickup_date.split('.')
-        pickup_date_datetime = datetime(int(day), int(month),int(year))
-        year, month, day = return_date.split('.')
-        return_date_datetime = datetime(int(day), int(month),int(year))
+        day, month, year = pickup_date.split('.')
+        pickup_date_datetime = datetime(int(year), int(month),int(day))
+        day, month, year = return_date.split('.')
+        return_date_datetime = datetime(int(year), int(month),int(day))
 
 
 
 
         #Bý til lista af öllum bilum í réttu category og bilum í pöntunum.
         car_list = self.__car_repo.get_cars_list()
-        cars_in_category = [car for car in car_list if car.get_category() == category ]
+        cars_in_category = [car for car in car_list if car.get_category() == category]
+        lp_in_category = [str(car.get_lp_number()) for car in car_list if car.get_category() == category]
+        print("cars_in_category")
+        print(cars_in_category)
 
 
+            
         cars_in_orders = self.__order_repo.cars_in_orders(category)
-        print(cars_in_orders)
-
-        cars_in_orders_list = list(cars_in_orders.keys())
-        print(cars_in_orders_list)
-        # if len(cars_in_orders) == 0:
-        min_used_car = min(cars_in_category, key=lambda car: int(car.get_km()))
+        list_of_orders = self.__order_repo.list_of_orders(category)
+        cars_taken = []
+        cars_available = []
         
-        print(min_used_car)
-
+        for order in list_of_orders:
+            print("order")
+            print(order)
+            lp_number = str(order[0])
+            print(lp_number)
+            order_pickup = order[1]
+            order_return = order[2]
+            day, month, year = order_pickup.split('.')
+            order_pickup = datetime(int(year), int(month),int(day))
+            day, month, year = order_return.split('.')
+            order_return = datetime(int(year), int(month),int(day))
+            if order_pickup < return_date_datetime and order_return > pickup_date_datetime:
+                cars_taken.append(lp_number)
+            
+        for car in lp_in_category:
+            if car not in cars_taken:
+                cars_available.append(car)
+        print("cars available")
+        print(cars_available)
+        # cars_in_orders_list = list(cars_in_orders.keys())
+        # print(cars_in_orders_list)
+        # if len(cars_in_orders) == 0:
+        # min_used_car = min(cars_available, key=lambda Car: int(car.get_km()))
+        # print(min_used_car)
+        # print(type(min_used_car))
+        # return getattr(min_used_car,)
+        try:
+            return cars_available[0]
+        except:
+            print("No car available")
 
 
 

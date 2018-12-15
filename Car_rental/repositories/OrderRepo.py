@@ -98,8 +98,18 @@ class OrderRepo():
                         period_taken_dict[car_lp].append(period_taken)
                     else:
                         period_taken_dict[car_lp] = [period_taken]
-        print(period_taken_dict)
         return period_taken_dict
+    
+    def list_of_orders(self, category):
+        new_list_of_orders = []
+        with open('Data/orders.csv', 'r', encoding = "utf-8") as order_file:
+            csv_reader = csv.DictReader(order_file)
+            for order in csv_reader:
+                order_info = [order["License Plate Number"], order["Pick-up Date"], order["Return Date"]]
+                if order["Category"] == category:
+                    new_list_of_orders.append(order_info)
+        return new_list_of_orders
+            
 
 
     # def get_number_of_days(self, order):
