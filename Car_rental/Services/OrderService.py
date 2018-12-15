@@ -63,11 +63,11 @@ class OrderService():
     def rent_car(self, category, pickup_date, return_date, insurance, customer_id):
         #number = '', customer_id = '', lp_number = '', category = '', pickup_date = '', return_date = '', price = '', insurance = ''
         order = Order()
-        order.category = category
-        order.pickup_date = pickup_date
-        order.return_date = return_date
-        order.customer_id = customer_id
-        order.insurance = insurance
+        order.__category = category
+        order.__pickup_date = pickup_date
+        order.__return_date = return_date
+        order.__customer_id = customer_id
+        order.__insurance = insurance
         days = self.number_of_days(pickup_date, return_date)
         order.number = self.find_next_order_number()
         
@@ -99,13 +99,6 @@ class OrderService():
         
 
     def find_available_car(self, category, pickup_date, return_date):
-<<<<<<< HEAD
-        
-        day, month, year = pickup_date.split('.')
-        pickup_date_datetime = datetime(int(year), int(month),int(day))
-        day, month, year = return_date.split('.')
-        return_date_datetime = datetime(int(year), int(month),int(day))
-=======
         available_car_list = []
         car_list = self.__car_repo.get_cars_list()
         order_list = self.__order_repo.get_order_list()
@@ -117,11 +110,10 @@ class OrderService():
 
 
 
-        year, month, day = pickup_date.split('.')
-        pickup_date_datetime = datetime(int(day), int(month),int(year))
-        year, month, day = return_date.split('.')
-        return_date_datetime = datetime(int(day), int(month),int(year))
->>>>>>> 98b60234a3b6e9fa4c6f0a9d7abb57d9bd78bbd4
+        day, month, year = pickup_date.split('.')
+        pickup_date_datetime = datetime(int(year), int(month),int(day))
+        day, month, year = return_date.split('.')
+        return_date_datetime = datetime(int(year), int(month),int(day))
 
 
 

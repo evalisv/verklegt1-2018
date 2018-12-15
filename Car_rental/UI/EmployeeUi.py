@@ -237,88 +237,95 @@ class EmployeeUi:
 
                     if action == "1":
                     #Rent cars and ther under 
+                        customer_id = input("Input customer id: ")
+                        category = input("Input category: ")
+                        pickup_date = input("Input pickup date (dd.mm.yyyy): ")
+                        return_date = input("Input return date (dd.mm.yyyy): ")
+                        insurance = input("Do you want extra insurance? Y/N? :")
+                        self.__order_service.rent_car(category, pickup_date, return_date, insurance, customer_id)
+
 
                         #Hér þarf að taka til hendinni og laga virknina. 
                         #Skref 1 er að stimpla inn kennitölu, ef hún er ekki á skrá þá þarf að skrá viðskiptavin
 
                         
-                        action = ""
-                        while(action != "q"):  
-                            os.system("cls")  
-                            print("You can do the following:\n")
+                        # action = ""
+                        # while(action != "q"):  
+                        #     os.system("cls")  
+                        #     print("You can do the following:\n")
 
-                            print("1 | Register new customers")  
-                            print("2 | Choose customers")
-                            print("m | Go to Main menu")
-                            print()
+                        #     print("1 | Register new customers")  
+                        #     print("2 | Choose customers")
+                        #     print("m | Go to Main menu")
+                        #     print()
 
-                            action = input("Input number/letter: ").lower()
+                        #     action = input("Input number/letter: ").lower()
 
 
 
-                            print(" You can do the following:\n")
+                        #     print(" You can do the following:\n")
 
-                            print(indent,"1 | Register new customers")  
-                            print(indent,"2 | Choose customers")
-                            self.print_options()
-                            print()
+                        #     print(indent,"1 | Register new customers")  
+                        #     print(indent,"2 | Choose customers")
+                        #     self.print_options()
+                        #     print()
 
-                            action = input(" Input number/letter: ").lower()
+                        #     action = input(" Input number/letter: ").lower()
 
                         
-                            if action == "1":
-                                self.__order_service.return_car()
+                        #     if action == "1":
+                        #         self.__order_service.return_car()
                                 
                                 
-                                # Register new customer
-                                os.system("cls")
-                                id_number = input(" Customer ID: ")
-                                while len(id_number) != 10:
-                                    id_number = input(" Invalid Customer ID. Customer ID is either Icelandic SSN or Passport number of length 10.\n Please enter a valid Customer ID:  ")
-                                first_name = input(" First name: ")
-                                while not first_name.isalpha():
-                                    first_name = input(" Invalid first name.\n Please enter a valid first name: ")
-                                last_name = input(" Last name: ")
-                                while not last_name.isalpha():
-                                    last_name = input(" Invalid last name.\n Please enter a valid last name: ")
-                                age = input(" Age: ")
-                                while not age.isdigit():
-                                    age = input(" Invalid input, only digits allowed.\n Age: ")
-                                country = input(" Country: ")
-                                while not country.isalpha():
-                                    country = input(" Invalid input. \n Please enter a valid country: ")
-                                email = input(" E-mail: ")
-                                while ("@" and ".")not in email:
-                                    email = input(" Invalid E-mail address.\n Please enter a valid E-mail address:  ")
-                                    if len(email) <= 6:
-                                        email = input(" Invalid E-mail address.\n Please enter a valid E-mail address: ")
-                                phone = input(" Phone number: ")
-                                while not phone.isdigit() and len(phone) <= 9:
-                                    phone = input(" Invalid phone number. Phone number should only be digits on and must contain country code.\n Please enter a valid Phone number: ")
-                                dl_number = input(" Drivers license number: ")
-                                while len(dl_number) <= 8:
-                                    dl_number = input("Invalid drivers license number, must me at least 9 letters/digits long.\n Please enter a valid drivers license number: ")
-                                cc_number = input(" Credit card number: ")
-                                while not cc_number.isdigit():
-                                    cc_number = input("Invalid creditcard number.\n Please enter a valid creditcard number: ")
-                                new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
-                                #new_customer = customer(id_number, first_name)
-                                self.__customer_service.add_customer(new_customer)
+                        #         # Register new customer
+                        #         os.system("cls")
+                        #         id_number = input(" Customer ID: ")
+                        #         while len(id_number) != 10:
+                        #             id_number = input(" Invalid Customer ID. Customer ID is either Icelandic SSN or Passport number of length 10.\n Please enter a valid Customer ID:  ")
+                        #         first_name = input(" First name: ")
+                        #         while not first_name.isalpha():
+                        #             first_name = input(" Invalid first name.\n Please enter a valid first name: ")
+                        #         last_name = input(" Last name: ")
+                        #         while not last_name.isalpha():
+                        #             last_name = input(" Invalid last name.\n Please enter a valid last name: ")
+                        #         age = input(" Age: ")
+                        #         while not age.isdigit():
+                        #             age = input(" Invalid input, only digits allowed.\n Age: ")
+                        #         country = input(" Country: ")
+                        #         while not country.isalpha():
+                        #             country = input(" Invalid input. \n Please enter a valid country: ")
+                        #         email = input(" E-mail: ")
+                        #         while ("@" and ".")not in email:
+                        #             email = input(" Invalid E-mail address.\n Please enter a valid E-mail address:  ")
+                        #             if len(email) <= 6:
+                        #                 email = input(" Invalid E-mail address.\n Please enter a valid E-mail address: ")
+                        #         phone = input(" Phone number: ")
+                        #         while not phone.isdigit() and len(phone) <= 9:
+                        #             phone = input(" Invalid phone number. Phone number should only be digits on and must contain country code.\n Please enter a valid Phone number: ")
+                        #         dl_number = input(" Drivers license number: ")
+                        #         while len(dl_number) <= 8:
+                        #             dl_number = input("Invalid drivers license number, must me at least 9 letters/digits long.\n Please enter a valid drivers license number: ")
+                        #         cc_number = input(" Credit card number: ")
+                        #         while not cc_number.isdigit():
+                        #             cc_number = input("Invalid creditcard number.\n Please enter a valid creditcard number: ")
+                        #         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
+                        #         #new_customer = customer(id_number, first_name)
+                        #         self.__customer_service.add_customer(new_customer)
                                 
-                                #######print(new_customer)
+                        #         #######print(new_customer)
                                 
-                            if action == "2":
-                                #Choos customers
-                                pass
+                        #     if action == "2":
+                        #         #Choos customers
+                        #         pass
                             
-                            self.additional_options(action)
+                        #     self.additional_options(action)
 
 
                                 
 
                             
-                            # #Rent a car
-                            # self.__order_service.rent_car()
+                        #     # #Rent a car
+                        #     # self.__order_service.rent_car()
 
                     elif action == "2":
                     #Calculate Cost of rent
