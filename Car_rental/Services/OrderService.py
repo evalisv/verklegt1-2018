@@ -131,7 +131,7 @@ class OrderService():
         print(min_used_car)
 
 
- """  def get_orders(self): ÞETTA ER TILBÚIÐ EN FALIÐ ÚTAF JÖKULL ER AÐ VINNA Í ÞESSU SKJALI LÍKA
+"""  def get_orders(self): ÞETTA ER TILBÚIÐ EN FALIÐ ÚTAF JÖKULL ER AÐ VINNA Í ÞESSU SKJALI LÍKA
         print()
         print(58*"-","List of all orders",59*"-")
         print()
@@ -141,7 +141,7 @@ class OrderService():
             print(" ","{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}".format(line["Number"], full_name, line["LP Number"], line["Category"], line["Pick-up Date"], line ["Return Date"], ["Price"], ["Insurance"]))
         return
 
-        """
+"""
 
 
 
