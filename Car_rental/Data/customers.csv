@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-License Plate Number,Category,Model,Brand,Colour,Year,Kilometers,Status
-ERF78,A,i10,Hyundai,Red,2016,37000,Available
-HLE12,A,i10,Hyundai,Blue,2018,12000,Available
-KIP99,A,108,Pugeot,White,2017,23000,Available
-MEF34,A,Aygo,Toyota,Silver,2018,8000,Available
-JUX87,B,Accord,Honda,Blue,2016,37000,Available
-DEO65,B,Octavia,Skoda,Black,2018,12000,Available
-LIJ34,B,i30,Hyundai,Green,2017,23000,Available
-OFG17,B,Octavia,Skoda,Silver,2018,8000,Available
-KJH23,C,Duster,Dacia,Black,2016,37000,Available
-ROK77,C,Land Cruiser,Toyota,Silver,2018,12000,Available
-TRI32,C,Tucson,Hyundai,Red,2017,23000,Available
-FDS67,C,Qashqai,Nissan,Blue,2018,8000,Available
-HJN89,A,Yaris,Toyota,200000,Silver,2006,Available
-UUU11,C,Land Cruiser,Toyota,20000,Black,2009,Unavailable
-<<<<<<< HEAD,,,,,,,
-LGK90,Gapj,AGgwg,AGgjwpg,gkagjas9,SAGWg,ag9,ag9wtur9
-=======,,,,,,,
-kn031,A,Yaris,Yaris,2000,Red,2018,Available
->>>>>>> 74df243265170838412d35727b41a0134906ed3c,,,,,,,
-=======
 Customer ID,First Name,Last Name,Age,Country,Email,Phone,Drivers License Number,Credit Card Number
 2611893059,Jökull,Gunnarsson,,Iceland,jokullg16@ru.is,7756030,7897646547,4444110000000000
 1010802017,Harpa,Sjöfn,,Iceland,meh@meh.is,5882211,56456765765,1111220000000000
@@ -30,8 +8,3 @@ L8989898,Donald,Trump,,USA,donaldtrump@endoftheworld.com,+1 1,54654678687,444411
 1101644759,Katla,Thorsteinsdottir,54,Iceland,katla@3skref.is,003546632616,123456789,000111222333
 1234567890,Ólöf,Risten,30,Iceland,bla@bla.is,+354 123 4567,Ble123456,1234123412341234
 0310952639,Eva,Lísa,23,Iceland,eval18@ru.is,003548445419,123456789,0000000000000000
-<<<<<<< HEAD
-=======
-1305602199,Olafur,Palsson,28,Iceland,olafur@olafur.is,6913813,100100100,000111444777
->>>>>>> 20776e78b719160ccd8ca720bc1e851b066ca1f4
->>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb

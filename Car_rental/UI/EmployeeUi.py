@@ -198,10 +198,14 @@ class EmployeeUi:
                     category = input(" Category: ").upper()
                     while category not in ["A", "B", "C"]:
                         category = input("Invalid input. Valid categories are 'A', 'B', and 'C'.\n Please enter a valid category: ").upper()
+                    ###############################################################################
+                    model = input(" Model: ")
+                    
+                    #################################################################################
                     brand = input(" Brand: ").capitalize()
                     while not brand.isalpha():
                         brand = input("Invalid brand name.\n Please enter a valid brand name: ").capitalize()
-                    model = input(" Model: ")
+                    
                     colour = input(" Colour: ").capitalize()
                     while colour not in ["Yellow", "Red", "Green", "Blue", "Black", "White", "Gray"]:
                         colour = input("Invalid color. Valid colours are yellow, red, green, blue, white, and gray.\n Please enter a valid colour:  ").capitalize()
@@ -214,7 +218,7 @@ class EmployeeUi:
                     status = input(" Status: ").capitalize()
                     while status not in ["Available", "Unavailable"]:
                         status = input("Invalid status. Valid inputs are 'Available' and 'Unavailable'.\n Status: ")
-                    new_car = Car(lp_number, category, brand, model, colour, year, kilometers, status)
+                    new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
 
                     self.__car_service.add_car(new_car)
                     print("")
@@ -419,14 +423,20 @@ class EmployeeUi:
                     self.additional_options(action)
 
 
-
+###########################################################################
             elif action == "3":
             # Goes to Customers menu
 
                 while(action != "q"):
                     os.system("cls")
+<<<<<<< HEAD
+                    print(7 *"-", " Customers Menu ", 7 *"-")
+                    print(" You can do the following:\n")
+                    
+=======
                     print(7 *"-", " Customers Menu ", 7 *"-", "\n")
                     print(" You can do the following:")
+>>>>>>> 7491c5f3fa71f764ab5709acdecee9aa5ab6cc24
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -471,7 +481,12 @@ class EmployeeUi:
                             dl_number = input("Invalid drivers license number, must me at least 9 letters/digits long.\n Please enter a valid drivers license number: ")
                         cc_number = input(" Credit card number: ")
                         while not cc_number.isdigit():
+<<<<<<< HEAD
+                            cc_number = input("Invalid creditcard number.\n Please enter a valid creditcard number: ")
+                            
+=======
                             cc_number = input("Invalid creditcard number.\n Valid creditcard number only contains digits. \n Please enter a valid creditcard number: ")
+>>>>>>> 7491c5f3fa71f764ab5709acdecee9aa5ab6cc24
                         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
 
 
@@ -589,10 +604,10 @@ class EmployeeUi:
                             action = input(" Input letter: ").lower
                             self.additional_options(action)
                     
-
-                    elif action == "":
-                        action = 1
-                    elif action == "b":
-                        self.main_menu()
-                    elif action != 1:
-                        self.additional_options(action)
+#1111111111111111111111111
+                        if action == "":
+                            action = 1
+                        elif action == "b":
+                            self.main_menu()
+                        elif action != 1:
+                            self.additional_options(action)
