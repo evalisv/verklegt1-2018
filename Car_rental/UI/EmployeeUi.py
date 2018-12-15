@@ -127,24 +127,6 @@ class EmployeeUi:
                         print(9*"-", "Price Menu", 9*"-")
                         print(" You can do the following:\n")
 
-<<<<<<< HEAD
-
-                    if action == "1":
-                        self.__price_service.get_price_list()
-                        print()
-                        print(indent,"m | Go to Main Menu")
-                        action = input(" Input number/letter: ")
-                        self.additional_options(action)
-                    if action == "2":
-                        print(8*"-", "Calculate prices", 8*"-")
-                        print( "Choose class: \n")
-                        print(indent,"A | Class A")
-                        print(indent,"B | Class B")
-                        print(indent,"C | Class C")
-                        print("")
-
-=======
->>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb
                         if action == "1":
                             os.system("cls")
                             self.__price_service.get_price_list()
@@ -155,46 +137,38 @@ class EmployeeUi:
                             print(8*"-", "Calculate prices", 8*"-")
                             print( "Choose class: \n")
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
                         days = input(" Input number of days: ")
                         days_int = int(days)
                         self.__price_service.calculate_price(class_filter, days_int)
                         #os.system("cls")
                         print()
-                        self.print_options()
-                        action = input(" Input letter: ")
+                        action = self.print_options()
                         if action == "m".lower():
                             self.main_menu()
                         self.additional_options(action)
-=======
-<<<<<<< HEAD
-                            if action == "1":
-                                os.system("cls")
-                                self.__price_service.get_price_list()
-                                action = input(" Press enter to go back ")
-
-                            if action == "2":
-                                os.system("cls")
-                                print(8*"-", "Calculate prices", 8*"-")
-                                print( "Choose class: \n")
-=======
-                                
-                            class_filter = input(" Input letter:  ").upper()
-<<<<<<< HEAD
-=======
->>>>>>> 183b8b6312019cd5112f3b1fdf4fb966611846d9
-
->>>>>>> 20776e78b719160ccd8ca720bc1e851b066ca1f4
-                            days = input(" Input number of days: ")
-                            days_int = int(days)
+                        if action == "1":
                             os.system("cls")
-                            self.__price_service.calculate_price(class_filter, days_int)
-                            print()
-                            action = self.print_options()
-                            if action == "m".lower():
-                                self.main_menu()
-                            self.additional_options(action)
->>>>>>> 3dd64a7fd5945d2b734cca8e54d1d31d2aac9fdb
+                            self.__price_service.get_price_list()
+                            action = input(" Press enter to go back ")
+
+                        if action == "2":
+                            os.system("cls")
+                            print(8*"-", "Calculate prices", 8*"-")
+                            print( "Choose class: \n")
+
+                                
+                        class_filter = input(" Input letter:  ").upper()
+
+                        days = input(" Input number of days: ")
+                        days_int = int(days)
+                        os.system("cls")
+                        self.__price_service.calculate_price(class_filter, days_int)
+                        print()
+                        action = self.print_options()
+                        if action == "m".lower():
+                            self.main_menu()
+                         self.additional_options(action)
 
                                 
                 elif action == "6" and self.access == "admin":
@@ -206,14 +180,10 @@ class EmployeeUi:
                     category = input(" Category: ").upper()
                     while category not in ["A", "B", "C"]:
                         category = input("Invalid input. Valid categories are 'A', 'B', and 'C'.\n Please enter a valid category: ").upper()
-                    ###############################################################################
-                    model = input(" Model: ")
-                    
-                    #################################################################################
                     brand = input(" Brand: ").capitalize()
                     while not brand.isalpha():
                         brand = input("Invalid brand name.\n Please enter a valid brand name: ").capitalize()
-                    
+                    model = input(" Model: ")
                     colour = input(" Colour: ").capitalize()
                     while colour not in ["Yellow", "Red", "Green", "Blue", "Black", "White", "Gray"]:
                         colour = input("Invalid color. Valid colours are yellow, red, green, blue, white, and gray.\n Please enter a valid colour:  ").capitalize()
@@ -226,7 +196,7 @@ class EmployeeUi:
                     status = input(" Status: ").capitalize()
                     while status not in ["Available", "Unavailable"]:
                         status = input("Invalid status. Valid inputs are 'Available' and 'Unavailable'.\n Status: ")
-                    new_car = Car(lp_number, category, model, brand, colour, year, kilometers, status)
+                    new_car = Car(lp_number, category, brand, model, colour, year, kilometers, status)
 
                     self.__car_service.add_car(new_car)
                     print("")
@@ -431,20 +401,14 @@ class EmployeeUi:
                     self.additional_options(action)
 
 
-###########################################################################
+
             elif action == "3":
             # Goes to Customers menu
 
                 while(action != "q"):
                     os.system("cls")
-<<<<<<< HEAD
-                    print(7 *"-", " Customers Menu ", 7 *"-")
-                    print(" You can do the following:\n")
-                    
-=======
                     print(7 *"-", " Customers Menu ", 7 *"-", "\n")
                     print(" You can do the following:")
->>>>>>> 7491c5f3fa71f764ab5709acdecee9aa5ab6cc24
                     print(indent, "1 | Register new customer")
                     print(indent, "2 | Find customer")
                     print(indent,"3 | List all customers")
@@ -489,12 +453,7 @@ class EmployeeUi:
                             dl_number = input("Invalid drivers license number, must me at least 9 letters/digits long.\n Please enter a valid drivers license number: ")
                         cc_number = input(" Credit card number: ")
                         while not cc_number.isdigit():
-<<<<<<< HEAD
-                            cc_number = input("Invalid creditcard number.\n Please enter a valid creditcard number: ")
-                            
-=======
                             cc_number = input("Invalid creditcard number.\n Valid creditcard number only contains digits. \n Please enter a valid creditcard number: ")
->>>>>>> 7491c5f3fa71f764ab5709acdecee9aa5ab6cc24
                         new_customer = Customer(id_number, first_name, last_name, age, country, email, phone, dl_number, cc_number)
 
 
@@ -612,10 +571,10 @@ class EmployeeUi:
                             action = input(" Input letter: ").lower
                             self.additional_options(action)
                     
-#1111111111111111111111111
-                        if action == "":
-                            action = 1
-                        elif action == "b":
-                            self.main_menu()
-                        elif action != 1:
-                            self.additional_options(action)
+
+                    elif action == "":
+                        action = 1
+                    elif action == "b":
+                        self.main_menu()
+                    elif action != 1:
+                        self.additional_options(action)
